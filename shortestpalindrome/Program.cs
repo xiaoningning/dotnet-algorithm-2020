@@ -22,16 +22,16 @@ namespace shortestpalindrome
             string rev = new string(char_array);
             string s_new = s + "#" + rev;
             int n_new = s_new.Length;
-            int[] f = new int[n_new];
+            int[] next = new int[n_new];
             Console.WriteLine("new string: " + s_new);
 
             for (int i = 1; i < n_new; i++)
             {
-                int t = f[i - 1];
+                int t = next[i - 1];
 
                 while (t > 0 && s_new[i] != s_new[t])
                 {
-                    t = f[t - 1];
+                    t = next[t - 1];
                 }
 
                 if (s_new[i] == s_new[t])
@@ -39,11 +39,11 @@ namespace shortestpalindrome
                     t++;
                 }
 
-                f[i] = t;
-                Console.WriteLine("char: " + s_new[i] + " f: " + f[i]);
-                Console.WriteLine("f: " + string.Join(",", f));
+                next[i] = t;
+                Console.WriteLine("char: " + s_new[i] + " f: " + next[i]);
+                Console.WriteLine("f: " + string.Join(",", next));
             }
-            return rev.Substring(0, n - f[n_new - 1]) + s;
+            return rev.Substring(0, n - next[n_new - 1]) + s;
         }
 
         static string shortestPalindrome1(string s)
