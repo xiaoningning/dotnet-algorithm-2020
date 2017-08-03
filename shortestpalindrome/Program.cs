@@ -7,12 +7,12 @@ namespace shortestpalindrome
         static void Main(string[] args)
         {
             Console.WriteLine("find the shortest palindrome: " + args[0]);
-            Console.WriteLine("the shortest palindrome: " + shortestpalindrome(args[0]));
+            Console.WriteLine("the shortest palindrome: " + shortestPalindrome(args[0]));
             Console.WriteLine("find the shortest palindrome: " + args[0]);
-            Console.WriteLine("the shortest palindrome: " + shortestpalindrome1(args[0]));
+            Console.WriteLine("the shortest palindrome: " + shortestPalindrome1(args[0]));
         }
 
-        static string shortestpalindrome(string s){
+        static string shortestPalindrome(string s){
             int n = s.Length;
             char[] char_array = s.ToCharArray();
             Array.Reverse(char_array);
@@ -40,7 +40,7 @@ namespace shortestpalindrome
             return rev.Substring(0, n - f[n_new - 1]) + s;
         }
 
-        static string shortestpalindrome1(string s){
+        static string shortestPalindrome1(string s){
             int j = 0;
             for (int i = s.Length - 1; i >= 0; i--){
                 if (s.ToCharArray()[i] == s.ToCharArray()[j]){
