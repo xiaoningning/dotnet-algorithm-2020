@@ -17,7 +17,7 @@ namespace shortestpalindrome
             char[] char_array = s.ToCharArray();
             Array.Reverse(char_array);
             string rev = new string(char_array);
-            string s_new = rev + "#" + s;
+            string s_new = s + "#" + rev;
             int n_new = s_new.Length;
             int[] f = new int[n_new];
             Console.WriteLine("new string: " + s_new);
