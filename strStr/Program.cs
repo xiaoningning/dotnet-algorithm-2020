@@ -58,6 +58,7 @@ namespace strStr
             int s_hash = computeHash(s, M);
 
             int RM = 1;
+            // pre-compute R^(M-1)
             for (int i = 1; i <= M - 1; i++)
             {
                 RM = (RM * FACTOR) % MOD;
@@ -68,9 +69,10 @@ namespace strStr
                 if (s_hash == t_hash &&
                 strEqual(s.Substring(i, M), t))
                 {
-                    return i;
+                    return i; // return the found index
                 }
 
+                // Update the hash value
                 s_hash = ((s_hash - RM * s[i]) * FACTOR + s[i + M]) % MOD;
                 if (s_hash < 0) s_hash += MOD;
             }
@@ -84,6 +86,7 @@ namespace strStr
             {
                 hash = (hash * FACTOR + s[i]) % MOD;
             }
+            // we do not use long, it might be < 0;
             return (hash < 0) ? hash + MOD : hash;
         }
 
