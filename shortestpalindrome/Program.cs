@@ -10,12 +10,14 @@ namespace shortestpalindrome
             Console.WriteLine("the shortest palindrome: " + shortestPalindrome(args[0]));
             Console.WriteLine("find the shortest palindrome: " + args[0]);
             Console.WriteLine("the shortest palindrome: " + shortestPalindrome1(args[0]));
-            Console.WriteLine("find the shortest palindrome: " + args[0]);
+            Console.WriteLine("find the shortest palindrome (a clean O(n) algorithm): " + args[0]);
             Console.WriteLine("the shortest palindrome: " + shortestPalindrome2(args[0]));
         }
 
         static string shortestPalindrome(string s)
         {
+            if (string.IsNullOrEmpty(s)) return null;
+            
             int n = s.Length;
             char[] char_array = s.ToCharArray();
             Array.Reverse(char_array);
@@ -48,6 +50,8 @@ namespace shortestpalindrome
 
         static string shortestPalindrome1(string s)
         {
+            if (string.IsNullOrEmpty(s)) return null;
+
             int j = 0;
             for (int i = s.Length - 1; i >= 0; i--)
             {
@@ -77,6 +81,8 @@ namespace shortestpalindrome
 
         static string shortestPalindrome2(string s)
         {
+            if (string.IsNullOrEmpty(s)) return null;
+            
             int i = 0;
             int end = s.Length - 1;
             int j = end;
