@@ -52,8 +52,10 @@ namespace strStr
             {
                 return -1;
             }
-
+            
             int M = t.Length;
+            
+            if (s.Length < M) return -1;
             int t_hash = computeHash(t, M);
             int s_hash = computeHash(s, M);
 
@@ -71,10 +73,12 @@ namespace strStr
                 {
                     return i; // return the found index
                 }
-
+                
+                if (i < s.Length - M){
                 // Update the hash value
                 s_hash = ((s_hash - RM * s[i]) * FACTOR + s[i + M]) % MOD;
                 if (s_hash < 0) s_hash += MOD;
+                }
             }
             return -1;
         }
