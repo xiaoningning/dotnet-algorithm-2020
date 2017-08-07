@@ -54,6 +54,8 @@ namespace kmpSearch
             return next;
         }
 
+        // NextTable: 
+        // The lengthe of the longest proper prefix which is also suffix for each position
         static int[] buildNextTable1(char[] p_char){
             int[] next = new int[p_char.Length];
             next[0] = -1;

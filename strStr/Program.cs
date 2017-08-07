@@ -60,7 +60,7 @@ namespace strStr
             int s_hash = computeHash(s, M);
 
             int RM = 1;
-            // pre-compute R^(M-1)
+            // pre-compute R^(M-1) % MOD = POW(FACTOR, M-1) % MOD
             for (int i = 1; i <= M - 1; i++)
             {
                 RM = (RM * FACTOR) % MOD;
