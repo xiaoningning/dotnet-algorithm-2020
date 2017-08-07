@@ -17,7 +17,7 @@ namespace shortestpalindrome
         static string shortestPalindrome(string s)
         {
             if (string.IsNullOrEmpty(s)) return null;
-            
+
             int n = s.Length;
             char[] char_array = s.ToCharArray();
             Array.Reverse(char_array);
@@ -82,7 +82,7 @@ namespace shortestpalindrome
         static string shortestPalindrome2(string s)
         {
             if (string.IsNullOrEmpty(s)) return null;
-            
+
             int i = 0;
             int end = s.Length - 1;
             int j = end;
@@ -103,9 +103,18 @@ namespace shortestpalindrome
                 }
             }
 
-            char[] prefix = s.Substring(end + 1).ToCharArray();
-            Array.Reverse(prefix);
-            return new string(prefix) + s;
+            return ReverseStringDirect(s.Substring(end + 1)) + s;
+        }
+
+        static string ReverseStringDirect(string s)
+        {
+            char[] array = new char[s.Length];
+            int forward = 0;
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                array[forward++] = s[i];
+            }
+            return new string(array);
         }
     }
 }
