@@ -10,7 +10,7 @@ namespace shortestpalindrome
             Console.WriteLine("the shortest palindrome: " + shortestPalindrome(args[0]));
             Console.WriteLine("find the shortest palindrome: " + args[0]);
             Console.WriteLine("the shortest palindrome: " + shortestPalindrome1(args[0]));
-            Console.WriteLine("find the shortest palindrome (a clean O(n) algorithm): " + args[0]);
+            Console.WriteLine("find the shortest palindrome (a clean O(n^2) algorithm): " + args[0]);
             Console.WriteLine("the shortest palindrome: " + shortestPalindrome2(args[0]));
         }
 
