@@ -28,7 +28,7 @@ namespace longestStringNoRepeat
                 }
             }
             
-            return map.Count;
+            return result;
         }
     }
 }
