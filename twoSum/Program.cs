@@ -21,20 +21,20 @@ namespace twoSum
             Console.WriteLine("find only one pair result in O(n): " + string.Join(",", r));
         }
 
-        static int[] twoSum(int[] nums, int t)
+        static int[] twoSum(int[] nums, int target)
         {
             int[] r = new int[2];
             Dictionary<int, int> map = new Dictionary<int, int>();
 
             for (int i = 0; i <= nums.Length - 1; i++)
             {
-                if (map.ContainsKey(t - nums[i]))
+                if (map.ContainsKey(target - nums[i]))
                 {
-                    r[0] = i;
-                    r[1] = map[t - nums[i]];
-                    break;
+                    r[1] = i;
+                    r[0] = map[target - nums[i]];
+                    return r;
                 }
-                map.Add(nums[i],i);
+                if (!map.ContainsKey(nums[i])) map.Add(nums[i],i);
             }
             return r;
         }
