@@ -9,7 +9,7 @@ namespace encodeDecodeTinyUrl
         static void Main(string[] args)
         {
             string longUrl = args[0];            
-            Console.WriteLine("input url:");
+            Console.WriteLine("input url:" + longUrl);
             Console.WriteLine(encode(longUrl));
             Console.WriteLine("short url:");
             string shortUrl = Console.ReadLine();
