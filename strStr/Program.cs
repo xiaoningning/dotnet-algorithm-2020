@@ -16,8 +16,8 @@ namespace strStr
 
         static int strStrBruteForce(string s, string t)
         {
-            if (string.IsNullOrEmpty(s) ||
-            string.IsNullOrEmpty(t) ||
+            if (s == null ||
+            t == null ||
             s.Length < t.Length)
             {
                 return -1;
