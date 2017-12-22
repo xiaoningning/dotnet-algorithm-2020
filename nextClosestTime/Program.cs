@@ -18,7 +18,8 @@ namespace nextClosestTime
             int currTime = hours * 60 + mins;
             int nextTime = 0;
             HashSet<int> allowed = new HashSet<int>();
-            int timeGap = 24 * 60;
+            int oneDay = 24 * 60;
+            int timeGap = oneDay;
             foreach (char c in time)
             {   
                 if (c != ':'){
@@ -32,11 +33,11 @@ namespace nextClosestTime
                         foreach(int m1 in allowed){
                             foreach(int m2 in allowed){
                                 if (m1 * 10 + m2 < 60){
-                                    int tmpTime = (h1 * 10 + h2) * 60 + m1 * 10 + m2;
-                                    int tmpGap = Math.Abs(tmpTime - currTime) % (24 * 60) ;
-                                    if ( tmpGap < timeGap && tmpGap > 0 ) {
-                                        timeGap = tmpGap;
-                                        nextTime = tmpTime;
+                                    int candidateTime = (h1 * 10 + h2) * 60 + m1 * 10 + m2;
+                                    int newGap = (candidateTime > currTime) ? candidateTime - currTime : oneDay - currTime + candidateTime ;
+                                    if ( newGap <= timeGap ) {
+                                        timeGap = newGap;
+                                        nextTime = candidateTime;
                                     }
                                 }
                             }
@@ -45,7 +46,7 @@ namespace nextClosestTime
                 }
             }
 
-            return string.Format("{0}:{1}", nextTime / 60, nextTime % 60);
+            return string.Format("{0:00}:{1:00}", nextTime / 60, nextTime % 60);
         }
     }
 }
