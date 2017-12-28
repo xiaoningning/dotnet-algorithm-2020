@@ -16,7 +16,7 @@ namespace ipToCIDR
             List<string> ans = new List<string>();
             long startIp = IpToLong(ip);
             while (n > 0) {
-                int mask = Math.Max(33 - BitLength(startIp & 1),
+                int mask = Math.Max(33 - BitLength(startIp & -startIp),
                                     33 - BitLength(n));
                 ans.Add(LongToIP(startIp) + "/" + mask);
                 startIp += 1 << (32 - mask);
