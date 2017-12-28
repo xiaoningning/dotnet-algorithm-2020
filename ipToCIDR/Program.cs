@@ -16,6 +16,7 @@ namespace ipToCIDR
             List<string> ans = new List<string>();
             long startIp = IpToLong(ip);
             while (n > 0) {
+                // to get the shortest list of CIDR blocks of IPs
                 int mask = Math.Max(33 - BitLength(startIp & -startIp),
                                     33 - BitLength(n));
                 ans.Add(LongToIP(startIp) + "/" + mask);
