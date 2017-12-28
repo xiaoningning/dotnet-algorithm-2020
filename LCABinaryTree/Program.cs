@@ -10,9 +10,13 @@ namespace LCABinaryTree
             TreeNode root = new TreeNode(1);
             TreeNode p = new TreeNode(2);
             TreeNode q = new TreeNode(3);
+            TreeNode tn1 = new TreeNode(4);            
+            TreeNode tn2 = new TreeNode(6);            
             root.left = p;
             p.right = q;
-            Console.WriteLine("LCA: {0}", LowestCommonAncestor(root, p, q).val);
+            q.left = tn1;
+            q.right = tn2;
+            Console.WriteLine("LCA: {0}", LowestCommonAncestor(root, p, tn2).val);
         }
 
         static TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
