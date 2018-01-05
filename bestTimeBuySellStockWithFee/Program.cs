@@ -14,12 +14,15 @@ namespace bestTimeBuySellStockWithFee
         }
         
         static int MaxProfit(int[] prices, int fee) {
-            int cash = 0, hold = -prices[0];
+            if(prices == null || prices.Length <= 1) return 0;
+
+            int sell = 0, buy = -prices[0];
             for (int i = 1; i < prices.Length; i++) {
-                cash = Math.Max(cash, hold + prices[i] - fee);
-                hold = Math.Max(hold, cash - prices[i]);
+                int prev_sell = sell;
+                sell = Math.Max(sell, buy + prices[i] - fee);
+                buy = Math.Max(buy, prev_sell - prices[i]);
             }
-            return cash;
+            return sell;
         }
     }
 }
