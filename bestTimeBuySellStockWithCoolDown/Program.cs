@@ -23,9 +23,13 @@ namespace bestTimeBuySellStockWithCoolDown
                 buy[i]  = max(rest[i-1] - price, buy[i-1]) 
                 sell[i] = max(buy[i-1] + price, sell[i-1])
                 rest[i] = max(sell[i-1], buy[i-1], rest[i-1])
+
+                rest[i] = sell[i-1] =>
+                buy[i]  = max(sell[i-2] - price, buy[i-1]) 
+                sell[i] = max(buy[i-1] + price, sell[i-1])
              */
             int sell = 0, prev_sell = 0, buy = -prices[0], prev_buy;
-            for (int i = 1; i < prices.Length; i++) {
+            for (int i = 0; i < prices.Length; i++) {
                 prev_buy = buy;
                 buy = Math.Max(prev_buy, prev_sell - prices[i]);
                 prev_sell = sell;
