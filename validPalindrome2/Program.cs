@@ -7,7 +7,7 @@ namespace validPalindrome2
         static void Main(string[] args)
         {
             Console.WriteLine("Input string for palindrom: {0}", args[0]);
-            Console.WriteLine("Result: {0}", isValidPalindrome(args[0]));
+            Console.WriteLine("Result: {0}", isValidPalindrome2(args[0]));
         }
 
         static bool isValidPalindrome(string s){
@@ -33,6 +33,19 @@ namespace validPalindrome2
                 }
             }
             return true;
+        }
+
+        static bool isValidPalindrome2(string s){
+            return isValid2(s, 0, s.Length - 1, 1);
+        }
+        static bool isValid2(string s, int begin, int end, int deleteNumChar){
+            if ( begin >= end ) return true;
+
+            if (s[begin] == s[end]) return isValid2(s, begin + 1, end - 1, deleteNumChar);
+            else return deleteNumChar > 0 && 
+                        (isValid2(s, begin + 1, end, deleteNumChar - 1) || isValid2(s, begin, end - 1, deleteNumChar - 1));
+
+
         }
     }
 }
