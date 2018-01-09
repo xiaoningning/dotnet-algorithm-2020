@@ -10,10 +10,10 @@ namespace permutationInString
             string s = args[1];
             Console.WriteLine("input pattern: " + p);
             Console.WriteLine("search string: " + s);
-            Console.WriteLine("find pattern: " + permutationInString(p, s));
+            Console.WriteLine("find pattern: " + PermutationInString(p, s));
         }
 
-        static bool permutationInString(string p, string s)
+        static bool PermutationInString(string p, string s)
         {
             int[] map = new int[256];
             int count = p.Length;
