@@ -7,7 +7,7 @@ namespace removeInvalidParanth
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(@"(a)())() -> [(a)()(), (a())()]");
+            Console.WriteLine(@"example: (a)())() -> [(a)()(), (a())()]");
             Console.WriteLine("Input string of parenthesis: {0}", args[0]);
             Console.WriteLine("Reselt: ");
             var res = RemoveInvalidParentheses(args[0]);
