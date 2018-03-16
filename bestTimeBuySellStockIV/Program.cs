@@ -26,6 +26,35 @@ namespace bestTimeBuySellStockIV
                 return sell;
             }
             else {
+                
+                int[][] dp = new int[k+1][];
+                for (int i = 0; i < k+1; i++){
+                    dp[i] = new int[prices.Length];
+                }
+                for (int i = 1; i <= k; i++) {
+                    int tmpMax =  -prices[0];
+                    for (int j = 1; j < prices.Length; j++) {
+                        dp[i][j] = Math.Max(dp[i][j - 1], prices[j] + tmpMax);
+                        tmpMax =  Math.Max(tmpMax, dp[i - 1][j - 1] - prices[j]);
+                    }
+                }
+                return dp[k][prices.Length-1];
+            }
+        }
+        
+        static int MaxProfit1(int k, int[] prices) {
+            if(prices == null || prices.Length <= 1) return 0;
+
+            if ( k >= prices.Length / 2) {
+                int sell = 0, buy = -prices[0];
+                for (int i = 1; i < prices.Length; i++) {
+                    int prev_sell = sell;
+                    sell = Math.Max(sell, buy + prices[i]);
+                    buy = Math.Max(buy, prev_sell - prices[i]);
+                }
+                return sell;
+            }
+            else {
                 /*
                 local[i][j] = max(global[i - 1][j - 1] + max(diff, 0), local[i - 1][j] + diff)
                 global[i][j] = max(local[i][j], global[i - 1][j])
