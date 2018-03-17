@@ -12,6 +12,14 @@ namespace bestTimeBuySellStockIV
             int[] princes = Array.ConvertAll(args[0].Split(','), s => int.Parse(s));
             Console.WriteLine("Max profit: {0}", MaxProfit(k, princes));
         }
+
+        /**
+        * dp[i, j] represents the max profit up until prices[j] using at most i transactions. 
+        * dp[i, j] = max(dp[i, j-1], prices[j] - prices[jj] + dp[i-1, jj]) { jj in range of [0, j-1] }
+        *          = max(dp[i, j-1], prices[j] + max(dp[i-1, jj] - prices[jj]))
+        * dp[0, j] = 0; 0 transactions makes 0 profit
+        * dp[i, 0] = 0; if there is only one price data point you can't make any transaction.
+        */
         
         static int MaxProfit(int k, int[] prices) {
             if(prices == null || prices.Length <= 1) return 0;
@@ -32,7 +40,7 @@ namespace bestTimeBuySellStockIV
                     dp[i] = new int[prices.Length];
                 }
                 for (int i = 1; i <= k; i++) {
-                    int tmpMax =  -prices[0];
+                    int tmpMax = dp[i-1][0]-prices[0];
                     for (int j = 1; j < prices.Length; j++) {
                         dp[i][j] = Math.Max(dp[i][j - 1], prices[j] + tmpMax);
                         tmpMax =  Math.Max(tmpMax, dp[i - 1][j - 1] - prices[j]);
