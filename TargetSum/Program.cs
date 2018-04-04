@@ -16,6 +16,8 @@ namespace TargetSum
         static int FindTargetSumWays(int[] nums, int S) {
             int n = nums.Length;
             List<Dictionary<int, int>> dp = new List<Dictionary<int, int>>();
+            
+            // dict: key -> sum, value -> total cnt to get sum
             dp.Add(new Dictionary<int, int>());
             dp[0].Add(0,1);
             for (int i = 0; i < n; ++i) {
