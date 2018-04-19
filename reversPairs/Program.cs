@@ -6,8 +6,8 @@ namespace reversPairs
     {
         static void Main(string[] args)
         {
-            int[] nums = new int[]{2147483647,2147483647,2147483647,2147483647,2147483647,2147483647};
-            // int[]  nums = new int[]{2,4,3,5,1};
+            // int[] nums = new int[]{2147483647,2147483647,2147483647,2147483647,2147483647,2147483647};
+            int[]  nums = new int[]{2,4,3,5,1};
             Console.WriteLine("reverse pairs: {0}", ReversePairs(nums));
         }
 
@@ -28,8 +28,29 @@ namespace reversPairs
                 res += j - (mid + 1);
             }
             // sort: index, length
-            Array.Sort(nums, left, right - left + 1);
+            // Array.Sort(nums, left, right - left + 1);
+            MergeSort(nums, left, right);
             return res;
         }
+
+        static void MergeSort(int[] nums, int left, int right){
+            int mid = (right + left) / 2;
+
+            // buff array to merge
+            int[] L = new int[mid - left + 1];
+            int[] R = new int[right - mid];
+            for (int i = 0; i < L.Length; i++){
+                L[i] = nums[left + i];
+            }
+            for (int j = 0; j < R.Length; j++){
+                R[j] = nums[mid + 1 + j];
+            }
+            
+            int x = 0, y = 0;
+            for(int k = left; k <= right; k++){
+                if(y >= R.Length || (x < L.Length && L[x] <= R[y])) nums[k] = L[x++];
+                else nums[k] = R[y++];
+            }
+        }   
     }
 }
