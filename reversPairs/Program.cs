@@ -23,7 +23,7 @@ namespace reversPairs
             
             for (int i = left, j = mid + 1; i <= mid; i++) {
                 // int 2147483647 is the Max. so doing it as / 2.0 to double
-                // otherwise doing it as * 2 will over int32
+                // otherwise doing it as * 2 will overflow int32
                 while (j <= right && nums[i] / 2.0 > nums[j]) j++;
                 res += j - (mid + 1);
             }
