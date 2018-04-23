@@ -57,10 +57,10 @@ namespace rangeQuerySum_Mutable
     int[] nums;
     public NumArray(int[] nums) {
         this.nums = nums;
-        n = this.nums.Length;
+        n = nums.Length;
         BIT = new int[n+1];
         for (int i = 0; i < n; i++){
-            initBIT(i, this.nums[i]);
+            initBIT(i, nums[i]);
         }
     }
     void initBIT(int i, int num){
@@ -70,9 +70,9 @@ namespace rangeQuerySum_Mutable
     }
     
     public void Update(int i, int val) {
-        int diff = val - this.nums[i];
+        int diff = val - nums[i];
 		initBIT(i, diff);
-        this.nums[i] = val;
+        nums[i] = val;
     }
     public int getSum(int i) {
 		int sum = 0;
