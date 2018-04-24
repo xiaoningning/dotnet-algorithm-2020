@@ -10,7 +10,7 @@ namespace CombinationSum3
             int k = 3, n = 9;
             var res = CombinationSum3(k, n);
             foreach(var r in res){
-                Console.WriteLine("rest list: {0}", string.Join(',', r));
+                Console.WriteLine("result list: {0}", string.Join(',', r));
             } 
         }
         static IList<IList<int>> CombinationSum3(int k, int n) {
