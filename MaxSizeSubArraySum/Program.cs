@@ -19,7 +19,7 @@ namespace MaxSizeSubArraySum
             int sum = 0;
             int max = 0;
             Dictionary<int, int> map = new Dictionary<int, int>();
-            // min index is 0, -1 is dummy value
+            // min index is 0, -1 is to handle index 0 case
             map[0] = -1; 
             for(int i = 0; i < n; i++){
                 sum += nums[i];
