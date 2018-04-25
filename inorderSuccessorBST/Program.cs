@@ -30,7 +30,7 @@ namespace inorderSuccessorBST
         */
         public TreeNode InorderSuccessor(TreeNode root, TreeNode p) {
             if(root == null) return null;
-            if( p.val <= root.val)
+            if( p.val >= root.val)
                 return InorderSuccessor(root.right, p);
             else {
                 TreeNode left = InorderSuccessor(root.left, p);
