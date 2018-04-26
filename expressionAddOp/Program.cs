@@ -35,11 +35,12 @@ namespace expressionAddOp
                     Int64 cur = Int64.Parse(s);
                     string next = num.Substring(i);
                     if(string.IsNullOrEmpty(path)){
-                        BackTrack(next, target, s, res, cur, cur);
+                        BackTrack(next, target, path + s, res, cur, cur);
                     }
                     else{
                         BackTrack(next, target, path + "+" + cur, res, eval + cur, cur);
                         BackTrack(next, target, path + "-" + cur, res, eval - cur, -cur);
+                        // 1 + 2 -> 1 + 2 * 3 => 1 + 2 - 2 + 2 * 3
                         BackTrack(next, target, path + "*" + cur, res, eval - diff + diff * cur, diff * cur );
                     }
                 }
