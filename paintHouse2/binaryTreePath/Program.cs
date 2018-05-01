@@ -18,7 +18,6 @@ namespace binaryTreePath
             foreach(var r in res){
                 Console.WriteLine("{0}", r);
             }
-
         }
     }
     
