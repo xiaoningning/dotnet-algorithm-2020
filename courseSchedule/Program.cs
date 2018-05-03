@@ -16,12 +16,13 @@ namespace courseSchedule
         }
         public class Solution {
             public bool CanFinish(int numCourses, int[,] prerequisites) {
+                // key: from value: to 
                 Dictionary<int, List<int>> prereq = new Dictionary<int, List<int>>();
                 for(int i = 0; i < prerequisites.GetLength(0); i++){
                     int c = prerequisites[i,0];
                     int cp = prerequisites[i,1];            
-                    if(!prereq.ContainsKey(c)) prereq[c] = new List<int>();
-                    prereq[c].Add(cp);
+                    if(!prereq.ContainsKey(cp)) prereq[cp] = new List<int>();
+                    prereq[cp].Add(c);
                 }
                 bool[] visited = new bool[numCourses];
                 for(int i = 0; i < numCourses; i++){
