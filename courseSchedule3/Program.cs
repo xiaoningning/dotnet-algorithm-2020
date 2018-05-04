@@ -24,15 +24,24 @@ namespace courseSchedule3
                 }
                 List<int> res = new List<int>();
                 int time = 0;
+                // time: O(n*res.Count)
+                // Priority queue is not supported in C#
                 foreach(int d in dTimes.Keys){
-                    foreach(int start in dTimes[d]){
-                        time += start;
-                        res.Add(start);
-                        res.Sort();
-                        if(time > d){
-                            time -= res[res.Count-1];
-                            res.RemoveAt(res.Count-1);
-                        }                            
+                    foreach(int t in dTimes[d]){
+                        if(time + t > d){
+                            int max_i = 0;
+                            for(int j = 1; j < res.Count; j++){
+                                if(res[j] > res[max_i]) max_i = j;
+                            }
+                            if(res.Count > 0 && t < res[max_i]){
+                                time  += t - res[max_i];
+                                res[max_i] = t;
+                            }
+                        }
+                        else {
+                            time += t;
+                            res.Add(t);
+                        }
                     }
                 }
                 return res.Count;
