@@ -32,6 +32,7 @@ namespace graphValidTree
 
         int FindRoot(int[] roots, int i){
             // it has a root
+            // graph can be cycled.
             while (roots[i] != -1) i = roots[i];
             return i;
         }
