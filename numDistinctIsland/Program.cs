@@ -30,9 +30,9 @@ namespace numDistinctIsland
                     DFS(i, j, i, j, grid, islandXY);
                     string coordinate = string.Empty;
                     foreach(var x in islandXY){
-                        coordinate += string.Join(',', x.ToArray()) + "-";
+                        coordinate += string.Join(',', x.ToArray()) + "|";
                     } 
-                    if(!string.IsNullOrEmpty(coordinate)) islands.Add(coordinate);
+                    if(!string.IsNullOrEmpty(coordinate)) islands.Add(coordinate.TrimEnd('|'));
                 }
             }
             return islands.Count;
