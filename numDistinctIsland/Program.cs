@@ -28,11 +28,11 @@ namespace numDistinctIsland
                     if (grid[i,j] != 1) continue;
                     List<List<int>> islandXY = new List<List<int>>();
                     DFS(i, j, i, j, grid, islandXY);
-                    string coordinate = string.Empty;
-                    foreach(var x in islandXY){
-                        coordinate += string.Join(',', x.ToArray()) + "|";
+                    int[] tmp = new int[islandXY.Count];
+                    for(int p = 0; p < islandXY.Count; p++){
+                        tmp[p] = islandXY[p][0] * (m+n) + islandXY[p][1];
                     } 
-                    if(!string.IsNullOrEmpty(coordinate)) islands.Add(coordinate.TrimEnd('|'));
+                    islands.Add(string.Join(",", tmp));
                 }
             }
             return islands.Count;
