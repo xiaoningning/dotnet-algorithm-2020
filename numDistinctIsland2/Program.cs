@@ -84,6 +84,7 @@ namespace numDistinctIsland2
                 }                 
                 res.Add(string.Join(",", tmp));
             }
+            // sort it as the order will be the same
             res.Sort();
             return res[0];
         }
