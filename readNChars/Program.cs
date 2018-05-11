@@ -18,6 +18,9 @@ namespace readNChars
         * @param n   Maximum number of characters to read
         * @return    The number of characters read
         */
+        // It is not the SAME as OJ
+        // since buf is DESTINATION buff in OJ
+        // this one, buf is SOURCE buff
         public int Read(char[] buf, int n) {
             int t = Read4(buf);
             if (t >=n) return n;
