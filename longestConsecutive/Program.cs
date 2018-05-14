@@ -16,6 +16,7 @@ namespace longestConsecutive
     public class Solution {
         public int LongestConsecutive(int[] nums) {
             int res = 0;
+            // it is Set. then, O(n);
             HashSet<int> s = new HashSet<int>();
             foreach (int num in nums) s.Add(num);
             foreach (int num in nums) {
