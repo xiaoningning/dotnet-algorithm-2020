@@ -25,6 +25,7 @@ namespace cloneGraph
     }
     public class Solution {
         public UndirectedGraphNode CloneGraph(UndirectedGraphNode node) {
+            // record who has been cloned.
             Dictionary<int, UndirectedGraphNode> map = new Dictionary<int, UndirectedGraphNode>();
             return Clone(node, map);
         }
