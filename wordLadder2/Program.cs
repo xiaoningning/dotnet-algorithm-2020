@@ -48,6 +48,7 @@ namespace wordLadder2
                         else {
                             // remove visited word from dict later
                             visited.Add(newLast);
+                            // need a new path obj
                             List<string> nextPath = new List<string>(p);
                             nextPath.Add(newLast);
                             if (newLast == endWord) {
