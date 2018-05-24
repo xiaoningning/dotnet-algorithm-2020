@@ -20,6 +20,7 @@ namespace minWindowSubstring
             int[] map = new int[128];
             foreach(char c in t) map[c-'A']++;
             while(end < s.Length){
+                // compare first, then do --
                 if(map[s[end++] -'A']-- > 0) cnt--;
                 while(cnt == 0){
                     if(end - begin < min){
