@@ -26,7 +26,8 @@ namespace minWindowSubstring
                     if(end - begin < min){
                         min = end - begin; 
                         head = begin;
-                    }  
+                    }
+                    // compare first, then do ++  
                     if(map[s[begin++] - 'A']++ == 0) cnt++; 
                 }
             }
