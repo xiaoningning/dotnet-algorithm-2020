@@ -43,7 +43,8 @@ namespace textJustification
                     for (int s = sb.Length; s < maxWidth; s++) {
                         sb.Append(" ");
                     }
-                } else {
+                } 
+                else {
                     // middle justified
                     int spaces = (maxWidth - cnt) / diff;
                     int r = (maxWidth - cnt) % diff;
