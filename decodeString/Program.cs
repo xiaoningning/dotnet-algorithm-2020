@@ -42,7 +42,7 @@ namespace decodeString
             }
 
             public string DecodeString1(string s) {
-                string res = string.Empty, t = string.Empty;
+                string t = string.Empty;
                 Stack<int> s_num = new Stack<int>();
                 Stack<string> s_str = new Stack<string>();
                 int cnt = 0;
