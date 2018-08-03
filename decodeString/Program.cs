@@ -57,7 +57,10 @@ namespace decodeString
                     } else if (s[i] == ']') {
                         int k = s_num.Pop();
                         string tmp = s_str.Pop();
-                        for (int j = 0; j < k; ++j) tmp += t;
+                        for (int j = 0; j < k; ++j){
+                            tmp += t;
+                        } 
+                        
                         t = tmp;
                     } else { // a-Z
                         t += s[i];
