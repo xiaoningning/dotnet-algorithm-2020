@@ -36,6 +36,7 @@ namespace reverseKGroup
         public ListNode ReverseKGroup(ListNode head, int k) {
             ListNode res = new ListNode(-1);
             res.next = head;
+            // pre.next -> head
             ListNode pre = res, cur = head;
             int i = 0;
             while (cur != null){
@@ -50,6 +51,9 @@ namespace reverseKGroup
             }            
             return res.next;
         }
+        // pre.next -> head
+        // tail.next -> next
+        // reverse from head to tail
         ListNode ReverseOne(ListNode pre, ListNode next){
             ListNode last = pre.next;
             ListNode cur = last.next;
