@@ -16,8 +16,8 @@ namespace reverseKGroup
             s.next = t;
             t.next = f;
             f.next = five;
-            // five.next = new ListNode(6);
-            var res = obj.ReverseKGroup(li, 2);
+            five.next = new ListNode(6);
+            var res = obj.ReverseKGroup(li, 3);
             Console.WriteLine("revers k group: ");
             while(res != null){
                 Console.WriteLine(res.val);
@@ -42,7 +42,7 @@ namespace reverseKGroup
                 i++;
                 //reverse every k node
                 if (i % k == 0) {
-                    pre = ReverseList(pre, cur.next);
+                    pre = ReverseOne(pre, cur.next);
                     cur = pre.next;
                 } else {
                     cur = cur.next;
@@ -50,7 +50,7 @@ namespace reverseKGroup
             }            
             return res.next;
         }
-        ListNode ReverseList(ListNode pre, ListNode next){
+        ListNode ReverseOne(ListNode pre, ListNode next){
             ListNode last = pre.next;
             ListNode cur = last.next;
             while(cur != next) {
