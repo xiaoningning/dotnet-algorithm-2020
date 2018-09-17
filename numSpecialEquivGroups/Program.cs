@@ -27,7 +27,7 @@ namespace numSpecialEquivGroups
                 
                 string oddStr = string.Empty;
                 string evenStr = string.Empty;
-                
+
                 // index is char for s.
                 for(int i = 0; i < even.Length; i++) {
                     while(even[i]-- != 0) evenStr += (char)i;
@@ -35,6 +35,8 @@ namespace numSpecialEquivGroups
                 for(int i = 0; i < odd.Length; i++) {
                     while(odd[i]-- != 0) oddStr += (char)i;
                 }
+
+                // unique s for special Equiv
                 res.Add(oddStr + evenStr);
             }
             return res.Count;
