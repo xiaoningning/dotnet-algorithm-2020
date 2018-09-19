@@ -26,7 +26,7 @@ namespace LRU
         }
         
         public int Get(int key) {
-            if(!cache.ContainsKey(key)) return -1;
+            if (!cache.ContainsKey(key)) return -1;
             else {
                 orderKey.Remove(key);
                 orderKey.Insert(0,key);
@@ -35,13 +35,13 @@ namespace LRU
         }
         
         public void Put(int key, int value) {
-            if(cache.ContainsKey(key)){
+            if (capacity <= 0) return;
+            if (Get(key) != -1){
                 cache[key] = value;
-                orderKey.Remove(key);
-                orderKey.Insert(0,key);
+                return;
             }
             else {
-                if(orderKey.Count == capacity){
+                if (cache.Count == capacity){
                     cache.Remove(orderKey[orderKey.Count-1]);
                     orderKey.RemoveAt(orderKey.Count-1);
                 }
