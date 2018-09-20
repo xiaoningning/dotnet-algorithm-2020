@@ -17,6 +17,7 @@ namespace validPalindrome
             while(left <= right){
                 if(!IsAlphaNum(s[left])) left++;
                 else if(!IsAlphaNum(s[right])) right--;
+                // ignore cases
                 else if((s[left] - 'A') % 32 != (s[right] - 'A') % 32) return false;
                 else {
                     left++;
