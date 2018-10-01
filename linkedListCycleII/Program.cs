@@ -37,6 +37,13 @@ namespace linkedListCycleII
             }
             // no cycle case
             if (fast == null || fast.next == null) return null;
+            // fast is 2 x slow spead
+            // x ->(a) y ->(b) z ->(c) y. z is where fast and slow meets
+            // the length of fast is 2 x that of slow
+            // fast = a+b+c+b
+            // slow = a + b
+            // a + b + c  + b = 2 * (a + b)
+            // c = a 
             slow = head;
             while (slow != fast) {
                 slow = slow.next;
