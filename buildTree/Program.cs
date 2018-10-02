@@ -8,7 +8,7 @@ namespace buildTree
         {
             var obj = new Solution();
             var node = obj.BuildTree(new int[]{3,9,20,15,7}, new int[]{9,3,15,20,7});
-            Console.WriteLine("build tree: {0}", node.val);            
+            Console.WriteLine("build tree from preorder and inorder: {0}", node.val);            
         }
     }
     /**
