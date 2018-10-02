@@ -31,19 +31,19 @@ namespace treeToDoublyList
             if (root == null) return null;
             var head = new Node(0, null, null);
             prev = head;
-            Helper(root);
+            Inorder(root);
             //connect head and tail
             prev.right = head.right;
             head.right.left = prev;
             return head.right;
         }
-        private void Helper (Node cur) {
+        private void Inorder (Node cur) {
             if (cur == null) return;
-            Helper(cur.left);
+            Inorder(cur.left);
             prev.right = cur;
             cur.left = prev;
             prev = cur;
-            Helper(cur.right);
+            Inorder(cur.right);
         }
     }
 }
