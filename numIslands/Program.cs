@@ -19,12 +19,15 @@ namespace numIslands
         public int NumIslands(char[,] grid) {
             int n = grid.GetLength(0);
             int m = grid.GetLength(1);
-            bool[,] visited = new bool[n,m];
+            
+            // mark visited as 0 to save space
+            // bool[,] visited = new bool[n,m];
+            
             int res = 0;
             for(int i = 0; i < n; i++){
                 for(int j = 0; j < m; j++){
-                    if(grid[i,j] == '1' && !visited[i,j]){
-                        DFS(grid, visited, i, j);            
+                    if(grid[i,j] == '1'){
+                        DFS(grid, i, j);            
                         res++; 
                     }
                 }
@@ -32,17 +35,14 @@ namespace numIslands
             return res;
         }
         
-        void DFS(char[,] grid, bool[,] visited, int i, int j){
-            if(i < 0 || i >= grid.GetLength(0)) return;
-            if(j < 0 || j >= grid.GetLength(1)) return;
-            
-            if(grid[i,j] != '1' || visited[i,j]) return;
+        void DFS(char[,] grid, int i, int j){
+            if(i < 0 || i >= grid.GetLength(0) || j < 0 || j >= grid.GetLength(1) || grid[i,j] != '1') return;
             else {
-                visited[i,j] = true;
-                DFS(grid, visited, i, j - 1);
-                DFS(grid, visited, i - 1, j);
-                DFS(grid, visited, i, j + 1);
-                DFS(grid, visited, i + 1, j);
+                grid[i,j] = '0';
+                DFS(grid, i, j - 1);
+                DFS(grid, i - 1, j);
+                DFS(grid, i, j + 1);
+                DFS(grid, i + 1, j);
             }
         }
     }
