@@ -8,8 +8,8 @@ namespace permutation
         static void Main(string[] args)
         {
             var obj = new Solution();
-            var res = obj.Permute(new int[]{1,2,3});
-            Console.WriteLine("permutation");
+            var res = obj.PermuteUnique(new int[]{1,1,2});
+            Console.WriteLine("Permute Unique");
             foreach(var r in res) {
                 Console.WriteLine(string.Join(",", r));
             }
