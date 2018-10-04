@@ -18,16 +18,16 @@ namespace subsets2
         public IList<IList<int>> SubsetsWithDup(int[] nums) {
             List<IList<int>> res = new List<IList<int>>();
             Array.Sort(nums);
-            GetSubsets(nums, 0, new List<int>(), res);
+            Backtrack(nums, 0, new List<int>(), res);
             return res;
         }
-        void GetSubsets(int[] nums, int pos, List<int> tmp, List<IList<int>> res){
+        void Backtrack(int[] nums, int pos, List<int> tmp, List<IList<int>> res){
             res.Add(new List<int>(tmp));
             for (int i = pos; i < nums.Length; ++i) {
+                if(i > pos && nums[i] == nums[i-1]) continue; // skip duplicates
                 tmp.Add(nums[i]);
-                GetSubsets(nums, i+1, tmp, res);
-                tmp.Remove(nums[i]);
-                while(i + 1 < nums.Length && nums[i] == nums[i+1]) i++;
+                Backtrack(nums, i+1, tmp, res);
+                tmp.RemoveAt(tmp.Count -1);                
             }
         }
     }

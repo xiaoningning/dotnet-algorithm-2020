@@ -17,15 +17,15 @@ namespace subsets
     public class Solution {
         public IList<IList<int>> Subsets(int[] nums) {
             List<IList<int>> res = new List<IList<int>>();
-            GetSubsets(nums, 0, new List<int>(), res);
+            Backtrack(nums, 0, new List<int>(), res);
             return res;
         }
-        void GetSubsets(int[] nums, int pos, List<int> tmp, List<IList<int>> res){
+        void Backtrack(int[] nums, int pos, List<int> tmp, List<IList<int>> res){
             res.Add(new List<int>(tmp));
             for (int i = pos; i < nums.Length; ++i) {
                 tmp.Add(nums[i]);
-                GetSubsets(nums, i+1, tmp, res);
-                tmp.Remove(nums[i]);
+                Backtrack(nums, i+1, tmp, res);
+                tmp.RemoveAt(tmp.Count -1);  
             }
         }
     }
