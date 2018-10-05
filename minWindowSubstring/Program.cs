@@ -14,24 +14,24 @@ namespace minWindowSubstring
     }
     public class Solution {
         public string MinWindow(string s, string t) {
+            string res = "";
             int min = Int32.MaxValue;
-            int cnt = t.Length;
-            int begin = 0, end = 0, head = 0;
+            int begin = 0, cnt = 0;
             int[] map = new int[128];
-            foreach(char c in t) map[c-'A']++;
-            while(end < s.Length){
-                // compare first, then do --
-                if(map[s[end++] -'A']-- > 0) cnt--;
-                while(cnt == 0){
-                    if(end - begin < min){
-                        min = end - begin; 
-                        head = begin;
+            foreach(char c in t) map[c]++;
+            for(int i = 0; i < s.Length; i++){
+                // do -- first, then compare
+                if(--map[s[i]] >= 0) cnt++;
+                while(cnt == t.Length){
+                    if(i - begin + 1 < min){
+                        min = i - begin + 1;
+                        res = s.Substring(begin, min);
                     }
-                    // compare first, then do ++  
-                    if(map[s[begin++] - 'A']++ == 0) cnt++; 
+                    if (++map[s[begin]] > 0) cnt--; 
+                    begin++;
                 }
             }
-            return min == Int32.MaxValue ? "" : s.Substring(head, min);
+            return res;
         }
     }
 }
