@@ -34,11 +34,17 @@ namespace palindromPairs
                 
                 // abcd,cba or dcb, abcd
                 foreach(var d in s) {
-                    if (d != len && d < len && IsValid(t, 0, len - d -1) && m.ContainsKey(t.Substring(len - d)))
-                        res.Add(new List<int>(){i, m[t.Substring(len - d)]});
+                    if (d != len && d < len && 
+                        IsValid(t, 0, len - d -1) && m.ContainsKey(t.Substring(len - d)))
+                        {
+                            res.Add(new List<int>(){i, m[t.Substring(len - d)]});
+                        }
 
-                    if (d != len && d < len && IsValid(t, d, len - 1) && m.ContainsKey(t.Substring(0, d))) 
-                        res.Add(new List<int>(){m[t.Substring(0, d)], i});
+                    if (d != len && d < len && 
+                        IsValid(t, d, len - 1) && m.ContainsKey(t.Substring(0, d))) 
+                         {
+                            res.Add(new List<int>(){m[t.Substring(0, d)], i});
+                         }
                 }
             }
             return res;
