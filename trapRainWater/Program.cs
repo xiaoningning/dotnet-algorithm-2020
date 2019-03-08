@@ -19,7 +19,7 @@ namespace trapRainWater
             while (l < r) {
                 if (height[l] <= height[r]){
                     if (height[l] >= maxLeft) maxLeft = height[l];
-                    else res += maxLeft - height[l];
+                    res += maxLeft - height[l];
                     l++;
                 }
                 else {
