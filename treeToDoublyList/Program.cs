@@ -30,7 +30,7 @@ namespace treeToDoublyList
         public Node TreeToDoublyList(Node root) {
             if (root == null) return null;
             var head = new Node(0, null, null);
-            prev = head;
+            prev = head; // set head right to the far left leave in Inorder(root)
             Inorder(root);
             //connect head and tail
             prev.right = head.right;
