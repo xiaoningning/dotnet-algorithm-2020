@@ -22,20 +22,20 @@ namespace DiameterOfBinaryTree
         Dictionary<TreeNode, int> map = new Dictionary<TreeNode, int>();
         public int DiameterOfBinaryTree(TreeNode root) {
             res = 0;
-            GetDepth(root);
+            GetDepth(root, ref res);
             return res;
         }
 
-        int GetDepth(TreeNode t){
+        int GetDepth(TreeNode t, ref int res){
             if (t == null) return 0;
             if (map.ContainsKey(t)) return map[t];
-            int left = GetDepth(t.left);
-            int right = GetDepth(t.right);
+            int left = GetDepth(t.left, ref res);
+            int right = GetDepth(t.right, ref res);
             res = Math.Max(res, left + right);
-            map[t] = res;
-            return Math.Max(left, right) + 1;
+            map[t] = Math.Max(left, right) + 1;
+            return map[t];
         }
-}
+    }
     public class TreeNode {
         public int val;
         public TreeNode left;
