@@ -7,7 +7,7 @@ namespace rexMatching
         static void Main(string[] args)
         {
             var obj = new Solution();
-            Console.WriteLine("regular expression match:{0}", obj.IsMatch1("aab", "a.b*"));
+            Console.WriteLine("regular expression match:{0}", obj.IsMatch1("aa", "a*"));
         }
 
         //'.' Matches any single character.
@@ -35,9 +35,30 @@ namespace rexMatching
                         else {
                             dp[i,j] = i > 0 && dp[i-1, j-1] && (s[i-1] == p[j-1] || p[j-1] == '.');
                         }
+                        Console.WriteLine(s[i-1 < 0 ? i : i-1] +"," +p[j-1]);
+                        Console.WriteLine(dp[i,j]);
                     }
                 }
                 return dp[s.Length, p.Length];
+            }
+
+            public bool IsMatch3(string s, string p){
+                bool[] dp = new bool[p.Length + 1];        
+                for (int i = 0; i <= s.Length; i++){
+                    var pre = dp[0];
+                    dp[0] = !(i > 0);
+                    for (int j = 1; j <= p.Length; j++){
+                        var tmp = dp[j];
+                        if (j > 1 && p[j-1] == '*'){
+                            dp[j] = dp[j-2] || (i > 0 && (s[i-1] == p[j-2] || p[j-2] == '.' ) && dp[j]);
+                        }
+                        else {
+                            dp[j] = i > 0 && pre && (s[i-1] == p[j-1] || p[j-1] == '.');
+                        }
+                        pre = tmp;
+                    }
+                }
+                return dp[p.Length];
             }
         }
     }
