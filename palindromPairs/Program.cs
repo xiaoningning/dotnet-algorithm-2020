@@ -21,7 +21,7 @@ namespace palindromPairs
             HashSet<int> s = new HashSet<int>();
             for (int i = 0; i < words.Length; i++){
                 m[words[i]] = i;
-                s.Add(i);
+                s.Add(words[i].Length);
             }
             for (int i = 0; i < words.Length; i++){
                 string t = words[i];
