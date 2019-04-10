@@ -36,7 +36,10 @@ namespace LFU
             else {                                                              
                 int cnt = freq[key];                
                 freqMap[cnt].Remove(key);
-                if (cnt == minFreq && freqMap[minFreq].Count == 0) minFreq++;
+                if (cnt == minFreq && freqMap[minFreq].Count == 0) {
+                    freqMap.Remove(minFreq);
+                    minFreq++;
+                }
                 cnt++;
                 freq[key] = cnt;
                 if (!freqMap.ContainsKey(cnt)) freqMap.Add(cnt, new LinkedList<int>());
