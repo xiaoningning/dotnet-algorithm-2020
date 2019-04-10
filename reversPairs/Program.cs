@@ -15,12 +15,17 @@ namespace reversPairs
             return MergeSortCount(nums, 0, nums.Length-1);
         }
         
+        // Partition Recurrence Relation
+        // T(i, j) = T(i, m) + T(m+1, j) + C
+        // C is the common to solve the problem.
         static int MergeSortCount(int[] nums, int left, int right){
             if (left >= right) return 0;
             
             int mid = left + (right - left) / 2;
             int res = MergeSortCount(nums, left, mid) + MergeSortCount(nums, mid + 1, right);
-            
+            // i < j since i in [left, mid] and j in [mid+1, right]
+            // just check nums[i] / 2.0 > nums[j]
+            // each side is already sorted, so check it one by one with pointer++
             for (int i = left, j = mid + 1; i <= mid; i++) {
                 // int 2147483647 is the Max. so doing it as / 2.0 to double
                 // otherwise doing it as * 2 will overflow int32
