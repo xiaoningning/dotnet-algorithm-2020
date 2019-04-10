@@ -14,13 +14,13 @@ namespace sumLeftLeaves
             Console.WriteLine("sum of left leaves: {0}", SumOfLeftLeaves(root));            
         }
         static int SumOfLeftLeaves(TreeNode root) {        
-            int res = Helper(root, false);
+            int res = DFS(root, false);
             return res;
         }
-        static int Helper(TreeNode root, bool isLeft){
+        static int DFS(TreeNode root, bool isLeft){
             if(root == null) return 0;
             if(root.left == null && root.right == null && isLeft) return root.val;
-            return Helper(root.left, true) + Helper(root.right, false);        
+            return DFS(root.left, true) + DFS(root.right, false);        
         }
     }
     public class TreeNode {
