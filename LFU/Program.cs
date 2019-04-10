@@ -19,9 +19,9 @@ namespace LFU
     }
     public class LFUCache {
         private int capacity = 0;
-        private Dictionary<int, int> freq;
-        private Dictionary<int, int> cache;
-        private Dictionary<int, LinkedList<int>> freqMap;
+        private Dictionary<int, int> freq; // key -> cnt
+        private Dictionary<int, int> cache; // key -> value
+        private Dictionary<int, LinkedList<int>> freqMap; // cnt -> key
         private int minFreq;
         public LFUCache(int capacity) {
             this.capacity = capacity;
