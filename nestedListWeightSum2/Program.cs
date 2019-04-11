@@ -45,6 +45,10 @@ namespace nestedListWeightSum2
                         nextLevel.AddRange(ni.GetList());
                     }
                 }
+                
+                // do not reset unweighted
+                // next level unweighted will be added again
+                // it is level depth
                 weighted += unweighted;
                 nestedList = nextLevel;
             }
