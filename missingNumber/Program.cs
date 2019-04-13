@@ -18,11 +18,10 @@ namespace missingNumber
             foreach(int i in nums){
                 sum += i;
             }
-            int targetSum = 0;
             for(int i = 1; i <= n; i++){
-                targetSum += i;
+                sum -= i;
             }
-            return targetSum - sum;
+            return -sum;
         }
     }
 }
