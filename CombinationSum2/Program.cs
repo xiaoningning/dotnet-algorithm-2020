@@ -27,7 +27,7 @@ namespace CombinationSum2
                 for(int i = start; i < candidates.Length; i++){
                     if (i > start && candidates[i] == candidates[i-1]) continue;
                     temp.Add(candidates[i]);
-                    // no resue.
+                    // i is no resue.
                     BackTrack(candidates, remain - candidates[i], i+1, temp, res);
                     temp.RemoveAt(temp.Count -1);
                 }            
