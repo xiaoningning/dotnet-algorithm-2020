@@ -14,14 +14,16 @@ namespace slidingWindowMax
     public class Solution {
         public int[] MaxSlidingWindow(int[] nums, int k) {
             List<int> res = new List<int>();
+            // store the index of max values
+            // in the oder of max to smaller
             List<int> q = new List<int>();
             for (int i =0; i < nums.Length; i++) {
-                // i shift to left more than k
+                // i shift to left more than k. out of k window
                 // remove the first index of k window
-                if (q.Count != 0 && q[0] == i -k) q.RemoveAt(0);
+                if (q.Count != 0 && q[0] == i - k) q.RemoveAt(0);
                 // remove index whose value < current i value
                 // 
-                while (q.Count != 0 && nums[q[q.Count -1 ]] < nums[i]) q.RemoveAt(q.Count - 1);
+                while (q.Count != 0 && nums[q[q.Count - 1]] < nums[i]) q.RemoveAt(q.Count - 1);
                 q.Add(i);
                 if (i >= k - 1) res.Add(nums[q[0]]);
             }
