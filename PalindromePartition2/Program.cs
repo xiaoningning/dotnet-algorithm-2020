@@ -13,7 +13,7 @@ namespace PalindromePartition2
     public class Solution {
         public int MinCut(string s) {
             int n = s.Length;
-            // number of cuts for the first k characters
+            // number of cuts for the first i characters
             int[] dp = new int[n+1];
             for(int i = 0; i <= n; i++) dp[i] = i-1; // max cuts
             for(int i = 0; i < n; i++){
