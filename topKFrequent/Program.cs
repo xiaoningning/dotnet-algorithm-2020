@@ -33,8 +33,10 @@ namespace topKFrequent
             }
             
             for(int i = n; i >= 1; i--){
-                if (bucket[i].Any()) res.AddRange(bucket[i]);                
-                if (res.Count == k) return res;
+                 for (int j = 0; j < bucket[i].Count; ++j) {
+                    res.Add(bucket[i][j]);                
+                    if (res.Count == k) return res;
+                }                
             }
             return res;    
         }
