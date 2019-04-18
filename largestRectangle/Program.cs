@@ -15,6 +15,8 @@ namespace largestRectangle
         }
     }
     public class Solution {
+        
+        // largest rectangle in histogram 
         public int LargestRectangleArea(int[] heights) {
             Stack<int> st = new Stack<int>();
             int res = 0;
