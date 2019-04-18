@@ -11,7 +11,7 @@ namespace topKFrequent
             var obj = new Solution();
             int[] nums = new int[]{1,1,1,2,2,3};
             var res = obj.TopKFrequent(nums, 2);
-            Console.WriteLine("Top Kth Frequent Elements: ", string.Join(",", res));
+            Console.WriteLine("Top Kth Frequent Elements: {0}", string.Join(",", res));
         }
     }
     public class Solution {
