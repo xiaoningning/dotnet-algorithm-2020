@@ -55,15 +55,15 @@ namespace reverseKGroup
         // tail.next -> next
         // reverse from head to tail
         ListNode ReverseOne(ListNode pre, ListNode next){
-            ListNode last = pre.next;
-            ListNode cur = last.next;
+            ListNode head = pre.next;
+            ListNode cur = head.next;
             while(cur != next) {
-                last.next = cur.next;
+                head.next = cur.next;
                 cur.next = pre.next;
                 pre.next = cur;
-                cur = last.next;
+                cur = head.next;
             }
-            return last;
+            return head;
         }
     }
 }
