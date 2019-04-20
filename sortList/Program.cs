@@ -1,6 +1,6 @@
 using System;
 
-namespace AddBinary
+namespace SortList
 {
     class Program
     {
@@ -12,36 +12,28 @@ namespace AddBinary
     }
     
     public class Solution {
-        public ListNode MergeKLists(ListNode[] lists) {
-            if (lists.Length == 0) return null;
-            int n = lists.Length;
-            while (n > 1) {
-                int k = (n + 1) / 2;
-                for (int i = 0; i < n / 2; ++i) {
-                    lists[i] = MergeTwo(lists[i], lists[i + k]);
-                }
-                n = k;
+        public ListNode SortList(ListNode head) {
+            if (head == null || head.next == null) return head;
+            ListNode pre = head, slow = head, fast = head;
+            while (fast != null && fast.next != null) {
+                pre = slow;
+                slow = slow.next;
+                fast = fast.next.next;
             }
-            return lists[0];            
+            pre.next = null;
+            return MergeSort(SortList(head), SortList(slow));
         }
-
-        ListNode MergeTwo(ListNode m, ListNode n){
-            ListNode head = new ListNode(0);
-            ListNode cur = head;
-            while(m != null && n != null){
-                if (m.val < n.val) {
-                    cur.next = m;
-                    m = m.next;
-                } 
-                else {
-                    cur.next = n;
-                    n = n.next;
-                }
-                cur = cur.next;    
+        ListNode MergeSort(ListNode l1, ListNode l2) {
+            if (l1 == null) return l2;
+            if (l2 == null) return l1;
+            if (l1.val < l2.val) {
+                l1.next = MergeSort(l1.next, l2);
+                return l1;
             }
-            if (m != null) cur.next = m;
-            if (n != null) cur.next = n; 
-            return head.next;
+            else {
+                l2.next = MergeSort(l1, l2.next);
+                return l2;
+            }
         }
     }
     /**
