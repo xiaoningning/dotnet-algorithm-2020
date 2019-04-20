@@ -7,7 +7,7 @@ namespace AddBinary
         static void Main(string[] args)
         {
             var obj = new Solution();
-            Console.WriteLine("add binary {0}", obj.AddBinary("1101", "11"));
+            Console.WriteLine("sort List");
         }
     }
     
