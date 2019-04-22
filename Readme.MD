@@ -2,6 +2,6 @@
 
 The dotnet/core repository is a good starting point for .NET Core.
 
-## .NET Core Practic
+## .NET Core Practice
 
-This is a start readme.
+This is a start readme. Just coding practice.
