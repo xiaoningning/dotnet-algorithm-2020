@@ -13,7 +13,7 @@ namespace coinChange
 
     public class Solution {
         public int CoinChange1(int[] coins, int amount) {
-            return Helper(coins, amount, new int[amount+1]);
+            return Helper(coins, amount, new int[amount + 1]);
         }
         
         // rem: remaining coins after the last step; 
@@ -25,17 +25,17 @@ namespace coinChange
             int min = Int32.MaxValue;
             foreach (int coin in coins) {
                 int res = Helper(coins, rem-coin, count);
-                if(res>=0 && res < min) min = 1+res;
+                if(res >= 0 && res < min) min = 1 + res;
             }
-            count[rem-1] = (min==Int32.MaxValue) ? -1 : min;
+            count[rem-1] = (min == Int32.MaxValue) ? -1 : min;
             return count[rem-1];
         }
         
         public int CoinChange(int[] coins, int amount) {
-            int[] dp = new int[amount+1];
+            int[] dp = new int[amount + 1];
             // dont use int.maxvalue, 
             // later dp[i] +1 will overflow
-            for (int i = 1; i <= amount; ++i) dp[i] = amount+1;
+            for (int i = 1; i <= amount; ++i) dp[i] = amount + 1;
             dp[0] = 0;
             for (int i = 1; i <= amount; ++i) {
                 for (int j = 0; j < coins.Length; ++j) {
