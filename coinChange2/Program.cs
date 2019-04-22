@@ -8,7 +8,7 @@ namespace CoinChange2
         static void Main(string[] args)
         {
             var obj = new Solution();
-            Console.WriteLine("add binary {0}", obj.Chang1(5, new int[]{1,2,5}));
+            Console.WriteLine("coin change 2 {0}", obj.Change(5, new int[]{1,2,5}));
         }
     }
     
