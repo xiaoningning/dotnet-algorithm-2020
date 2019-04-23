@@ -21,14 +21,14 @@ namespace coinChange
         private int Helper(int[] coins, int rem, int[] count) {
             if(rem < 0) return -1; // not valid
             if(rem == 0) return 0; // completed
-            if(count[rem-1] != 0) return count[rem-1]; // already computed, so reuse
+            if(count[rem] != 0) return count[rem]; // already computed, so reuse
             int min = Int32.MaxValue;
             foreach (int coin in coins) {
                 int res = Helper(coins, rem-coin, count);
                 if(res >= 0 && res < min) min = 1 + res;
             }
-            count[rem-1] = (min == Int32.MaxValue) ? -1 : min;
-            return count[rem-1];
+            count[rem] = (min == Int32.MaxValue) ? -1 : min;
+            return count[rem];
         }
         
         public int CoinChange(int[] coins, int amount) {
