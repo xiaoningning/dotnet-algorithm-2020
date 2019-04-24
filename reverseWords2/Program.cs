@@ -31,7 +31,6 @@ namespace reverseWords2
                 l++;
                 r--;
             }
-
         }
     }
 }
