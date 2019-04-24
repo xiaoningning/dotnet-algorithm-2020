@@ -16,6 +16,7 @@ namespace twoSum2
           int l = 0, r = numbers.Length - 1;
           while (l < r) {
               int sum = numbers[l] + numbers[r];
+              // return none zero based index
               if (sum == target) return new int[]{l + 1, r + 1};
               else if (sum < target) ++l;
               else --r;
