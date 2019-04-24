@@ -17,11 +17,13 @@ namespace topKFrequent
     public class Solution {
         public IList<int> TopKFrequent(int[] nums, int k) {
             int n = nums.Length;
+            // key: element, value:freq of element 
             Dictionary<int, int> m = new Dictionary<int, int>();
             Dictionary<int, List<int>> bucket = new Dictionary<int, List<int>>();
             List<int> res = new List<int>();
 
             // initialize bucket with possible # of element
+            // key: possible freq #
             for(int i = 1; i <= n; i++) bucket.Add(i, new List<int>());
             foreach( var i in nums) {
                 if (!m.ContainsKey(i)) m.Add(i, 0);
