@@ -1,5 +1,5 @@
 using System;
-using System.Collection.Generics;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FindMedianDataStream
@@ -8,21 +8,27 @@ namespace FindMedianDataStream
     {
         static void Main(string[] args)
         {
-            var obj = new Solution();
-            Console.WriteLine("add binary {0}", obj.MedianFinder().Add(1));
+            var obj = new MedianFinder();
+            obj.AddNum(-1);
+            Console.WriteLine("add -1 FindMedian {0}", obj.FindMedian());
+            obj.AddNum(-2);
+            Console.WriteLine("add -2 FindMedian {0}", obj.FindMedian());
+            obj.AddNum(-3);
+            obj.AddNum(-4);
+            Console.WriteLine("add -2 FindMedian {0}", obj.FindMedian());
         }
     }
     public class MedianFinder {
 
-        /** initialize your data structure here. */
         public MedianFinder() {
-
+            min = new SortedList<int, int>(new DuplicateKeyComparer<int>());
+            max = new SortedList<int, int>(new DuplicateKeyComparer<int>());
         }
 
         public void AddNum(int num) {
-            min.Add(num,0);
-            max.Add(min.Last().Key, 0);
-            min.Remove(min.Last().Key);
+            max.Add(num,0);
+            // max.Add(min.Last().Key, 0);
+            // min.Remove(min.Last().Key);
             if (min.Count < max.Count) {
                 min.Add(max.First().Key,0);
                 max.Remove(max.First().Key);
@@ -35,12 +41,11 @@ namespace FindMedianDataStream
                     :  0.5 * (min.Last().Key + max.First().Key);
         }
 
-        private SortedList<int, int> min = new SortedList<int, int>();
-        private SortedList<int, int> max = new SortedList<int, int>();
+        private SortedList<int, int> min;
+        private SortedList<int, int> max;
     }
-    
     public class DuplicateKeyComparer<TKey> : IComparer<TKey> 
-                    where TKey : IComparable
+                where TKey : IComparable
     {
         public int Compare(TKey x, TKey y)
         {
@@ -49,12 +54,5 @@ namespace FindMedianDataStream
             else return result;
         }        
     }
-    
-    /**
-     * Your MedianFinder object will be instantiated and called as such:
-     * MedianFinder obj = new MedianFinder();
-     * obj.AddNum(num);
-     * double param_2 = obj.FindMedian();
-     */
  }
     
