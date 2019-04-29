@@ -38,7 +38,18 @@ namespace FindMedianDataStream
         private SortedList<int, int> min = new SortedList<int, int>();
         private SortedList<int, int> max = new SortedList<int, int>();
     }
-
+    
+    public class DuplicateKeyComparer<TKey> : IComparer<TKey> 
+                    where TKey : IComparable
+    {
+        public int Compare(TKey x, TKey y)
+        {
+            int result = x.CompareTo(y);
+            if (result == 0) return 1;   // Handle equality as beeing greater
+            else return result;
+        }        
+    }
+    
     /**
      * Your MedianFinder object will be instantiated and called as such:
      * MedianFinder obj = new MedianFinder();
