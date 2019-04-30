@@ -10,12 +10,13 @@ namespace FindMedianDataStream
         {
             var obj = new MedianFinder();
             obj.AddNum(-1);
-            Console.WriteLine("add -1 FindMedian {0}", obj.FindMedian());
+            Console.WriteLine("FindMedian {0}", obj.FindMedian());
             obj.AddNum(-2);
-            Console.WriteLine("add -2 FindMedian {0}", obj.FindMedian());
+            Console.WriteLine("FindMedian {0}", obj.FindMedian());
             obj.AddNum(-3);
             obj.AddNum(-4);
-            Console.WriteLine("add -2 FindMedian {0}", obj.FindMedian());
+            obj.AddNum(-5);
+            Console.WriteLine("FindMedian {0}", obj.FindMedian());
         }
     }
     public class MedianFinder {
@@ -31,11 +32,13 @@ namespace FindMedianDataStream
             // min.Remove(min.Last().Key);
             if (min.Count < max.Count) {
                 min.Add(max.First().Key,0);
-                max.Remove(max.First().Key);
+                max.RemoveAt(0);
             }
         }
 
         public double FindMedian() {
+            Console.WriteLine("min:"+string.Join(",", min.Keys));
+            Console.WriteLine("max:"+string.Join(",", min.Keys));
             return (min.Count > max.Count) ? 
                     (double) min.Last().Key 
                     :  0.5 * (min.Last().Key + max.First().Key);
