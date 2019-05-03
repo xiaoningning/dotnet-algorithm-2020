@@ -30,9 +30,17 @@ namespace FindMedianDataStream
         }
 
         public void AddNum(int num) {
-            if(!max.ContainsKey(num)) max.Add(num,new List<int>());
-            max[num].Add(num);
+            // every num needs to be sorted in min first
+            if(!min.ContainsKey(num)) min.Add(num,new List<int>());
+            min[num].Add(num);
+            minC++;
+            if(!max.ContainsKey(min.Last().Key)) 
+                    max.Add(min.Last().Key,new List<int>());
+            max[min.Last().Key].Add(min.Last().Key);
             maxC++;
+            min.Last().Value.RemoveAt(0);
+            minC--;
+            if(min.Last().Value.Count == 0) min.Remove(min.Last().Key);
             if (minC < maxC) {
                 if(!min.ContainsKey(max.First().Key)) 
                     min.Add(max.First().Key,new List<int>());
@@ -55,12 +63,5 @@ namespace FindMedianDataStream
         private SortedDictionary<int, List<int>> max;
         private int maxC;
     }
-
-    /**
-     * Your MedianFinder object will be instantiated and called as such:
-     * MedianFinder obj = new MedianFinder();
-     * obj.AddNum(num);
-     * double param_2 = obj.FindMedian();
-     */
  }
     
