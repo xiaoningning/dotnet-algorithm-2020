@@ -28,9 +28,8 @@ public class Solution {
                         if (s == T) return res;
                         else q.Enqueue(s);
                     }
-            }
-            }
-            
+                }
+            }   
         }
         return -1;
     }
