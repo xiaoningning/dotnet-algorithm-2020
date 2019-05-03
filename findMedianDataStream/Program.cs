@@ -21,41 +21,46 @@ namespace FindMedianDataStream
     }
     public class MedianFinder {
 
+        /** initialize your data structure here. */
         public MedianFinder() {
-            min = new SortedList<int, int>(new DuplicateKeyComparer<int>());
-            max = new SortedList<int, int>(new DuplicateKeyComparer<int>());
+            min = new SortedDictionary<int, List<int>>();
+            max = new SortedDictionary<int, List<int>>();
+            minC = 0;
+            maxC = 0;
         }
 
         public void AddNum(int num) {
-            max.Add(num,0);
-            // max.Add(min.Last().Key, 0);
-            // min.Remove(min.Last().Key);
-            if (min.Count < max.Count) {
-                min.Add(max.First().Key,0);
-                max.RemoveAt(0);
+            if(!max.ContainsKey(num)) max.Add(num,new List<int>());
+            max[num].Add(num);
+            maxC++;
+            if (minC < maxC) {
+                if(!min.ContainsKey(max.First().Key)) 
+                    min.Add(max.First().Key,new List<int>());
+                min[max.First().Key].Add(max.First().Key);
+                minC++;
+                max.First().Value.RemoveAt(0);
+                maxC--;
+                if(max.First().Value.Count == 0) max.Remove(max.First().Key);
             }
         }
 
         public double FindMedian() {
-            Console.WriteLine("min:"+string.Join(",", min.Keys));
-            Console.WriteLine("max:"+string.Join(",", min.Keys));
-            return (min.Count > max.Count) ? 
+            return (minC > maxC) ? 
                     (double) min.Last().Key 
                     :  0.5 * (min.Last().Key + max.First().Key);
         }
 
-        private SortedList<int, int> min;
-        private SortedList<int, int> max;
+        private SortedDictionary<int, List<int>> min;
+        private int minC;
+        private SortedDictionary<int, List<int>> max;
+        private int maxC;
     }
-    public class DuplicateKeyComparer<TKey> : IComparer<TKey> 
-                where TKey : IComparable
-    {
-        public int Compare(TKey x, TKey y)
-        {
-            int result = x.CompareTo(y);
-            if (result == 0) return 1;   // Handle equality as beeing greater
-            else return result;
-        }        
-    }
+
+    /**
+     * Your MedianFinder object will be instantiated and called as such:
+     * MedianFinder obj = new MedianFinder();
+     * obj.AddNum(num);
+     * double param_2 = obj.FindMedian();
+     */
  }
     
