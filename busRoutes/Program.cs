@@ -14,9 +14,10 @@ public class Solution {
         HashSet<int> visited = new HashSet<int>();
         q.Enqueue(S);
         int res = 0;
+        //BFS search
         while (q.Count != 0) {
             res++;
-            int l = q.Count;
+            int l = q.Count; // per level
             for (int i = 0; i < l;  i++) {
                 int t = q.Dequeue();
                 var buses = map[t];
