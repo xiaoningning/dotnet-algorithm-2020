@@ -7,7 +7,7 @@ public class Solution {
         int left = 0, right = k+1; // position
         for (int i = 0; i < n; i++) days[flowers[i] - 1] = i + 1;
         for (int i = 0; right < n; i++) {
-            // days[i-1] > days[left] && > days[right]
+            // days[i-1] > days[left] && > days[right], i++
             if (days[i] < days[left] || days[i] <= days[right]) {
                 if (i == right) res = Math.Min(res, Math.Max(days[left], days[right]));
                 left = i ;
