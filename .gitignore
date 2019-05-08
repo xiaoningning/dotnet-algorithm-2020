@@ -50,6 +50,8 @@ bld/
 
 [Oo]bj/
 
+.vs/
+
 msbuild.log
 
 msbuild.err
