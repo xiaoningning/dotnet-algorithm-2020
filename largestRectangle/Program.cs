@@ -15,19 +15,35 @@ namespace largestRectangle
         }
     }
     public class Solution {
-        
-        // largest rectangle in histogram 
-        public int LargestRectangleArea(int[] heights) {
+        public int LargestRectangleArea1(int[] heights) {
             Stack<int> st = new Stack<int>();
             int res = 0;
             for(int i = 0; i <= heights.Length; i++){
-                // handle only only heights.Length = 1, such as [1]
+                // handle only heights.Length = 1, such as [1]
                 int tmp = i < heights.Length ? heights[i] : 0;
                 while (st.Count != 0 && heights[st.Peek()] >= tmp) {
                     int cur = st.Pop();
                     res = Math.Max(res, heights[cur] * (st.Count == 0 ? i : (i - st.Peek() - 1)));
                 }
                 st.Push(i);
+            }
+            return res;
+        }
+
+        public int LargestRectangleArea(int[] heights) {
+            int res = 0;
+            Stack<int> st = new Stack<int>();
+            // add 0 at the end for heights.Length == 1
+            List<int> h = new List<int>(heights);
+            h.Add(0);
+            for (int i = 0; i < h.Count; ++i) {
+                if (st.Count == 0 || h[st.Peek()] < h[i]) {
+                    st.Push(i);
+                } else {
+                    int cur = st.Pop();
+                    res = Math.Max(res, h[cur] * (st.Count == 0 ? i : (i - st.Peek() - 1)));
+                    --i; // stop i here to calculate all cases in stack
+                }     
             }
             return res;
         }
