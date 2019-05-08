@@ -7,7 +7,7 @@ namespace quickSort
         static void Main(string[] args)
         {
             var o = new Solution();
-            int[] n = new int[]{3, 2, 1, 4, 5};
+            int[] n = new int[]{3, 2, 1, 4, 5, 8, 9};
             o.QuickSort(n, 0, n.Length-1);
             Console.WriteLine("Quick Sort: {0}", string.Join(',', n));
         }
@@ -36,14 +36,13 @@ namespace quickSort
 
         int Partition(int[] A, int start, int end) {            
             int i = start - 1, pivot = A[end];
-            for (int j = start; j < end; ++j) {
+            for (int j = start; j <= end; ++j) {
                 if (A[j] <= pivot) {
                     ++i;
                     Swap(A, i, j);
                 }
-            }
-            Swap(A, i+1, end);     
-            return i+1;
+            }            
+            return i;
         }
         void Swap(int[] A, int i, int j) {
             int t = A[i];
