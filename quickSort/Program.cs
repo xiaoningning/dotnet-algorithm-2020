@@ -21,8 +21,7 @@ namespace quickSort
             QuickSort(A, pos, end);
         }
 
-        int Partition(int[] A, int start, int end) {
-            Console.WriteLine("array: {0}", string.Join(',', A));
+        int Partition(int[] A, int start, int end) {            
             int i = start, j = end, pivot = A[end];
             while (i <= j) {
                 while (A[i] < pivot) ++i;
