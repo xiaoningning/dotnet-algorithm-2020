@@ -12,6 +12,10 @@ namespace hIndex
         }
     }
     public class Solution {
+        // A scientist has index h 
+        // if h of his/her N papers have 
+        // at least h citations each, 
+        // and the other N − h papers have no more than h citations each.
         public int HIndex(int[] citations) {
             int n = citations.Length;
             int[] map = new int[n+1];
