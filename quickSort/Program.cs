@@ -21,7 +21,7 @@ namespace quickSort
             QuickSort(A, pos, end);
         }
 
-        int Partition(int[] A, int start, int end) {            
+        int Partition1(int[] A, int start, int end) {            
             int i = start, j = end, pivot = A[end];
             while (i <= j) {
                 while (A[i] < pivot) ++i;
@@ -32,6 +32,18 @@ namespace quickSort
                 }
             }            
             return i-1;
+        }
+
+        int Partition(int[] A, int start, int end) {            
+            int i = start - 1, pivot = A[end];
+            for (int j = start; j < end; ++j) {
+                if (A[j] <= pivot) {
+                    ++i;
+                    Swap(A, i, j);
+                }
+            }
+            Swap(A, i+1, end);     
+            return i+1;
         }
         void Swap(int[] A, int i, int j) {
             int t = A[i];
