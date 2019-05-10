@@ -32,14 +32,15 @@ namespace reversPairs
                 while (j <= right && nums[i] / 2.0 > nums[j]) j++;
                 res += j - (mid + 1);
             }
-            // sort: index, length
+            // Array sort: param (index, length)
             // Array.Sort(nums, left, right - left + 1);
             MergeSort(nums, left, right);
             return res;
         }
 
         static void MergeSort(int[] nums, int left, int right){
-            int mid = (right + left) / 2;
+            // index no overflow
+            int mid = left + (right - left) / 2;
 
             // buff array to merge
             int[] L = new int[mid - left + 1];
