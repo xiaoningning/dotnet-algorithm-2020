@@ -6,7 +6,34 @@ namespace isNumber
     {
         static void Main(string[] args)
         {
-            var obj = new Solution();             
+            var obj = new Solution(); 
+            /*
+            string s1 = "0"; // True
+            string s2 = " 0.1 "; // True
+            string s3 = "abc"; // False
+            string s4 = "1 a"; // False
+            string s5 = "2e10"; // True
+
+            string s6 = "-e10"; // False
+            string s7 = " 2e-9 "; // True
+            string s8 = "+e1"; // False
+            string s9 = "1+e"; // False
+            string s10 = " "; // False
+
+            string s11 = "e9"; // False
+            string s12 = "4e+"; // False
+            string s13 = " -."; // False
+            string s14 = "+.8"; // True
+            string s15 = " 005047e+6"; // True
+
+            string s16 = ".e1"; // False
+            string s17 = "3.e"; // False
+            string s18 = "3.e1"; // True
+            string s19 = "+1.e+5"; // True
+            string s20 = " -54.53061"; // True
+
+            string s21 = ". 1"; // False
+            */
             Console.WriteLine("is number: {0}", obj.IsNumber("+1.34"));
             Console.WriteLine("is number: {0}", obj.IsNumber(" -1E.34"));
             Console.WriteLine("is number: {0}", obj.IsNumber("-1 34"));
