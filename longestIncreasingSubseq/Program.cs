@@ -14,7 +14,7 @@ public class Solution {
             if (right >= dp.Count()) dp.Add(nums[i]);
             else dp[right] = nums[i];
         }
-        // O(logn)
+        // O(nlogn)
         return dp.Count();
     }
     public int LengthOfLIS1(int[] nums) {
@@ -35,7 +35,7 @@ public class Solution {
                 ends[right] = a;
             }
         }
-        // O(logn)
+        // O(nlogn)
         return ends.Count();
     }
 }
