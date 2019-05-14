@@ -9,6 +9,7 @@ public class Solution {
             d(p3,p4),
         };
         // edge value and diag value;
+        // no 0 edge
         return !s.Contains(0) && s.Count() == 2;
     }
     int d (int[] a, int[] b) {
