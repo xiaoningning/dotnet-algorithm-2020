@@ -5,7 +5,7 @@ public class Solution {
         for (j = 0; j < A.Length; ++j) {
             if (A[j] == 0) K--;
             if (K < 0 && A[i++] == 0) K++;
-            res = Math.Max(res, j - i + 1);
+            res = Math.Max(res, j - (i -1));
         }
         return res;
     }
