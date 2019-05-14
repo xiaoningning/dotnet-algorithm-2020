@@ -41,7 +41,7 @@ namespace mergeKLists
             return lists[0];            
         }
 
-        ListNode MergeTwo(ListNode m, ListNode n){
+        ListNode MergeTwo1(ListNode m, ListNode n){
             ListNode head = new ListNode(0);
             ListNode cur = head;
             while(m != null && n != null){
@@ -58,6 +58,19 @@ namespace mergeKLists
             if (m != null) cur.next = m;
             if (n != null) cur.next = n; 
             return head.next;
+        }
+        
+        ListNode MergeTwo(ListNode m, ListNode n){
+            if (m == null) return n;
+            if (n == null) return m;
+            if (m.val < n.val) {
+                m.next = MergeTwo(m.next, n);
+                return m;
+            }
+            else {
+                n.next = MergeTwo(m, n.next);
+                return n;
+            }
         }
     }
 }
