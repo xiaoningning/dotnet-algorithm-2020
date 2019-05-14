@@ -30,6 +30,7 @@ namespace courseSchedule
                 for (int i = 0; i < numCourses; i ++) {
                     if (inDegrees[i] == 0) q.Enqueue(i);
                 }
+                // BFS
                 while (q.Count != 0) {
                     int t = q.Dequeue();
                     foreach (int c in prereq[t]) {
@@ -54,6 +55,7 @@ namespace courseSchedule
                 }
                 bool[] visited = new bool[numCourses];
                 for(int i = 0; i < numCourses; i++){
+                    // DFS check
                     if(!CheckPreReq(prereq, visited, i)) return false;    
                 }
                 return true;        
