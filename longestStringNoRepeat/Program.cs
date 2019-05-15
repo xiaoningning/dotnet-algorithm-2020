@@ -13,7 +13,38 @@ namespace longestStringNoRepeat
             r = lengthOfLongestSubstring1(args[0]);
             Console.WriteLine("result1: " + r);
         }
+        
+        public class Solution {
+            public int LengthOfLongestSubstring(string s) {
+                int res = 0, left = -1;
+                int[] m = new int[128];
+                for (int i = 0; i < 128; i++) m[i] = -1;
+                for (int i = 0; i < s.Length; i++) {
+                    left = Math.Max(left, m[s[i]]);
+                    m[s[i]] = i;
+                    res = Math.Max(res, i - left);
+                }
+                return res;
+            }
 
+            public int LengthOfLongestSubstring1(string s) {
+                HashSet<char> map = new HashSet<char>();
+                int result = 0;
+                int i = 0, j = 0;
+                while(i < s.Length){
+                    if(!map.Contains(s[i])){
+                        map.Add(s[i]);
+                        result = Math.Max(result, map.Count);
+                        i++;
+                    }
+                    else{
+                        map.Remove(s[j]);
+                        j++;
+                    }
+                }
+                return result;
+            }
+        }
         static int lengthOfLongestSubstring(string s){
             HashSet<char> map = new HashSet<char>();
             int result = 0;
