@@ -28,17 +28,17 @@ namespace longestStringNoRepeat
             }
 
             public int LengthOfLongestSubstring1(string s) {
-                HashSet<char> map = new HashSet<char>();
+                HashSet<char> st = new HashSet<char>();
                 int result = 0;
                 int i = 0, j = 0;
                 while(i < s.Length){
-                    if(!map.Contains(s[i])){
-                        map.Add(s[i]);
-                        result = Math.Max(result, map.Count);
+                    if(!st.Contains(s[i])){
+                        st.Add(s[i]);
+                        result = Math.Max(result, st.Count);
                         i++;
                     }
                     else{
-                        map.Remove(s[j]);
+                        st.Remove(s[j]);
                         j++;
                     }
                 }
