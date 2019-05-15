@@ -21,11 +21,13 @@ public class Solution {
         int res = 0, i = 0, n = s.Length;
         while (i + k <= n) {
             int[] m = new int[26];
+            // mask int32 bit
+            // only consider 26 letters
             int mask = 0, max_idx = i;
             for (int j = i; j < n; ++j) {
                 int t = s[j] - 'a';
                 ++m[t];
-                if (m[t] < k) mask |= (1 << t);
+                if (m[t] < k) mask |= (1 << t); // <k, t bit always set 1
                 else mask &= (~(1 << t)); // >=k, t bit set as 0.
                 
                 // all bits = 0, then all >= k
