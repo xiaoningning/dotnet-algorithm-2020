@@ -16,8 +16,11 @@ namespace longestStringNoRepeat
         
         public class Solution {
             public int LengthOfLongestSubstring(string s) {
-                int res = 0, left = -1;
+                int res = 0;
+                int left = -1; // init begin position
                 int[] m = new int[128];
+                // init pos for every char is -1
+                // -1 means no repeat
                 for (int i = 0; i < 128; i++) m[i] = -1;
                 for (int i = 0; i < s.Length; i++) {
                     left = Math.Max(left, m[s[i]]);
