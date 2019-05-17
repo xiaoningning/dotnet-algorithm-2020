@@ -40,7 +40,7 @@ namespace productArrayExceptSelf
             }
             int right = 1;
             for (int i = n-1; i >=0 ; i--){
-                res[i] *= nums[i];
+                res[i] *= right;
                 right *= nums[i];
             }
             
