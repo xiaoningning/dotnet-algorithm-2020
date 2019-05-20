@@ -14,40 +14,6 @@ namespace longestStringNoRepeat
             Console.WriteLine("result1: " + r);
         }
         
-        public class Solution {
-            public int LengthOfLongestSubstring(string s) {
-                int res = 0;
-                int left = -1; // init begin position
-                int[] m = new int[128];
-                // init pos for every char is -1
-                // -1 means no repeat
-                for (int i = 0; i < 128; i++) m[i] = -1;
-                for (int i = 0; i < s.Length; i++) {
-                    left = Math.Max(left, m[s[i]]);
-                    m[s[i]] = i;
-                    res = Math.Max(res, i - left);
-                }
-                return res;
-            }
-
-            public int LengthOfLongestSubstring1(string s) {
-                HashSet<char> st = new HashSet<char>();
-                int result = 0;
-                int i = 0, j = 0;
-                while(i < s.Length){
-                    if(!st.Contains(s[i])){
-                        st.Add(s[i]);
-                        result = Math.Max(result, st.Count);
-                        i++;
-                    }
-                    else{
-                        st.Remove(s[j]);
-                        j++;
-                    }
-                }
-                return result;
-            }
-        }
         static int lengthOfLongestSubstring(string s){
             HashSet<char> map = new HashSet<char>();
             int result = 0;
@@ -85,4 +51,39 @@ namespace longestStringNoRepeat
             return result;
         }
     }
+
+    public class Solution {
+            public int LengthOfLongestSubstring(string s) {
+                int res = 0;
+                int left = -1; // init begin position
+                int[] m = new int[128];
+                // init pos for every char is -1
+                // -1 means no repeat
+                for (int i = 0; i < 128; i++) m[i] = -1;
+                for (int i = 0; i < s.Length; i++) {
+                    left = Math.Max(left, m[s[i]]);
+                    m[s[i]] = i;
+                    res = Math.Max(res, i - left);
+                }
+                return res;
+            }
+
+            public int LengthOfLongestSubstring1(string s) {
+                HashSet<char> st = new HashSet<char>();
+                int result = 0;
+                int i = 0, j = 0;
+                while(i < s.Length){
+                    if(!st.Contains(s[i])){
+                        st.Add(s[i]);
+                        result = Math.Max(result, st.Count);
+                        i++;
+                    }
+                    else{
+                        st.Remove(s[j]);
+                        j++;
+                    }
+                }
+                return result;
+            }
+        }
 }
