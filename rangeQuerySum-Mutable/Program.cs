@@ -43,7 +43,7 @@ namespace rangeQuerySum_Mutable
                 sum += d[k];
             }
             for (int k = start + 1; k < end; ++k) {
-                sum += d[k];
+                sum += block[k];
             }
             for (int k = end * len; k <= j; ++k) {
                 sum += d[k];
