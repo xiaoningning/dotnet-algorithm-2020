@@ -6,6 +6,8 @@ public class Solution {
             int curMax = 0;
             for (int k = 1; k <= K && i - k + 1 >= 0; ++k) {
                 curMax = Math.Max(curMax, A[i - k + 1]);
+                // sum of all array after being updated value of each element
+                // plus the prev subarray sum
                 dp[i] = Math.Max(dp[i], (i >= k ? dp[i - k] : 0) + curMax * k);
             }
         }
