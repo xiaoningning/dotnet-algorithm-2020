@@ -12,6 +12,6 @@ public class Solution {
         }
         // it can have negative
         // target sum can be 0
-        return cnt == (sum != 0 ? 2 : 3);
+        return cnt == 3;
     }
 }
