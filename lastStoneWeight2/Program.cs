@@ -1,6 +1,15 @@
 public class Solution {
     public int LastStoneWeightII(int[] stones) {
         // similar to target sum #494
+        /*
+        For [1,2,3,6] as example:
+        the smallest result could be the +1+2+3-6 = 0, 
+        we could not only smash 6 since it is the biggest weight.
+        but it equivalent to -1-2-3+6, which means
+        1.smash (6,1) = 5
+        2.smash((6,1), 2) = 3
+        3.smash(((6,1), 2), 3) = 0
+        */
         var s = new HashSet<int>();
         s.Add(stones[0]);
         s.Add(-stones[0]);
