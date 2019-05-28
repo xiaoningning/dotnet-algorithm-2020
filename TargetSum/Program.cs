@@ -18,6 +18,22 @@ namespace TargetSum
     
     public class Solution {
         public int FindTargetSumWays(int[] nums, int S) {
+            // reduce space
+            var dp = new Dictionary<int, int>();
+            dp[0] = 1;
+            foreach (int num in nums) {
+                var t = new Dictionary<int, int>();
+                foreach (var a in dp) {
+                    int sum = a.Key, cnt = a.Value;
+                    t[sum + num] = t.ContainsKey(sum + num) ? t[sum + num] + cnt : cnt;
+                    t[sum - num] = t.ContainsKey(sum - num) ? t[sum - num] + cnt : cnt;
+                }
+                dp = t;
+            }
+            return dp.ContainsKey(S) ? dp[S] : 0;
+        }
+        
+        public int FindTargetSumWays2(int[] nums, int S) {
             int res = 0;
             Helper(nums, S, 0, ref res);
             return res;
