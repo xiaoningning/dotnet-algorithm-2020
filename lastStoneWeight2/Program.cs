@@ -12,6 +12,7 @@ public class Solution {
         int sum = 0;
         foreach (var s in stones) {
             sum += s;
+            // update if the smaller sum exists
             for (int i = 1500; i >= s; i--) {
                 dp[i] |= dp[i - s];
             }
