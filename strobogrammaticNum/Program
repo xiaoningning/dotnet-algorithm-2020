@@ -1,0 +1,18 @@
+public class Solution {
+    public bool IsStrobogrammatic(string num) {
+        int l = 0, r = num.Length - 1;
+        while (l <= r) {
+            if (num[l] == num[r]) {
+                if (num[l] != '1' && num[l] != '0' && num[l] != '8'){
+                    return false;
+                }
+            } else {
+                if ((num[l] != '6' || num[r] != '9') && (num[l] != '9' || num[r] != '6')) {
+                    return false;
+                }
+            }
+            ++l; --r;
+        }
+        return true;
+    }
+}
