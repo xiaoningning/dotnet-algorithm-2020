@@ -15,7 +15,7 @@ public class Solution {
                 Dfs(g, visited, i);
             }
         }
-        return n;
+        return res;
     }
     
     void Dfs(Dictionary<int, List<int>> g, bool[] v, int i) {
