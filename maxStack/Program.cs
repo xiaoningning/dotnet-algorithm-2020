@@ -24,11 +24,12 @@ public class MaxStack {
     }
     
     public int PeekMax() {
-        return s2.Count != 0 ? s2.Peek() : Int32.MinValue;
+        return s2.Peek();
     }
     
+    // assume no call when stack is empty
     public int PopMax() {
-        var t = s2.Count != 0 ? s2.Peek() : Int32.MinValue;
+        var t = s2.Peek();
         var st = new Stack<int>();
         while (s1.Count != 0 && s1.Peek() != t) {
             st.Push(s1.Pop());
