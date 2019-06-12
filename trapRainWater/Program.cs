@@ -12,6 +12,15 @@ namespace trapRainWater
         }
     }
     public class Solution {
+        public int Trap(int[] height) {
+            int l = 0, r = height.Length - 1, level = 0, res = 0;
+            while (l < r) {
+                int lower = height[(height[l] < height[r]) ? l++ : r--];
+                level = Math.Max(level, lower);
+                res += level - lower;
+            }
+            return res;
+        }
         public int Trap1(int[] height) {
             int l = 0, r = height.Length - 1;
             int maxLeft = 0, maxRight = 0;
@@ -30,7 +39,7 @@ namespace trapRainWater
             }
             return res;
         }
-        public int Trap(int[] height) {
+        public int Trap2(int[] height) {
             Stack<int> stack = new Stack<int>();
             int res = 0, i = 0;
             while (i < height.Length) {            
