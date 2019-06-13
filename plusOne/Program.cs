@@ -8,6 +8,7 @@ public class Solution {
             carry = t / 10;
         }
         int[] res = new int[n+1];
+        // plus 1, if 99 + 1, 100
         res[0] = 1;
         return carry == 0 ? digits : res;
     }
