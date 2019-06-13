@@ -5,7 +5,7 @@ public class Solution {
             // if i > reach, it can not jump to i
             // if reach >= n -1, it already jump to the last
             if (i > reach || reach >= n - 1) break;
-            reach = max(reach, i + nums[i]);
+            reach = Math.Max(reach, i + nums[i]);
         }
         return reach >= n - 1;
     }
