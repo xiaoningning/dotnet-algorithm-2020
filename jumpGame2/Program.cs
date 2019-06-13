@@ -8,7 +8,7 @@ public class Solution {
                 cur = Math.Max(cur, i + nums[i]);
             }
             // could not reach the last
-            if (pre == cur) retur -1;
+            if (pre == cur) return -1;
         }
         return res;
     }
