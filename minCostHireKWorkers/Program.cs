@@ -8,10 +8,10 @@ public class Solution {
         var pq = new List<Double>();
         foreach (var worker in workers) {
             qsum += worker[1];
-            pq.Add(-worker[1]);
+            pq.Add(-worker[1]); // reverse order
             pq.Sort();
             if (pq.Count > K) {
-                qsum += pq.First();
+                qsum += pq.First(); // -worker[1]
                 pq.RemoveAt(0);
             }
             if (pq.Count == K) res = Math.Min(res, qsum * worker[0]);
