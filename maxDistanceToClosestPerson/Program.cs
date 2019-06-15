@@ -12,7 +12,7 @@ public class Solution {
             }
         }
         // case: [1,0,0,0] seat at the last
-        res = Math.Max(res, n - pre);
+        if (seats[n-1] == 0) res = Math.Max(res, n - pre);
         return res;
     }
 }
