@@ -14,21 +14,21 @@ public class Solution {
     }
     // union and find in graph
     void Union(int x, int y) {
-        x = Find(x);
-        y = Find(y);
+        x = FindRoot(x);
+        y = FindRoot(y);
         if (m.ContainsKey(x) && m[x] != y) {
             m[x] = y;
             islands--;
         }
     }
-    int Find(int x) {
+    int FindRoot(int x) {
         if (!m.ContainsKey(x))  {
             m.Add(x, x);
             islands++;
         }
         if (m[x] != x) {
             // update root of graph
-            m[x] = Find(m[x]);
+            m[x] = FindRoot(m[x]);
         }
         return m[x];
     }
