@@ -1,5 +1,8 @@
 public class Solution {
     public string CrackSafe(int n, int k) {
+        // n =2, k = 3
+        // hashset: 00,02,22,21,12,20,01,11,10
+        // res: 0022120110
         string res = "";
         int t = n;
         while (--t >= 0) res += "0";
