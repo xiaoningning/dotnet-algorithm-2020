@@ -18,13 +18,8 @@ public class MinStack {
     }
     
     public void Pop() {
-        int t = _s.Peek();
-        _s.Pop();
-
-        if (t == _min) {
-            _min = _s.Peek();
-            _s.Pop();
-        }
+        int t = _s.Pop();
+        if (t == _min) _min = _s.Pop();
     }
     
     public int Top() {
