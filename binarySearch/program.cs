@@ -9,7 +9,7 @@ public class Solution {
     但是如果我们right初始化为 nums.size() - 1，那么就必须用 left <= right，并且right的赋值要写成 right = mid - 1，不然就会出错。
     所以博主的建议是选择一套自己喜欢的写法，并且记住，实在不行就带简单的例子来一步一步执行，确定正确的写法也行。
     */
-    public int BinarySearch(list<int> nums, int target) {
+    public int BinarySearch(List<int> nums, int target) {
         int left = 0, right = nums.Count;
         while (left < right) {
             int mid = left + (right - left) / 2;
