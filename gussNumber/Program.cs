@@ -1,4 +1,5 @@
 public class Solution {
+  // guess number higher or lower 1
   // Guess(n) return -1 if my number is lower, 1 if my number is higher, otherwise return 0
   public int GuessNumber(n) {
     if (Guess(n) == 0) return n;
