@@ -1,5 +1,7 @@
 public class Solution {
     public int PeakIndexInMountainArray(int[] A) {
+        // right must be A.Length - 1
+        // otherwise mid+1 will out of index
         int n = A.Length, left = 0, right = n - 1;
         while (left < right) {
             int mid = left + (right - left) / 2;
