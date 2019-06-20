@@ -7,8 +7,8 @@ public class Solution {
 		while(left < right){
 			int mid = left + (right - left) / 2;
 			// find smaller than nums[i]
-			if (t[mid] >= nums[i]) right = mid;
-			else left = mid + 1;
+			if (t[mid] < nums[i]) left = mid + 1;
+			else right = mid;
 		}
 		t.Insert(right, nums[i]);
 		res[i] = right;			
