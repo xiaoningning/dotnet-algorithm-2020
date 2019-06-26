@@ -6,7 +6,7 @@ public class Solution {
             int j = i - 2 - dp[i - 1];
             if (s[i-1] == '(' || j < 0 || s[j] == ')') 
                 dp[i] = 0;
-            else {
+            else { // s[i-1] = ')', j >= 0, s[j] = '('
                 dp[i] = dp[i-1] + 2 + dp[j];
                 res = Math.Max(res, dp[i]);
             }
