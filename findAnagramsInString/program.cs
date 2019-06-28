@@ -12,7 +12,7 @@ public class Solution {
         while (i < s.Length) {
             if (m[s[i++]]-- > 0) cnt++;
             if (cnt == p.Length) res.Add(left);
-            if (i - left == p.Length && m[s[left++]]++ >= 0) cnt--;
+            if (i - left == p.Length && ++m[s[left++]] > 0) cnt--;
         }
         return res;
     }
