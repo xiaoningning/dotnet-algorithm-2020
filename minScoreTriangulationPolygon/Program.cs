@@ -1,5 +1,5 @@
 public class Solution {
-    public int MinScoreTriangulation(int[] A) {
+    public int MinScoreTriangulation1(int[] A) {
         var m = new Dictionary<string, int>();
         return Helper(A, 0, A.Length -1, m);
     }
@@ -19,20 +19,18 @@ public class Solution {
         return res;
     }
     
-    public int MinScoreTriangulation1(int[] A) {
+    public int MinScoreTriangulation(int[] A) {
         int n = A.Length;
         int[,] dp = new int[n,n];
         // triangle
         for (int k = 2; k <  n; k++) {
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i + k < n; i++) {
                 int j = i + k;
-                if (j >= n) break;
+                dp[i,j] = Int32.MaxValue;
                 // middle point of triangle
                 for (int m = i+1; m < j; m++) {
-                    // first time
-                    if (dp[i,j] == 0) dp[i,j] = dp[i,m] + A[i]*A[m]*A[j] + dp[m,j];
                     // calc min value
-                    else dp[i,j] = Math.Min(dp[i,j], dp[i,m] + A[i]*A[m]*A[j] + dp[m,j]);
+                    dp[i,j] = Math.Min(dp[i,j], dp[i,m] + A[i]*A[m]*A[j] + dp[m,j]);
                 }
             }
         }
