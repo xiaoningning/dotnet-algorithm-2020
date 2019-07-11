@@ -23,10 +23,9 @@ public class Solution {
         int n = A.Length;
         int[,] dp = new int[n,n];
         // triangle
-        for (int k = 2; k <  n; k++) {
-            for (int i = 0; i + k < n; i++) {
-                int j = i + k;
-                dp[i,j] = Int32.MaxValue;
+        for (int j = 2; j < n; ++j) {
+            for (int i = j - 2; i >= 0; --i) {
+                dp[i,j] = dp[i,j] == 0 ? Int32.MaxValue : dp[i,j];
                 // middle point of triangle
                 for (int m = i+1; m < j; m++) {
                     // calc min value
