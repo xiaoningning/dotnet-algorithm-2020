@@ -13,4 +13,35 @@ public class Solution {
         }
         return dp[N - 1];
     }
+    // Let k be 2
+    // Focus on "growth" of the pattern
+    // Define A' to be a partition over A that gives max sum
+    
+    // #0
+    // A = {1}
+    // A'= {1} => 1
+    
+    // #1
+    // A = {1, 2}
+    // A'= {1}{2} => 1 + 2 => 3 X
+    // A'= {1, 2} => {2, 2} => 4 AC
+        
+    // #2
+    // A = {1, 2, 9}
+    // A'= {1, 2}{9} => {2, 2}{9} => 4 + 9 => 13 X
+    // A'= {1}{2, 9} => {1}{9, 9} => 1 + 18 => 19 AC
+    
+    // #3
+    // A = {1, 2, 9, 30}
+    // A'= {1}{2, 9}{30} => {1}{9, 9}{30} => 19 + 30 => 49 X
+    // A'= {1, 2}{9, 30} => {2, 2}{30, 30} => 4 + 60 => 64 AC
+    
+    // Now, label each instance. Use F1() to represent how A is partitioned and use F2() to represent
+    // the AC value of that partition. F2() is the dp relation we are looking for.
+    
+    // #4
+    // A = {1, 2, 9, 30, 5}
+    // A'= F1(#3){5} => F2(#3) + 5 => 69 X
+    // A'= F1(#2){30, 5} => F2(#2) + 30 + 30 => 79 AC
+    // => F2(#4) = 79
 }
