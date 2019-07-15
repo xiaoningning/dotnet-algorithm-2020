@@ -1,8 +1,8 @@
 public class Solution {
-    // treat stone with same row/column as island
-    // stone with same row/column
+    // treat stone with same row or column as island
+    // stone with same row or column
     int islands = 0;
-    // m: root mapg of a graph
+    // m: root map of a graph
     Dictionary<int, int> m = new Dictionary<int, int>();
     public int RemoveStones(int[][] stones) {
         for (int i =0; i < stones.Length; i++) {
