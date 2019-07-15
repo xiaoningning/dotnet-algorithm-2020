@@ -1,4 +1,5 @@
 public class Solution {
+    // https://www.jianshu.com/u/9ab55d00c1f6
     // treat stone with same row or column as island
     // stone with same row or column
     int islands = 0;
