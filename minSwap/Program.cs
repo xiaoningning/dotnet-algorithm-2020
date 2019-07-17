@@ -18,6 +18,7 @@ namespace minSwap
             swap[0] = 1;
 
             for(int i = 1; i < n; i++){
+                // make sure it is not higher than max possible swap
                 swap[i] = n;
                 no_swap[i] = n;
                 if(A[i] > A[i-1] && B[i] > B[i-1]){
