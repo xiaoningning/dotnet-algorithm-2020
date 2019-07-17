@@ -18,7 +18,8 @@ namespace minSwap
             swap[0] = 1;
 
             for(int i = 1; i < n; i++){
-                swap[i] = no_swap[i] = n;
+                swap[i] = n;
+                no_swap[i] = n;
                 if(A[i] > A[i-1] && B[i] > B[i-1]){
                     swap[i] = swap[i-1] + 1;
                     no_swap[i] = no_swap[i-1];
