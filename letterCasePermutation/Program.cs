@@ -14,6 +14,7 @@ namespace letterCasePermutation
         }
 
         public class Solution {
+            // BFS
             public IList<string> LetterCasePermutation1(string S) {
                 List<string> res = new List<string>();
                 if (S == null) return res;
@@ -33,7 +34,7 @@ namespace letterCasePermutation
                 }
                 return res;
             }
-
+            // DFS
             public IList<string> LetterCasePermutation(string S) {
                 List<string> res = new List<string>();
                 if (S == null) return res;
