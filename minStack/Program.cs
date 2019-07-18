@@ -10,6 +10,8 @@ public class MinStack {
     }
     
     public void Push(int x) {
+        // push the old min value
+        // then new min
         if (x <= _min) {
             _s.Push(_min);
             _min = x;
@@ -19,6 +21,7 @@ public class MinStack {
     
     public void Pop() {
         int t = _s.Pop();
+        //  the old min is always under current min
         if (t == _min) _min = _s.Pop();
     }
     
