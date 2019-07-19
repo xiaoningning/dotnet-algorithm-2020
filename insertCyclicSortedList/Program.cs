@@ -21,6 +21,7 @@ public class Solution {
         Node pre = head, cur = pre.next;
         while (cur != head) {
             if (pre.val <= insertVal && insertVal <= cur.val) break;
+            // pre.val > cur.val is cyclic
             if (pre.val > cur.val 
                 && (pre.val <= insertVal || cur.val >= insertVal)) break;
             pre = cur;
