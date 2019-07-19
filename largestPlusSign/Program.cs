@@ -8,18 +8,51 @@ namespace largestPlusSign
         {
             int N = 5;
             int[,] mines = new int[,]{{4,2}};
-            Console.WriteLine("order of largest plus sign: {0}", OrderOfLargestPlusSign(N, mines));
+            var o = new Solution()
+            Console.WriteLine("order of largest plus sign: {0}", o.OrderOfLargestPlusSign(N, mines));
         }
+    }
+    
+    public class Solution {
+        public int OrderOfLargestPlusSign(int N, int[,] mines) {
+            int[,] grid = new int[N, N];
+            int res = 0;
+            for(int i = 0; i < grid.GetLength(0); i++){
+                for(int j = 0; j < grid.GetLength(1); j++){
+                    grid[i, j] = 1;
+                }
+            }
 
-        static int OrderOfLargestPlusSign(int N, int[,] mines) {
-            int[,] grid = new int[N,N];
+            for(int i= 0; i < mines.GetLength(0); i++){
+                grid[mines[i,0], mines[i,1]] = 0;
+            }
+
+            for(int i = 0; i < grid.GetLength(0); i++){
+                for(int j = 0; j < grid.GetLength(1); j++){
+                    if(grid[i,j] == 1){
+                        int cnt = 1;
+                        int dir = 1;
+                        while(j-dir >= 0 && j+dir < N  && i-dir >= 0 && i+dir < N  && 
+                             grid[i,j-dir] == 1 && grid[i,j+dir] == 1 && 
+                             grid[i-dir,j] == 1 && grid[i+dir,j] == 1){
+                            cnt++;
+                            dir++;    
+                        }
+                        res = Math.Max(cnt, res);
+                    }
+                }
+            }
+            return res;
+        }
+        public int OrderOfLargestPlusSign1(int N, int[,] mines) {
+            int[,] grid = new int[N, N];
 
             for(int i = 0; i < grid.GetLength(0); i++){
                 for(int j = 0; j < grid.GetLength(1); j++){
                     grid[i, j] = N;
                 }
             }
-            
+
             for(int i= 0; i < mines.GetLength(0); i++){
                 grid[mines[i,0], mines[i,1]] = 0;
             }
@@ -37,7 +70,7 @@ namespace largestPlusSign
             int res = 0;    
             for (int i = 0; i < grid.GetLength(0); i++) {
                 for (int j = 0; j < grid.GetLength(1); j++) {
-                    res = Math.Max(res, grid[i,j]);
+                    res = Math.Max(res, grid[i, j]);
                 }
             }
             return res;
