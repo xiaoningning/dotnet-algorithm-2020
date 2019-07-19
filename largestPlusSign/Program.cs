@@ -14,6 +14,8 @@ namespace largestPlusSign
     }
     
     public class Solution {
+        // time out since repeat of calculation
+        // method 1 uses grid[,] to cache the result
         public int OrderOfLargestPlusSign(int N, int[,] mines) {
             int[,] grid = new int[N, N];
             int res = 0;
