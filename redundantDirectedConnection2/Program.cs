@@ -16,6 +16,9 @@ namespace redundantDirectedConnection2
     }
     public class Solution {
         public int[] FindRedundantDirectedConnection(int[,] edges) {
+            // two invalid cases:
+            // one node has two parents
+            // a cyclic graph
             int size = edges.Length;
             int[] roots = new int[size + 1];
             int[] res1 = new int[]{-1,-1};
