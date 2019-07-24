@@ -4,11 +4,9 @@ public class Solution {
         foreach (var s in strs) {
             int tm = s.Count(c => c == '0');
             int tn = s.Count(c => c == '1');
-            for (int zero = m; zero >= 0; zero--) {
-                for (int one = n; one >= 0; one--) {
-                    if (zero >= tm && one >= tn) {
-                        dp[zero, one] = Math.Max(dp[zero, one], 1 + dp[zero - tm, one - tn]);
-                    }
+            for (int zero = m; zero >= tm; zero--) {
+                for (int one = n; one >= tn; one--) {
+                    dp[zero, one] = Math.Max(dp[zero, one], 1 + dp[zero - tm, one - tn]);
                 }
             }
         }
