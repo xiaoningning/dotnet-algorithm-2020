@@ -30,4 +30,19 @@ namespace totalHammingDistance
             return total;
         }
     }
+    public class Solution {
+        public int TotalHammingDistance(int[] nums) {
+            int total = 0;
+            for (int i = 0; i < 32; i++){
+                int bitCount = 0;
+                for (int j = 0; j < nums.Length; j++){
+                    // the num of bit ith is 1
+                    bitCount += (nums[j] >> i) & 1;
+                }
+                // nums.lenght - bitcount = the num of bit ith is 0
+                total += bitCount * (nums.Length -  bitCount);
+            }
+            return total;
+        }
+    }
 }
