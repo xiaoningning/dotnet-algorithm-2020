@@ -1,6 +1,6 @@
 public class Solution {
     public int ArrangeCoins1(int n) {
-        int cur = 1, rem = n - 1;
+        int cur = 1, rem = n - 1; // already use 1 for cur
         while (rem >= cur + 1) {
             ++cur;
             rem -= cur;
