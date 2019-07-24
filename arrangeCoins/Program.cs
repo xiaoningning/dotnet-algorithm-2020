@@ -14,7 +14,7 @@ public class Solution {
         while (low < high) {
             long mid = low + (high - low) / 2;
             // calculate sum of i... mid
-            // sum = (1+n)*n/2
+            // sum = (1+n)*n/2 => the total num of  coins being used
             if (mid * (mid + 1) / 2 <= n) low = mid + 1;
             else high = mid;
         }
