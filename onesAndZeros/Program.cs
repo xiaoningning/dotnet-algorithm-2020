@@ -6,6 +6,10 @@ public class Solution {
             int tn = s.Count(c => c == '1');
             for (int zero = m; zero >= tm; zero--) {
                 for (int one = n; one >= tn; one--) {
+                    // Each 0 and 1 can be used at most once.
+                    // so bottom right to top left
+                    // if top left to bottom right, then overcounting
+                    // since reuse dp[i,j]
                     dp[zero, one] = Math.Max(dp[zero, one], 1 + dp[zero - tm, one - tn]);
                 }
             }
