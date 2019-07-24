@@ -10,6 +10,10 @@ public class Solution {
                     // so bottom right to top left
                     // if top left to bottom right, then overcounting
                     // since reuse dp[i,j]
+                    // Catch: have to go from bottom right to top left
+                    // Why? If a cell in the memo is updated(because s is selected),
+                    // we should be adding 1 to memo[i][j] from the previous iteration (when we were not considering s)
+                    // If we go from top left to bottom right, we would be using results from this iteration => overcounting
                     dp[zero, one] = Math.Max(dp[zero, one], 1 + dp[zero - tm, one - tn]);
                 }
             }
