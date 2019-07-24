@@ -17,6 +17,7 @@ namespace CoinChange2
             int[] dp = new int[amount + 1];
             dp[0] = 1;
             foreach (int coin in coins) {
+                // number of ways to make sum s using repeated coins
                 for (int i = coin; i <= amount; i++) {
                     dp[i] += dp[i-coin];
                 }
