@@ -25,7 +25,10 @@ namespace randomPickIndex
             int count = 0;
             for (int i = 0; i < nums.Length; i++) {
                 if (nums[i] != target) continue;
-                if (rnd.Next(++count) == 0) result = i;
+                // Random.Next(min, max) ->
+                // min: inclusive
+                // max: exclusive
+                if (rnd.Next(0, ++count) == 0) result = i;
             }        
             return result;
         }
