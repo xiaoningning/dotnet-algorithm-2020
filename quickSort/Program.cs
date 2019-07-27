@@ -38,6 +38,7 @@ namespace quickSort
             int i = start - 1, pivot = A[end];
             for (int j = start; j <= end; ++j) {
                 if (A[j] <= pivot) {
+                    // i need to be start - 1 for the first time
                     ++i;
                     Swap(A, i, j);
                 }
