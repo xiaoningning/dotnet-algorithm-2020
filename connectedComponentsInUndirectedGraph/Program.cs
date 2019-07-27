@@ -34,6 +34,7 @@ public class Solution {
             int x = GetRoot(root, e[0]), y = GetRoot(root, e[1]);
             if (x != y) {
                 res--;
+                // union
                 root[x] = y;
             }
         }
@@ -42,7 +43,7 @@ public class Solution {
     
     int GetRoot(int[] root, int i) {
         while (root[i] != i) {
-            // path compression
+            // optional: path compression
             root[i] = root[root[i]];
             i = root[i];
         }
