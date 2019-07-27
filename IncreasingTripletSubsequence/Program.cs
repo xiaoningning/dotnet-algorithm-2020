@@ -26,7 +26,9 @@ namespace IncreasingTripletSubsequence
                 else if (nums[i] <= big) big = nums[i];
                 // find a number bigger than both
                 else return true;            
-            }        
+            }
+            // time: O(n)
+            // space: O(1)
             return false;
         }
         
@@ -49,6 +51,8 @@ namespace IncreasingTripletSubsequence
             for(int i = 0; i < n; i++){
                 if( forward[i] < nums[i] && nums[i] < backward[i]) return true;
             }
+            // time: O(n)
+            // space: O(n)
             return false;
         }
     }
