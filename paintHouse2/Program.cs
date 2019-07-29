@@ -24,6 +24,8 @@ namespace paintHouse2
             int n = costs.GetLength(0);
             int k = costs.GetLength(1);
             int[,] dp = costs;
+            // min1 is the index of the 1st-smallest cost till previous house
+            // min2 is the index of the 2nd-smallest cost till previous house
             int min1 = -1, min2 = min1;
             for(int i = 0; i < n; i++){
                 int tmpMin1 = min1, tmpMin2 = min2;
