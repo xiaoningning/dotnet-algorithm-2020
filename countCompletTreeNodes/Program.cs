@@ -12,6 +12,7 @@ public class Solution {
     public int CountNodes(TreeNode root) {
         int hLeft = LeftHeight(root);
         int hRight = RightHeight(root);
+        // root can be null, so do if first
         if (hLeft == hRight) return (int)Math.Pow(2, hLeft) - 1;
         return CountNodes(root.left) + CountNodes(root.right) + 1;
     }
