@@ -16,14 +16,14 @@ namespace Trie
             Console.WriteLine("Trie {0}", param_4);
         }
     }
+    
+    public class TrieNode {
+        // only a-z
+        public TrieNode[] children = new TrieNode[26];
+        public bool word = false; 
+        public TrieNode(){}
+    }
     public class Trie {
-        public class TrieNode {
-            // only a-z
-            public TrieNode[] children = new TrieNode[26];
-            public bool word = false; 
-            public TrieNode(){}
-        }
-
         private TrieNode root;
         
         /** Initialize your data structure here. */
