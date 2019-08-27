@@ -25,7 +25,6 @@ public class Solution {
         dirt[3] = new int[] {-1,0};
         // move <len> steps in the <d> direction
         int len = 0, d = 0; 
-        //int dx = 0, dy = 1, n = 0, tmp;
         for (int j = 0; j < R * C;) {
             // when move east or west, the length of path need plus 1 
             if (d == 0 || d == 2) len++; 
