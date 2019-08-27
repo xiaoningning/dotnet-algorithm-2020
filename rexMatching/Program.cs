@@ -27,6 +27,8 @@ namespace rexMatching
             public bool IsMatch1(string s, string p){
                 bool[,] dp = new bool[s.Length + 1, p.Length + 1];
                 dp[0,0] = true;
+                // s could be "", p could be "a*"
+                // so start i = 0
                 for (int i = 0; i <= s.Length; i++){
                     for (int j = 1; j <= p.Length; j++){
                         if (j > 1 && p[j-1] == '*'){
