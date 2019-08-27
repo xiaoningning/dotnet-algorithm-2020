@@ -32,7 +32,7 @@ public class Solution {
         }
         if (maxLen < right - left - 1) {
             start = left + 1;
-            maxLen = right - left - 1;
+            maxLen = right - (left + 1);
         }
     }
 }
