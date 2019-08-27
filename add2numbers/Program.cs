@@ -56,7 +56,7 @@ namespace add2numbers
                 int d1 = l1.Count == 0 ? 0 : l1.First.Value;
                 int d2 = l2.Count == 0 ? 0 : l2.First.Value;
                 int sum = d1 + d2 + carry;
-                carry = sum >= 10 ? 1 : 0;
+                carry = sum / 10;
                 r.AddLast(sum % 10);
                 if (l1.Count != 0) l1.RemoveFirst();
                 if (l2.Count != 0) l2.RemoveLast();
@@ -82,7 +82,7 @@ namespace add2numbers
                 int d1 = l1 == null ? 0 : l1.val;
                 int d2 = l2 == null ? 0 : l2.val;
                 int sum = d1 + d2 + carry;
-                carry = sum >= 10 ? 1 : 0;
+                carry = sum / 10;
                 l1 = l1 == null ? null : l1.next;
                 l2 = l2 == null ? null : l2.next;
                 cur.next = new ListNode(sum % 10);
