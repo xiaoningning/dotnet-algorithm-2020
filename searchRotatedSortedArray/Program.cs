@@ -22,12 +22,12 @@ namespace searchRotatedSortedArray
                 if (nums[mid] == target) return mid;
                 else if (nums[mid] < nums[right]) {
                     if (nums[mid] < target && target <= nums[right]) left = mid + 1;
-                    else right = mid;
+                    else right = mid - 1;
                 } 
                 // rotated in the right side
                 else {
                     if (nums[left] <= target && target < nums[mid]) right = mid - 1;
-                    else left = mid;
+                    else left = mid + 1;
                 }
             }
             return -1;
