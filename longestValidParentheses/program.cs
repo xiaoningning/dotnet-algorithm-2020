@@ -3,7 +3,8 @@ public class Solution {
         int res = 0, n = s.Length;
         var dp = new int[n+1];
         for (int i = 1; i <= n; i++) {
-            int j = i - 2 - dp[i - 1];
+            // i - 1 - length of parantheses then -1 for the index of s
+            int j = (i - 1) - dp[i - 1] - 1;
             if (s[i-1] == '(' || j < 0 || s[j] == ')') 
                 dp[i] = 0;
             else { // s[i-1] = ')', j >= 0, s[j] = '('
