@@ -26,7 +26,8 @@ namespace permutation
             if (tmp.Count == nums.Length) res.Add(new List<int>(tmp));
             else {
                 for (int i = 0; i < nums.Length; ++i) {
-                    if (used[i] || i > 0 && nums[i-1] == nums[i] && !used[i-1]) continue;
+                    // used is to track the index of used num
+                    if (used[i] || (i > 0 && nums[i-1] == nums[i] && !used[i-1])) continue;
                     tmp.Add(nums[i]);
                     used[i] = true;
                     Backtracking(nums, tmp, res, used);
