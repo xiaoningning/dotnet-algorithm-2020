@@ -25,25 +25,19 @@ namespace wallsAndGates
             for(int i = 0; i < rooms.GetLength(0); i++){
                 for(int j = 0; j < rooms.GetLength(1); j++){
                     if(rooms[i,j] == 0){
-                        // set neighbor as 1
-                        DFS(rooms, i-1, j, 1);
-                        DFS(rooms, i+1, j, 1);
-                        DFS(rooms, i, j+1, 1);
-                        DFS(rooms, i, j-1, 1);
+                        // set itself and neighbors
+                        DFS(rooms, i, j, 0);
                     }
                 }
             }
         }
         void DFS(int[,] rooms, int i, int j, int val){
-            if(i < 0 || j < 0 || i >= rooms.GetLength(0) || j >= rooms.GetLength(1)) return;
-            if(rooms[i,j] > val){
-                rooms[i,j] = val;
-                DFS(rooms, i-1, j, val+1);
-                DFS(rooms, i+1, j, val+1);
-                DFS(rooms, i, j+1, val+1);
-                DFS(rooms, i, j-1, val+1);
-            }
-            
+            if(i < 0 || j < 0 || i >= rooms.GetLength(0) || j >= rooms.GetLength(1) || rooms[i][j] < val) return;
+            rooms[i,j] = val;
+            DFS(rooms, i-1, j, val+1);
+            DFS(rooms, i+1, j, val+1);
+            DFS(rooms, i, j+1, val+1);
+            DFS(rooms, i, j-1, val+1);
         }
     }
 }
