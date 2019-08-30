@@ -18,7 +18,8 @@ public class Solution {
                     q.Enqueue(new int[2]{i,j});
                     int level = 1;
                     while (q.Count != 0) {
-                        for (int s = 0; s < q.Count; ++s) {
+                        int size = q.Count;
+                        for (int s = 0; s < size; ++s) {
                             var t = q.Dequeue();
                             int a = t[0], b = t[1];
                             for (int k = 0; k < dirs.GetLength(0); ++k) {
