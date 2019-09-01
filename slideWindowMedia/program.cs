@@ -1,6 +1,18 @@
 public class Solution {
     public double[] MedianSlidingWindow(int[] nums, int k) {
         var res = new List<double>();
+        
+        for (int i = 0; i + k <= nums.Length; ++i) {
+            var win = new List<int>();
+            for (int j = i; j - i < k; j++) win.Add(nums[j]);
+            win = win.OrderBy(x=>x).ToList();
+            if (k % 2 != 0) res.Add(win[k/2]);
+            else res.Add(((double)win[k/2-1] + win[k/2]) / 2);
+        }
+        return res.ToArray();
+    }
+    public double[] MedianSlidingWindow1(int[] nums, int k) {
+        var res = new List<double>();
         var small = new List<int>();
         var large = new List<int>();
         for (int i = 0; i < nums.Length; ++i) {
