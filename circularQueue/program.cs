@@ -30,6 +30,8 @@ public class MyCircularQueue {
     
     /** Get the last item from the queue. */
     public int Rear() {
+        // tail -1 could over the boundary
+        // so (tail - 1 + size) % size
         return IsEmpty() ? -1 : data[(tail - 1 + size) % size];
     }
     
