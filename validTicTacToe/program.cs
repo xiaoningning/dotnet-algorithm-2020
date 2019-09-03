@@ -29,7 +29,7 @@ public class Solution {
         // xwin turns should be o, owin turns should be x
         if (xwin && turns == 0 || owin && turns == 1) return false;
         // if turns is not o or x, then in valid
-        // if turn is valid, then only one of x or o wins
+        // if turn is valid, then only one of x or o wins or no win
         return (turns == 0 || turns == 1) && (!xwin || !owin);
     }
 }
