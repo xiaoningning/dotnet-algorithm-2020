@@ -4,6 +4,7 @@ public class Solution {
         var visited = new HashSet<string>();
         var q = new Queue<int[]>();
         for (int i = 0; i < n; i++) {
+            // bit mask to track if it is visited.
             int mask = 1 << i;
             target |= mask;
             visited.Add(mask.ToString() + "-" + i.ToString());
