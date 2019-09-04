@@ -5,8 +5,8 @@ public class Solution {
             var row = new int[i+1];
             Array.Fill(row, 1);
             for (int j = 1; j < i; j++)
-			    row[j] = res[i - 1][j - 1] + res[i - 1][j];
-		    res.Add(new List<int>(row));
+	    	row[j] = res[i - 1][j - 1] + res[i - 1][j];
+	    res.Add(new List<int>(row));
         }
         return res;
     }
