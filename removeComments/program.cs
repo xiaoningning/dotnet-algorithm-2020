@@ -6,6 +6,7 @@ public class Solution {
         foreach (string line in source) {
             for (int i = 0; i < line.Length; i++) {
                 if (!comment) {
+                    // b/c we do substr(i,2)
                     if (i == line.Length - 1) o += line[i];
                     else {
                         string t = line.Substring(i, 2);
