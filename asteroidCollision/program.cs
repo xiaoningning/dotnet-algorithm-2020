@@ -6,6 +6,7 @@ public class Solution {
             else if (!res.Any() || res.Last() < 0) res.Add(asteroids[i]);
             // asteroids[i] < 0 
             else if (res.Last() <= -asteroids[i]) {
+                // keep asteroids[i]
                 if (res.Last() < -asteroids[i]) i--;
                 res.RemoveAt(res.Count - 1);
             }
