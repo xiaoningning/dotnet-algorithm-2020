@@ -58,7 +58,7 @@ namespace flattedNestedList
         }
 
         public int Next(){            
-            return stack.Pop().GetInteger();
+            return HasNext() ? stack.Pop().GetInteger() : -999;
         }
 
     }
