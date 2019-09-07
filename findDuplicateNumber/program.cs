@@ -17,6 +17,8 @@ public class Solution {
     public int FindDuplicate(int[] nums) { 
         // it is a cycled list b/c of duplicates
         int slow = 0, fast = 0, t = 0;
+        // 1 <= nums[i] <= nums.Length - 1
+        // fast will meet slow
         while (true) {
             slow = nums[slow];
             fast = nums[nums[fast]];
