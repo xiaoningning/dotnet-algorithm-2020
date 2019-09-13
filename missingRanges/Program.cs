@@ -16,7 +16,6 @@ namespace missingRanges
 
                 int l = lower;
                 for (int i = 0; i < nums.Length; ++i) {
-                    // int r = (i < nums.Length && nums[i] <= upper) ? nums[i] : upper + 1;
                     int r = nums[i];
                     if (r > l) {
                         res.Add(r - l == 1 ? l.ToString() : l.ToString() + "->" + (r - 1).ToString()); 
@@ -24,8 +23,9 @@ namespace missingRanges
                     // over flow case
                     l = r == Int32.MaxValue ? r : r + 1;
                 }
-                // do a final check empty array case
-                if (l <= upper && upper != nums[nums.Length - 1]) res.Add(l == upper ? l.ToString() : l.ToString() + "->" + upper.ToString());
+                // do a final check and empty array case
+                bool flag = nums.Length == 0 ? true : upper != nums[nums.Length -1];
+                if (l <= upper && flag) res.Add(l == upper ? l.ToString() : l.ToString() + "->" + upper.ToString());
                 return res;
         }
     }  
