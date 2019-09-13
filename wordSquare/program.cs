@@ -1,6 +1,7 @@
 public class Solution {
     public IList<IList<string>> WordSquares(string[] words) {
         var res = new List<IList<string>>();
+        // key:prefix, value:word
         var m = new Dictionary<string, List<string>>();
         int n = words[0].Length;
         foreach (string word in words) {
@@ -10,25 +11,35 @@ public class Solution {
                 m[key].Add(word);
             }
         }
-        var mat = new List<List<char>>();
+        var mat = new char[n,n];
         Helper(0, n, mat, m, res);
         return res;
     }
-    void Helper(int i, int n, List<List<char>> mat, Dictionary<string, List<string>> m, List<List<string>> res) {
+    void Helper(int i, int n, char[,] mat, Dictionary<string, List<string>> m, List<IList<string>> res) {
         if ( i == n) {
-            foreach (var c in mat) res.Add(new string(c.ToArray()));
+            List<string> t = new List<string>();
+            for (int k = 0; k < mat.GetLength(0); k++) {
+                string tstr = "";
+                for (int j = 0; j < mat.GetLength(1); j++) {
+                    tstr += mat[k,j];
+                }
+                t.Add(tstr); 
+            } 
+            res.Add(t);
             return;
         }
-        string key = new string(mat[i].ToArray()).Substring(0,i);
+        string key = "";
+        for (int k = 0; k < i; k++) key += mat[i,k];
         foreach (string str in m[key]) { 
-            mat[i].Add(new List<char>());
-            mat[i][i] = str[i];
+            // mat[i].Add(new List<char>());
+            mat[i,i]= str[i];
             int j = i + 1;
             for (; j < n; ++j) {
-                mat[i][j] = str[j];
-                mat[j][i] = str[j];
-                var t = new string(mat[j].ToArray()).Substring(0,i+1);
-                if (!m.ContainsKey(t)) break;
+                mat[i,j] = str[j];
+                mat[j,i] = str[j];
+                var t = "";
+                for (int k = 0; k < i+1; k++) t += mat[j,k];
+                if (!m.ContainsKey(t.ToString())) break;
             }
             if (j == n) Helper(i + 1, n, mat, m, res);
         }
@@ -59,9 +70,20 @@ public class Trie {
             if (node.children[c - 'a'] == null) {
                 node.children[c - 'a'] = new TrieNode();
             }
+            node.prefix.Add(word);
             node = node.children[c - 'a'];
-            prefix.Add(word);
         }
         node.word = true;
+    }
+    
+    public List<string> FindPrefix(string pre) {
+        var res = new List<string>();
+        TrieNode node = root;
+        foreach (var c in pre.ToCharArray()) {
+            if (node.children[c] == null) return res;
+            node = node.children[c];
+        }
+        res.AddRange(node.prefix);
+        return res;
     }
 }
