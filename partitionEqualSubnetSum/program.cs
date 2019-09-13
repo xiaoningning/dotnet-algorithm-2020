@@ -6,6 +6,7 @@ public class Solution {
         dp[0] = true;
         foreach (int num in nums) {
             // must from target to num, not reverse order
+            // update if sum exists in DP
             for (int i = target; i >= num; --i) {
                 dp[i] = dp[i] || dp[i - num];
             }
