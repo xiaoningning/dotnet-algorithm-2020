@@ -50,7 +50,11 @@ namespace redundantDirectedConnection2
             return res2;
         }
         int FindRoot(int[] roots, int i){
-            while(i != roots[i]) i = roots[i];
+            while(i != roots[i]) {
+                // path compression
+                roots[i] = roots[roots[i]];
+                i = roots[i];
+            }
             return i;
         }
     }
