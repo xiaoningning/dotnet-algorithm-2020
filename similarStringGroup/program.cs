@@ -27,13 +27,13 @@ public class UnionFind {
         for (int i = 0; i < n; i++) root[i] = i;
     }
     public void Union(int i, int j) {
-        int ri = Find(i), rj = Find(j);
+        int ri = FindRoot(i), rj = FindRoot(j);
         if (ri != rj) {
             root[ri] = rj;
             size--;
         }
     }
-    int Find(int x) {
+    int FindRoot(int x) {
         while(root[x] != x) {
             // path compression
             root[x] = root[root[x]];
