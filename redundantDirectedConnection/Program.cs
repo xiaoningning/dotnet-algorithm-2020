@@ -37,7 +37,11 @@ namespace redundantDirectedConnection
             return new int[2];
         }
         int FindRoot(int[] roots, int i){
-            while(i != roots[i]) i = roots[i];
+            while(i != roots[i]) {
+                // path compression
+                root[i] = root[root[i]];
+                x = root[i];
+            }
             return i;
         }
     }
