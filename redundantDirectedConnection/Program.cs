@@ -40,7 +40,7 @@ namespace redundantDirectedConnection
             while(i != roots[i]) {
                 // path compression
                 root[i] = root[root[i]];
-                x = root[i];
+                i = root[i];
             }
             return i;
         }
