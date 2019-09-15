@@ -16,7 +16,23 @@ namespace courseSchedule3
             Console.WriteLine("Schedule Course {0}", obj.ScheduleCourse(course));
         }
         public class Solution {
-            public int ScheduleCourse(int[,] courses) {
+            public int ScheduleCourse(int[][] courses) {
+                var q = new List<int>();
+                courses.OrderBy(a => a[1]);
+                int curTime = 0;
+                foreach (var c  in courses) {
+                    curTime += c[0];
+                    q.Add(c[0]);
+                    q.OrderByDescending(a => a);
+                    if (curTime > c[1]) {
+                        curTime -= q.First(); 
+                        q.RemoveAt(0);
+                    } 
+                } 
+                return q.Count;
+            }
+
+            public int ScheduleCourse1(int[,] courses) {
                 SortedDictionary<int, List<int>> dTimes = new SortedDictionary<int, List<int>>();
                 for(int i = 0; i < courses.GetLength(0); i++){
                     if(!dTimes.ContainsKey(courses[i,1])) dTimes[courses[i,1]] = new List<int>();
