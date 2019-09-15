@@ -4,6 +4,7 @@ public class Solution {
         int[] dp = new int[N];
         for (int i = 0; i < N; ++i) {
             int curMax = 0;
+            // at most K
             for (int k = 1; k <= K && i - k + 1 >= 0; ++k) {
                 curMax = Math.Max(curMax, A[i - k + 1]);
                 // sum of all array after being updated value of each element
