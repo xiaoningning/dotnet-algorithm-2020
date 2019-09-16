@@ -22,18 +22,27 @@ public class Solution {
         return res;
     }
     private int helper(int[][] A, int l, int r) {
-        int[] pivot = A[l];
-        while (l < r) {
-            while (l < r && compare(A[r], pivot) >= 0) r--;
-            A[l] = A[r];
-            while (l < r && compare(A[l], pivot) <= 0) l++;
-            A[r] = A[l];
+        int[] pivot = A[l]; 
+        int p = l;
+        l++;
+        while (l <= r) {
+            if (compare(A[l], pivot) > 0 && compare(A[r], pivot) < 0) {
+                swap(A, l, r);
+                l++; r--;
+            }
+            if (compare(A[l], pivot) <= 0) l++;
+            if (compare(A[r], pivot) >= 0) r--;
         }
-        A[l] = pivot;
-        return l;
+        swap(A, p, r);
+        return r;
     }
 
     private int compare(int[] p1, int[] p2) {
         return p1[0] * p1[0] + p1[1] * p1[1] - p2[0] * p2[0] - p2[1] * p2[1];
+    }
+    private void swap(int[][] A, int l, int r) {
+        var t = A[l];
+        A[l] = A[r];
+        A[r] = t;
     }
 }
