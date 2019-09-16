@@ -5,7 +5,7 @@ public class Solution {
     int islands = 0;
     // m: root map of a graph
     Dictionary<int, int> m = new Dictionary<int, int>();
-    public int RemoveStones(int[][] stones) {
+    public int RemoveStones1(int[][] stones) {
         for (int i =0; i < stones.Length; i++) {
             // int as index for x
             // bitwise ~int as index for y
@@ -30,9 +30,40 @@ public class Solution {
             islands++;
         }
         if (m[x] != x) {
-            // update root of graph
+            // update root of a graph
             m[x] = FindRoot(m[x]);
         }
         return m[x];
+    }
+    
+    int cnt = 0;
+    Dictionary<string, string> roots = new Dictionary<string, string>();
+    public int RemoveStones(int[][] stones){
+        for (int i = 0; i < stones.Length; i++) {
+            for (int j = 0; j < stones.Length; j++) {
+                if (stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1]){
+                    UnionFind(stones[i], stones[j]);
+                }
+            }
+        }
+        return stones.Length - cnt;
+    }
+    void UnionFind(int[] i, int[] j) {
+        string t1 = i[0] + "-" + i[1];
+        string t2 = j[0] + "-" + j[1];
+        string x = FindRoot(t1);
+        string y = FindRoot(t2);
+        if (roots.ContainsKey(x) && roots[x] != y) {
+            roots[x] = y;
+            cnt--;
+        }
+    }
+    string FindRoot(string i) {
+        if (!roots.ContainsKey(i)) {
+            roots.Add(i,i);
+            cnt++;
+        }
+        if (roots[i] != i) roots[i] = FindRoot(roots[i]);
+        return roots[i];
     }
 }
