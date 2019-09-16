@@ -1,5 +1,6 @@
 public class Solution {
     public int MinAreaRect(int[][] points) {
+        // a map of lines
         var m = new Dictionary<int, List<int>>();
         foreach (var p in points) {
             if (!m.ContainsKey(p[0])) m.Add(p[0], new List<int>());
