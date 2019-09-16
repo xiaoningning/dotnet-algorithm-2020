@@ -17,6 +17,8 @@ public class Solution {
     void Union(int x, int y) {
         x = FindRoot(x);
         y = FindRoot(y);
+        // stone with the same col or row
+        // x or y can be the same root
         if (m.ContainsKey(x) && m[x] != y) {
             m[x] = y;
             islands--;
