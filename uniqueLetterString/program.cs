@@ -17,16 +17,29 @@ public class Solution {
         int[] lastPosition = new int[26];
         Array.Fill(lastPosition, -1);
         int[] cnt = new int[26];
-        int cur = 0, res = 0;
+        int cur = 0, res = 0, mod = (int)Math.Pow(10, 9) + 7;;
         for (int i = 0; i < S.Length; i++) {
             int x = S[i]-'A';
-            cur -= cnt[x]; 
+            cur -= cnt[x] % mod; 
             cnt[x] = (i - lastPosition[x]);
-            cur += cnt[x]; 
+            cur += cnt[x] % mod; 
             lastPosition[x] = i;
-            res += cur;
+            res += cur % mod;
         }   
-        return res;
-        
+        return res;        
+    }
+    public int UniqueLetterString2(string S) {
+        int res = 0, dp = 0, mod = (int)Math.Pow(10, 9) + 7;        
+        int[] first = new int[26], second = new int[26];
+        Array.Fill(first, -1);
+        Array.Fill(second, -1);
+        for (int i = 0; i < S.Length; i++) {
+            int x = S[i]-'A';
+            dp = dp + (i - first[x]) -(first[x] - second[x]);
+            res = (res + dp) % mod;
+            second[x] = first[x];
+            first[x] = i;
+        }   
+        return res;        
     }
 }
