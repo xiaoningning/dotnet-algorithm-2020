@@ -13,9 +13,9 @@ public class Solution {
                 }
             }
         }
-        q.OrderBy(x => x[0]);
+        q = q.OrderBy(x => x[0]).ToList();
         while (q.Any()) {
-            var t = q.First(); q.RemoveAt(0);
+            var t = q.First(); q.Remove(t);
             int h = t[0], r = t[1] / n, c = t[1] % n;
             mx = Math.Max(mx, h);
             for (int i = 0; i < dir.GetLength(0); ++i) {
@@ -25,7 +25,7 @@ public class Solution {
                 if (heightMap[x][y] < mx) res += mx - heightMap[x][y];
                 q.Add(new int[]{heightMap[x][y], x * n + y});
             }
-            q.OrderBy(x => x[0]);
+            q = q.OrderBy(x => x[0]).ToList();
         }
         return res;
     }
