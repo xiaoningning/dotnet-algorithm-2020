@@ -25,13 +25,10 @@ namespace twoSumIVBST
         }
 
         static bool FindTarget(TreeNode root, HashSet<int> set, int k) {
-            bool res = false;            
-            if (root != null){
-                if (set.Contains(k - root.val)) return true;
-                set.Add(root.val);
-                return FindTarget(root.left,set, k) || FindTarget(root.right, set,k);
-            } 
-            return res;
+            if (root == null) return false;            
+            if (set.Contains(k - root.val)) return true;
+            set.Add(root.val);
+            return FindTarget(root.left,set, k) || FindTarget(root.right, set,k);
         }
 
         static bool FindTarget1(TreeNode root, int k){
