@@ -6,7 +6,7 @@ public class Solution {
         return Helper(nums, k, sum / k, 0, 0, visited);
     }
     bool Helper(int[] nums, int k, int target, int start, int curSum, bool[] visited) {
-        if (k == 1) return true;
+        if (k == 0) return true;
         // all nums are positive
         if (curSum > target) return false;
         if (curSum == target) return Helper(nums, k - 1, target, 0, 0, visited);
