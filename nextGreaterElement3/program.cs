@@ -12,8 +12,10 @@ public class Solution {
                 break;
             }
         }
+        // next greater value
         Array.Sort(strArr, i, len - i);
         long res = Convert.ToInt64(new string(strArr));
+        // over flow
         return res > Int32.MaxValue ? -1 : Convert.ToInt32(res);
     }
     void Swap(char[] a, int x, int y) {
