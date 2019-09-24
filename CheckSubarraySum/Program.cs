@@ -24,6 +24,7 @@ namespace CheckSubarraySum
                 sum += n;
                 int res = (k==0) ? sum : (sum % k);
                 if(set.Contains(res)) return true;
+                // at least two nums => add after if
                 set.Add(pre);
                 pre = res;
             }
