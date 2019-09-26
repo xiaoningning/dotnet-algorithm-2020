@@ -24,6 +24,8 @@ namespace totalHammingDistance
                 for (int j = 0; j < nums.Length; j++){
                     bitCount += (nums[j] >> i) & 1;
                 }
+                // nums.lenght - bitcount = the num of bit ith is 0
+                // hammingDistance = (# of 1) * (# of 0)
                 total += bitCount * (nums.Length -  bitCount);
             }
 
@@ -40,6 +42,7 @@ namespace totalHammingDistance
                     bitCount += (nums[j] >> i) & 1;
                 }
                 // nums.lenght - bitcount = the num of bit ith is 0
+                // hammingDistance = (# of 1) * (# of 0)
                 total += bitCount * (nums.Length -  bitCount);
             }
             return total;
