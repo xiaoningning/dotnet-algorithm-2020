@@ -5,6 +5,7 @@ public class Solution {
         while (left < right) {
             int mid = (left + right) / 2;
             // x in between a[mid], a[mid+k]
+            // x can < 0
             if (x - A[mid] > A[mid + k] - x)
                 left = mid + 1;
             else
