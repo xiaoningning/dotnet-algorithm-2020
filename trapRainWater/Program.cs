@@ -27,12 +27,12 @@ namespace trapRainWater
             int res = 0;
             while (l < r) {
                 if (height[l] <= height[r]){
-                    if (height[l] >= maxLeft) maxLeft = height[l];
+                    maxLeft = Math.Max(maxLeft, height[l]);
                     res += maxLeft - height[l];
                     l++;
                 }
                 else {
-                    if (height[r] >= maxRight) maxRight = height[r];
+                    maxRight = Math.Max(maxRight, height[r]);;
                     res += maxRight - height[r];
                     r--;
                 }
