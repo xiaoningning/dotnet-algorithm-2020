@@ -25,17 +25,18 @@ namespace findKthLargest
         }
 
         int Partition1(int[] nums, int left, int right){
-            int pivot = nums[right], l = left, r = right;
+            int pivot = nums[left], l = left+1, r = right;
             while (l <= r) {
-                while (nums[l] > pivot) l++;
-                while (nums[r] < pivot) r--;
-                if (l <= r) {
+                if (nums[l] < pivot && nums[r] > pivot) {
                     Swap(nums, l, r);
                     l++;
                     r--;
                 }
+                if (nums[l] >= pivot) l++;
+                if (nums[r] <= pivot) r--;
             }
-            return l;
+            Swap(nums, left, r);
+            return r;
         }
 
         int Partition(int[] A, int start, int end) {            
