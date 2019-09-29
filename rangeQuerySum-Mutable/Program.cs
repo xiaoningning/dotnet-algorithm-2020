@@ -18,8 +18,9 @@ namespace rangeQuerySum_Mutable
         int len = 0;
         int[] block = new int[]{};
         public NumArray(int[] nums) {
+            if (nums.Length == 0) return;
             d = nums;
-            len = Math.Ceil(d.Length / Math.Sqrt(d.Length));
+            len = (int)Math.Ceiling(d.Length / Math.Sqrt(d.Length));
             block = new int[len];
             for (int i = 0; i < d.Length; ++i) {
                 block[i / len] += d[i];
