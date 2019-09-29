@@ -44,6 +44,8 @@ namespace linkedListCycleII
             // slow = a + b
             // a + b + c  + b = 2 * (a + b)
             // c = a 
+            // now fast walk c, head walk a,
+            // then meet at the cycly point
             slow = head;
             while (slow != fast) {
                 slow = slow.next;
