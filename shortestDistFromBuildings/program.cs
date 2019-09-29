@@ -43,6 +43,7 @@ public class Solution {
                 }
             }
         }
+        // O(m^2*n^2)
         return res == Int32.MaxValue ? -1 : res;
     }
 }
