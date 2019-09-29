@@ -31,9 +31,9 @@ namespace bestTimeBuySellStockWithCoolDown
             int sell = 0, prev_sell = 0, buy = -prices[0], prev_buy;
             for (int i = 0; i < prices.Length; i++) {
                 prev_buy = buy;
-                buy = Math.Max(prev_buy, prev_sell - prices[i]);
+                buy = Math.Max(buy, prev_sell - prices[i]);
                 prev_sell = sell;
-                sell = Math.Max(prev_sell, prev_buy + prices[i]);
+                sell = Math.Max(sell, prev_buy + prices[i]);
                 
             }
             return sell;
