@@ -32,11 +32,11 @@ namespace binaryTreePath
     public class Solution {
         public IList<string> BinaryTreePaths(TreeNode root) {
             List<string> res = new List<string>();
+            if (root == null) return res;
             DFS(root, string.Empty, res);
             return res;
         }
         void DFS(TreeNode root, string path, List<string> res){
-            if (root == null) return;
             path += root.val;
             if(root.left == null && root.right == null) res.Add(path);
             else{
