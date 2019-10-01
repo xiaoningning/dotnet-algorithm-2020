@@ -23,7 +23,8 @@ public class Solution {
             res[root] += res[i] + cnt[i];
         }
         cnt[root]++;
-    }   
+    }  
+    // all distances of outside subtree of i
     void dfs2(int root, int pre) {
         foreach (int i in tree[root]) {
             if (i == pre) continue;
