@@ -31,7 +31,7 @@ public class Solution {
         int i = 0, level = 0, val = 0, n = S.Length;
         while (i < n) {
             for (level = 0; i < n && S[i] == '-'; ++i) {
-                ++level;Console.WriteLine(level);
+                ++level;
             }
             for (val = 0; i < n && S[i] != '-'; ++i) {
                 val = 10 * val + (S[i] - '0');
