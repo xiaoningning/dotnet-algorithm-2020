@@ -12,7 +12,7 @@ public class Solution {
     }
     
     public int PartitionDisjoint1(int[] A) {
-        int n = A.Length, curMax = Int32.MinValue;
+        int n = A.Length, curMax = A[0];
         int[] backMin = new int[n];        
         Array.Fill(backMin,A.Last());
         for (int i = n - 2; i >= 0; i--) {
