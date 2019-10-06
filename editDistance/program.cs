@@ -1,6 +1,7 @@
 public class Solution {
     public int MinDistance(string word1, string word2) {
         int n = word1.Length, m = word2.Length;
+        // # of operations w1 = w2
         int[,] dp = new int[n+1,m+1];
         for (int i = 1; i <= n; i++) dp[i,0] = i;
         for (int j = 1; j <= m; j++) dp[0,j] = j;
