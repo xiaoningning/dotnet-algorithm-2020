@@ -16,6 +16,7 @@ public class Solution {
         while (q.Count != 0) {
             var n = q.Count;
             // only add right
+            // only add peek()
             var t = q.Peek();
             res.Add(t.val);
             for (int i = 0; i < n; i++) {
