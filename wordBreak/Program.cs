@@ -33,6 +33,7 @@ namespace wordBreak
         }
         public bool WordBreak1(string s, IList<string> wordDict) {
             int n = s.Length;
+            // res[i] is breakable
             bool[] res = new bool[n+1];
             res[0] = true;
             for(int i = 1; i <=n; i++){
