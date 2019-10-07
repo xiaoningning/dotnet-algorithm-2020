@@ -14,9 +14,8 @@ namespace longestConsecutive
         }
     }
     public class Solution {
-        public int LongestConsecutive(int[] nums) {
+        public int LongestConsecutive1(int[] nums) {
             int res = 0;
-            // it is Set. then, O(n);
             HashSet<int> s = new HashSet<int>();
             foreach (int num in nums) s.Add(num);
             foreach (int num in nums) {
@@ -28,6 +27,21 @@ namespace longestConsecutive
                 }
             }
             return res;    
+        }
+        public int LongestConsecutive(int[] nums) {
+            int res = 0;
+            var m = new Dictionary<int, int>();
+            foreach (int num in nums) {
+                if (m.ContainsKey(num)) continue;
+                int pre = m.ContainsKey(num - 1) ? m[num - 1] : 0;
+                int next = m.ContainsKey(num + 1) ? m[num + 1] : 0;
+                int sum = pre + next + 1;
+                m[num] = sum;
+                res = Math.Max(res, sum);
+                m[num - pre] = sum;
+                m[num + next] = sum;
+            }
+            return res; 
         }
     }
 }
