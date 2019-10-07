@@ -27,7 +27,7 @@ public class Solution {
                 DFS(board, i, j + 1);
             if (i < board.Length - 1 && board[i + 1][j] == 'O') 
                 DFS(board, i + 1, j);
-            if (j > 1 && board[i][j - 1] == 'O') 
+            if (j > 0 && board[i][j - 1] == 'O') 
                 DFS(board, i, j - 1);
         }
     }
