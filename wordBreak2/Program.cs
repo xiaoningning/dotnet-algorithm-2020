@@ -16,7 +16,7 @@ namespace wordBreak2
     public class Solution {
         Dictionary<string, List<string>> m = new Dictionary<string, List<string>>();
         public IList<string> WordBreak(string s, IList<string> wordDict) {
-            if (!s.Any()) return new List<string>(){""};
+            if (string.IsNullOrEmpty(s)) return new List<string>(){""};
             if (m.ContainsKey(s)) return m[s];
             var res = new List<string>();
             foreach (string w in wordDict) {
