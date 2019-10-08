@@ -16,6 +16,24 @@ namespace permutation
         }
     }
     public class Solution {
+        public IList<IList<int>> PermuteUnique1(int[] nums) {
+            var res = new List<IList<int>>();
+            Array.Sort(nums);
+            helper(nums, 0, res);
+            return res;
+        }
+        void helper(int[] nums, int start, List<IList<int>> res){
+            if (start >= nums.Length) res.Add(new List<int>(nums));
+            for (int i = start; i < nums.Length; ++i) {
+                if (i != start && nums[i] == nums[start]) continue;
+                swap(nums, i, start);
+                // permutate a new order of nums
+                helper(new List<int>(nums).ToArray(), start + 1, res);
+            }
+        }
+        void swap(int[] nums, int i, int j) {
+            int t = nums[i]; nums[i] = nums[j]; nums[j] = t;
+        }
         public IList<IList<int>> PermuteUnique(int[] nums) {
             List<IList<int>> res = new List<IList<int>>();
             Array.Sort(nums);
