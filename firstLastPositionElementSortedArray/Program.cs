@@ -8,7 +8,7 @@ public class Solution {
             if (nums[mid] < target) left = mid + 1;
             else right = mid;
         }
-        if (nums[right] != target) return res;
+        if (right == nums.Length || nums[right] != target) return res;
         res[0] = right;
         // search the last index
         // it can be at the border.
@@ -19,7 +19,7 @@ public class Solution {
             else right = mid;
         }
         // in case: [1], [2,2]
-        res[1] = left - 1;
+        res[1] = right - 1;
         return res;
     }
 }
