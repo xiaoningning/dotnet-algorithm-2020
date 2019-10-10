@@ -15,10 +15,7 @@ namespace wildcardMatching
          // '*' Matches any sequence of characters (including the empty sequence).
          public bool IsMatch(string s, string p){
             bool[,] dp = new bool[s.Length + 1, p.Length + 1];
-            dp[0,0] = true;                
-            for (int j = 1; j <= p.Length; j++) { 
-                if (p[j-1] == '*') dp[0,j] = dp[0, j-1]; 
-            }
+            dp[0,0] = true;         
             // s = "", p = "*"
             // i start as 0
             for (int i = 0; i <= s.Length; i++){
