@@ -42,6 +42,8 @@ namespace wildcardMatching
                 else if (pi < p.Length && p[pi] == '*'){
                     pstar = pi;
                     sstar = si;
+                    // it might be > 1 *
+                    // p = "*"
                     pi++;
                 }
                 else if (pstar != -1){
