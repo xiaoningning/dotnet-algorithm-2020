@@ -12,14 +12,25 @@ namespace removeDuplicatesSortedArray1
         }
     }
     public class Solution {
-        public int RemoveDuplicates(int[] nums) {
-            // only 1 duplicate
-            if (nums.Length == 0) return 0;
-            int pre = 0, n = nums.Length;
-            for (int i = 1; i < n; ++i) {
-                if (nums[i] != nums[pre]) nums[++pre] = nums[i];
+        public int RemoveDuplicates1(int[] nums) {
+            int n = nums.Length;
+            if (n == 0) return 0;
+            int j = 0;
+            for (int i = 0; i < n; i++) {
+               if (nums[i] != nums[j]) nums[++j] = nums[i];
             }
-            return pre + 1;    
+            return j + 1;
+        }
+
+        public int RemoveDuplicates(int[] nums) {
+            int n = nums.Length;
+            if (n == 0) return 0;
+            int pre = 0, cur = 0;
+            while (cur < n) {
+                if (nums[pre] == nums[cur]) ++cur;
+                else nums[++pre] = nums[cur++];
+            }
+            return pre + 1;
         }
     }
 }
