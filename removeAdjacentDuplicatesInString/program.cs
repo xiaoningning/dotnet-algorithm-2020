@@ -1,5 +1,5 @@
 public class Solution {
-    public string RemoveDuplicates(string S) {
+    public string RemoveDuplicates1(string S) {
         var res = new Stack<char>();
         foreach (var c in S){  
             if (res.Any() && c == res.Peek())
@@ -11,4 +11,14 @@ public class Solution {
         Array.Reverse(a);
         return new string(a);
     }
+    public string RemoveDuplicates(string s) {
+        int i = 0, n = s.Length;
+        char[] res = s.ToCharArray();
+        for (int j = 0; j < n; ++j, ++i) {
+            res[i] = res[j];
+            if (i > 0 && res[i - 1] == res[i]) // count = 2
+                i -= 2;
+        }
+        return new string(res.ToArray(), 0, i);
+     }
 }
