@@ -25,6 +25,7 @@ namespace rexMatching
             }
 
             public bool IsMatch1(string s, string p){
+                if (string.IsNullOrEmpty(p)) return string.IsNullOrEmpty(s);
                 bool[,] dp = new bool[s.Length + 1, p.Length + 1];
                 dp[0,0] = true;
                 // s could be "", p could be "a*"
