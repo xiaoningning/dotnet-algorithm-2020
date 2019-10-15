@@ -19,7 +19,7 @@ public class Solution {
     
     public string LongestPalindrome1(string s) {
         if (s.Length < 2) return s;
-        int n = s.Length, maxLen = 0, start = 0;
+        int n = s.Length, maxLen = 1, start = 0;
         for (int i = 0; i < n; i++) {
             searchPanlindrome(s, i, i, ref start, ref maxLen);
             searchPanlindrome(s, i, i+1, ref start, ref maxLen);
