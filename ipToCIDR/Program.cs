@@ -36,7 +36,7 @@ namespace ipToCIDR
 
         static string LongToIP(long x) {
             return string.Format("{0}.{1}.{2}.{3}",
-                x >> 24, (x >> 16) & 255, (x >> 8) & 255, x & 255);
+                (x >> 24) & 255, (x >> 16) & 255, (x >> 8) & 255, x & 255);
         }
 
         static int BitLength(long x) {
