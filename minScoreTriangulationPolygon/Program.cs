@@ -22,10 +22,30 @@ public class Solution {
     public int MinScoreTriangulation(int[] A) {
         int n = A.Length;
         int[,] dp = new int[n,n];
+        // bottom-up
+        // triangle
+        for (int d = 2; d < n; ++d) {
+            for (int i = 0; i + d < n; ++i) {
+                int j = i + d;
+                dp[i,j] = Int32.MaxValue;
+                // middle point of triangle
+                for (int m = i+1; m < j; m++) {
+                    // calc min value
+                    dp[i,j] = Math.Min(dp[i,j], dp[i,m] + A[i]*A[m]*A[j] + dp[m,j]);
+                }
+            }
+        }
+        return dp[0,n-1];
+    }
+    
+    public int MinScoreTriangulation2(int[] A) {
+        int n = A.Length;
+        int[,] dp = new int[n,n];
         // triangle
         for (int j = 2; j < n; ++j) {
+            // j > m > i, so i starts bigger end j-2
             for (int i = j - 2; i >= 0; --i) {
-                dp[i,j] = dp[i,j] == 0 ? Int32.MaxValue : dp[i,j];
+                dp[i,j] = Int32.MaxValue;
                 // middle point of triangle
                 for (int m = i+1; m < j; m++) {
                     // calc min value
