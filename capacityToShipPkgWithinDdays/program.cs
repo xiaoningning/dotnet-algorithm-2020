@@ -20,6 +20,7 @@ public class Solution {
             if (need > D) mn = mid + 1;
             else mx = mid;
         }
+        // larger side capacity
         return mn;
     }
 }
