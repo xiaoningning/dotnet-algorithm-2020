@@ -10,7 +10,9 @@ public class Solution {
                 // calculate cnt of more gas station after distance is mid
                 cnt += (int)Math.Ceiling((stations[i + 1] - stations[i]) / mid) - 1;
             }
-            if (cnt > K) l = mid; // mid is double, no need of +1 to move left side
+            // mid is double, no need of +1 to move left side
+            if (cnt > K) l = mid; 
+            // r is possibe, but want bigger => search more
             else r = mid;
         }
         return r;
