@@ -12,7 +12,7 @@ public class Solution {
                     if (++cuts > K) break;
                 }
             }
-            if (cuts > K)
+            if (cuts >= K + 1)
                 left = mid;
             else
                 right = mid - 1;
