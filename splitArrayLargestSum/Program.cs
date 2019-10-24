@@ -30,7 +30,7 @@ namespace splitArrayLargestSum
                 if(valid_split(nums, m, mid)) right = mid;
                 else left = mid +1;
             }
-
+            // overflow check
             return (int)left;
         }
 
@@ -38,11 +38,9 @@ namespace splitArrayLargestSum
             int cnt = 1; // cnt of arrays
             int currSum = 0;
             for(int i=0; i< nums.Length; i++){
-                currSum += nums[i];
-                if(currSum > sum){
+                if((currSum += nums[i]) > sum){
                     currSum = nums[i];
-                    cnt++;
-                    if (cnt > m) return false;
+                    if (++cnt > m) return false;
                 }
             }
             return true;
