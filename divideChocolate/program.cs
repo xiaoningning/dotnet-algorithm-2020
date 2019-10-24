@@ -4,7 +4,8 @@ public class Solution {
         int left = sweetness.Min(), right = sweetness.Sum() / (K+1);
         while (left < right) {
             // max total sweetness => right + 1
-            int mid = (left + right + 1) / 2;
+            // overflow check
+            int mid =  right + (left - right + 1) / 2;
             int cur = 0, cuts = 0;
             foreach (int a in sweetness) {
                 if ((cur += a) >= mid) {
