@@ -11,6 +11,7 @@ public class Solution {
             else right = mid;
         }
         // it can be max(piles) as res
+        // smaller side, b/c must <= H
         return right;
     }
 }
