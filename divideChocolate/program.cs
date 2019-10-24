@@ -12,6 +12,8 @@ public class Solution {
                     if (++cuts > K) break;
                 }
             }
+            // cuts is k+1 pieces
+            // but we want bigger total sweetness
             if (cuts >= K + 1)
                 left = mid;
             else
