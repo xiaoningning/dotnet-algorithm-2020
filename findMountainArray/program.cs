@@ -10,6 +10,8 @@
 class Solution {
     public int FindInMountainArray(int target, MountainArray A) {
         int n = A.Length(), l = 0, r = n - 1, m, peak = 0;
+        // If I want find the index, I always use while (left < right)
+        // If I may return the index during the search, I'll use while (left <= right)
         // find index of peak
         while (peak < r) {
             m = (peak + r) / 2;
