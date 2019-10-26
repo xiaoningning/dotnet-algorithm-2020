@@ -16,6 +16,7 @@ namespace CoinChange2
         public int Change1(int amount, int[] coins) {
             int[] dp = new int[amount + 1];
             dp[0] = 1;
+            // coin can be re-used => loop cion first
             foreach (int coin in coins) {
                 // number of ways to make sum s using repeated coins
                 for (int i = coin; i <= amount; i++) {
