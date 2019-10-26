@@ -10,6 +10,7 @@ public class Solution {
         }
         // if all a < 0, maxSum = max(A) and minSum = sum(A)
         // in this case, max(maxSum, total - minSum) = 0
+        // return must be non-empty array
         // normal case, maxSum is maxSum
         // if circular, maxSum is sum - minSum
         return maxSum > 0 ? Math.Max(maxSum, sum - minSum) : maxSum;
