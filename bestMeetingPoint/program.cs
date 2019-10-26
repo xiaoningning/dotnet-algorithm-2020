@@ -11,7 +11,7 @@ public class Solution {
             }
         }
         cols.Sort();
-        int res = 0, x = 0, y = rows.Count - 1;
+        int res = 0, x = 0, y = cols.Count - 1;
         while (x < y) res += rows[y] - rows[x] + cols[y--] - cols[x++];
         return res;
     }
