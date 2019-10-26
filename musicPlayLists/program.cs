@@ -5,10 +5,11 @@ public class Solution {
         dp[0,0] = 1;
         for (int i = 1; i <= L; i++){
             for (int j = 1; j <= N; j++){ 
-                // pick a new song from N
+                // pick a new song from N for ith in L
                 dp[i, j] = (dp[i-1,j-1] * (N - (j-1))) % M; 
                 if (j > K){
                     // the old song can be repeated other than K
+                    // for ith in L from j - k old songs
                     dp[i, j] = (dp[i, j] + (dp[i-1, j] * (j-K)) % M) % M;
                 }
             }
