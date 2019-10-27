@@ -28,12 +28,13 @@ namespace minSubarrayLenSum
                         else right = mid - 1;
                     }
                     if (left == n + 1) break;
+                    // for min, as left as possible
                     res = Math.Min(res, left - i);
                 }
                 return res == Int32.MaxValue ? 0 : res;
             }
-            /*
-            public int MinSubArrayLen(int s, int[] nums) {
+            
+            public int MinSubArrayLen1(int s, int[] nums) {
                 int sum = 0, left = 0;
                 int res = Int32.MaxValue;
                 for(int i = 0; i< nums.Length; i++){
@@ -45,7 +46,6 @@ namespace minSubarrayLenSum
                 }
                 return res == Int32.MaxValue ? 0 : res;
             }
-            */
         }
     }
 }
