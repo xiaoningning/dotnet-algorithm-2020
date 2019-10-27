@@ -17,6 +17,8 @@ public class Solution {
             if (cnt < k) left = mid + 1;
             else right = mid;
         }
+        // left == right eventually
+        // and == kth smallest
         return left;
     }
 }
