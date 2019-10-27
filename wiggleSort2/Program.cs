@@ -15,11 +15,12 @@ namespace wiggleSort2
     public class Solution {
         public void WiggleSort(int[] nums) {
             int n = nums.Length;
-            int k = (n+1) / 2;
-            int j = n;
             int[] t = new int[n];
             nums.CopyTo(t, 0);
-            Array.Sort(t);            
+            Array.Sort(t);
+            // k is on larger side => n+1
+            int k = (n+1) / 2;
+            int j = n;
             for (int i = 0; i < n; i++) {
                 nums[i] = (i % 2) == 1 ? t[--j] : t[--k];
             }        
