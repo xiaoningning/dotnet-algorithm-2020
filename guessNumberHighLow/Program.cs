@@ -8,7 +8,9 @@ public class Solution {
         if(memo[start, end] != 0) return memo[start, end];
         int res = Int32.MaxValue;
         for(int k = start; k <= end; k++){
+            // max the worst case of guess
             int t = k + Math.Max(helper(start, k-1, memo), helper(k+1, end, memo));
+            // min the overall cost
             res = Math.Min(res, t);
         }
         memo[start, end] = res;
