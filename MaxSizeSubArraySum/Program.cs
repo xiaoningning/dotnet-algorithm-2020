@@ -21,10 +21,11 @@ namespace MaxSizeSubArraySum
             Dictionary<int, int> map = new Dictionary<int, int>();
             // min index is 0, -1 is to handle index 0 case
             // sum(0, i) = k => max = (i - (0 - 1)) 
-            map[0] = -1; 
+            // map[0] = -1; 
             for(int i = 0; i < n; i++){
-                sum += nums[i];
+                sum += nums[i];            
                 if(!map.ContainsKey(sum)) map[sum] = i;
+                if (sum == k) max = i + 1;
                 if(map.ContainsKey(sum - k)) max = Math.Max(max, i - map[sum - k]);
             }
             return max;
