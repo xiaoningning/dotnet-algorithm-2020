@@ -13,13 +13,15 @@ namespace nextRightPointersEachNode
         public Node Connect1(Node root) {
             if (root == null) return null;
             Node start = root, cur = null;
-            while (start.left != null) {
+            while (start != null) {
                 cur = start;
+                // the same level
                 while (cur != null) {
-                    cur.left.next = cur.right;
-                    if (cur.next != null) cur.right.next = cur.next.left;
+                    if (cur.left != null) cur.left.next = cur.right;
+                    if (cur.next != null && cur.right != null) cur.right.next = cur.next.left;
                     cur = cur.next;
                 }
+                // move to the next level
                 start = start.left;
             }
             return root;
