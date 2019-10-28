@@ -25,9 +25,9 @@ public class Solution {
             if (slow == fast) break;
         }
         while (true) {
-            fast = nums[fast];
+            slow = nums[slow];
             head = nums[head];
-            if (fast == head) break;
+            if (slow == head) break;
         }
         // O(n)
         return head;
