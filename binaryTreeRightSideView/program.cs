@@ -15,7 +15,7 @@ public class Solution {
         q.Enqueue(root);
         while (q.Count != 0) {
             var n = q.Count;
-            // only add right
+            // only add right b/c right was add first
             // only add peek()
             var t = q.Peek();
             res.Add(t.val);
