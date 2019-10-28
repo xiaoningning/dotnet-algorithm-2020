@@ -38,10 +38,31 @@ namespace meetingRoom
 
         public bool CanAttendMeetings(Interval[] intervals) {
             if(intervals == null) return false;
-            
             Array.Sort(intervals, (a,b) => a.start.CompareTo(b.start));
             for(int i = 1; i < intervals.Length; i++){
                 if(intervals[i].start < intervals[i-1].end) return false;               
+            }
+            return true;
+        }
+    }
+    
+    public class Solution1 {
+        public bool CanAttendMeetings(int[][] intervals) {
+            if(intervals == null) return false;
+            Array.Sort(intervals, (a,b) => a[0].CompareTo(b[0]));
+            for(int i = 1; i < intervals.Length; i++){
+                if(intervals[i][0] < intervals[i-1][1]) return false;               
+            }
+            return true;
+        }
+
+        public bool CanAttendMeetings1(int[][] intervals) {
+            if(intervals == null) return false;
+            for(int i = 0; i < intervals.Length; i++){
+                for(int j = i+1; j < intervals.Length; j++){
+                    if((intervals[i][0] >= intervals[j][0] && intervals[i][0] < intervals[j][1])
+                       || (intervals[j][0] >= intervals[i][0] && intervals[j][0] < intervals[i][1]) ) return false;
+                }
             }
             return true;
         }
