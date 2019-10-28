@@ -43,4 +43,22 @@ namespace meetingRoom2
             return res;
         }
     }
+    public class Solution1 {
+        public int MinMeetingRooms(int[][] intervals) {
+            SortedDictionary<int, int> map = new SortedDictionary<int, int>();
+            foreach(var i in intervals){
+                if(!map.ContainsKey(i[0])) map.Add(i[0],0);
+                if(!map.ContainsKey(i[1])) map.Add(i[1],0);
+                map[i[0]]++;
+                map[i[1]]--;
+            }
+            int res = 0; 
+            int room = 0;
+            foreach(int i in map.Keys){
+                room += map[i];
+                res = Math.Max(res, room);
+            }
+            return res;
+        }
+    }
 }
