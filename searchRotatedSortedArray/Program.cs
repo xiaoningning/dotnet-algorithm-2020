@@ -25,6 +25,7 @@ namespace searchRotatedSortedArray
                     else right = mid - 1;
                 } 
                 // rotated in the right side
+                // no duplicates
                 else {
                     if (nums[left] <= target && target < nums[mid]) right = mid - 1;
                     else left = mid + 1;
