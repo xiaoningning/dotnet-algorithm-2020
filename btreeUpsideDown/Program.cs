@@ -23,6 +23,7 @@ namespace btreeUpsideDown
     public class Solution {
         public TreeNode UpsideDownBinaryTree(TreeNode root) {
             if (root == null || root.left == null) return root;
+            // right is leave or empty
             TreeNode l = root.left, r = root.right;
             TreeNode res = UpsideDownBinaryTree(l);
             l.left = r;
