@@ -26,8 +26,10 @@ public class CBTInserter {
     public int Insert(int v) {
         var node = new TreeNode(v);
         var t = q.Peek(); 
+        // no left, just assign ot left
         if (t.left == null) t.left = node;
         else {
+            // update right
             t.right = node;
             q.Enqueue(t.left);
             q.Enqueue(t.right);
