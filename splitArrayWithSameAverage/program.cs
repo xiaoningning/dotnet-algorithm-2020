@@ -24,4 +24,18 @@ public class Solution {
         }
         return false;
     }
+    public bool SplitArraySameAverage1(int[] A) {
+        int n = A.Length, sum = A.Sum();
+        // i in [1, n / 2]
+        for (int i = 1; i <= n / 2; ++i) 
+            if (sum * i % n == 0 && find(A, sum * i / n, i, 0))
+                return true;
+        return false;
+    }
+    bool find(int[] A, int target, int k, int i) {
+        if (k == 0) return target == 0;
+        if (k + i > A.Length) return false;
+        // has a[i] or not have a[i] to calculate sum
+        return find(A, target - A[i], k - 1, i + 1) || find(A, target, k, i + 1);
+    }
 }
