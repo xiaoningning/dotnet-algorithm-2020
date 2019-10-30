@@ -28,6 +28,7 @@ namespace removeNthFromEnd
         public ListNode RemoveNthFromEnd(ListNode head, int n) {
             ListNode dummy = new ListNode(0);
             dummy.next = head;
+            // slow to dummy for boader case
             ListNode slow = dummy, fast = dummy;
             
             //Move fast in front so that the gap between slow and fast becomes n
