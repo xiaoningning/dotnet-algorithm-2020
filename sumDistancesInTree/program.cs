@@ -22,12 +22,17 @@ public class Solution {
             cnt[root] += cnt[i];
             res[root] += res[i] + cnt[i];
         }
+        //itself
         cnt[root]++;
     } 
     // all distances of outside subtree of i
     void otherSumsBasedOnRoot(int root, int pre) {
         foreach (int i in tree[root]) {
             if (i == pre) continue;
+            // move root to i
+            // subtree of i closer to i => res[root] - cnt[i]
+            // other than i nodes further away root, 
+            // all other + 1 => cnt.Length - cnt[i]
             res[i] = res[root] - cnt[i] + cnt.Length - cnt[i];
             otherSumsBasedOnRoot(i, root);
         }
