@@ -9,7 +9,7 @@ public class Solution {
         for (int i = 0, left = 0, precnt = 0; i < n; i++) {
             if (!m.ContainsKey(A[i])) m.Add(A[i],0);
             m[A[i]]++;
-            if (m.Count > K) {
+            while (m.Count > K) {
                 if (--m[A[left]] == 0) m.Remove(A[left]);
                 // reset precnt since cnt > K
                 left++; precnt = 0;
