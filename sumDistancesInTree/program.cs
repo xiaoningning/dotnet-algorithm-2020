@@ -11,25 +11,25 @@ public class Solution {
             tree[edges[i][0]].Add(edges[i][1]);
             tree[edges[i][1]].Add(edges[i][0]);
         }
-        dfs(0, -1);
-        dfs2(0, -1);
+        sumDistancesToRoot(0, -1);
+        otherSumsBasedOnRoot(0, -1);
         return res;
     }
-    void dfs(int root, int pre) {
+    void sumDistancesToRoot(int root, int pre) {
         foreach (int i in tree[root]) {
             if (i == pre) continue;
-            dfs(i, root);
+            sumDistancesToRoot(i, root);
             cnt[root] += cnt[i];
             res[root] += res[i] + cnt[i];
         }
         cnt[root]++;
-    }  
+    } 
     // all distances of outside subtree of i
-    void dfs2(int root, int pre) {
+    void otherSumsBasedOnRoot(int root, int pre) {
         foreach (int i in tree[root]) {
             if (i == pre) continue;
             res[i] = res[root] - cnt[i] + cnt.Length - cnt[i];
-            dfs2(i, root);
+            otherSumsBasedOnRoot(i, root);
         }
     }
 }
