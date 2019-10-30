@@ -27,6 +27,7 @@ namespace splitArrayLargestSum
             // binary searcg
             while(left < right){
                 long mid = left + (right - left)/2;
+                // split cnt <= m => smaller mid
                 if(valid_split(nums, m, mid)) right = mid;
                 else left = mid +1;
             }
