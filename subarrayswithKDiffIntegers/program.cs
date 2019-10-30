@@ -16,8 +16,8 @@ public class Solution {
             }
             // A[i] can be duplicate
             while (m[A[left]] > 1) {
-                if (--m[A[left]] == 0) m.Remove(A[left]);
-                left++; precnt++;
+                 --m[A[left++]];
+                precnt++;
             }
             // precnt + itself
             if (m.Count == K) res += precnt + 1;
