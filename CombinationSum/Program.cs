@@ -16,7 +16,7 @@ namespace CombinationSum
         }
         static IList<IList<int>> CombinationSum(int[] candidates, int target) {
             List<IList<int>> res = new List<IList<int>>();
-            Array.Sort(candidates);
+            // Array.Sort(candidates);
             BackTrack(candidates, target, 0, new List<int>(), res);        
             return res;
         }
