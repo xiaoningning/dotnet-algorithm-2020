@@ -1,5 +1,6 @@
 public class Solution {
     public int SubarraysWithKDistinct(int[] A, int K) {
+        // exactly k
         return atMostK(A, K) - atMostK(A, K - 1);
     }
     // LC340
