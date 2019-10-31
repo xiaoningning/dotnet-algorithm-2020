@@ -1,5 +1,23 @@
 public class Solution {
     public int SubarraysWithKDistinct(int[] A, int K) {
+        return atMostK(A, K) - atMostK(A, K - 1);
+    }
+    // LC340
+    int atMostK(int[] s, int k) {
+        var m = new Dictionary<int, int>();
+        int res = 0, left = 0;
+        for (int i = 0; i < s.Length; i++) {
+            if (!m.ContainsKey(s[i])) m.Add(s[i],0);
+            m[s[i]]++;
+            while (m.Count() > k) {
+                if (--m[s[left]] == 0) m.Remove(s[left]);
+                ++left;
+            }
+            res += i - left + 1;
+        }
+        return res;
+    }
+    public int SubarraysWithKDistinct1(int[] A, int K) {
         int n = A.Length, res = 0;
         // 1 <= A[i] <= A.length
         // can use array for map
@@ -16,7 +34,7 @@ public class Solution {
             }
             // A[i] can be duplicate
             while (m[A[left]] > 1) {
-                 --m[A[left++]];
+                --m[A[left++]];
                 precnt++;
             }
             // precnt + itself
