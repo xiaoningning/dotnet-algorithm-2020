@@ -16,6 +16,8 @@ namespace PalindromePartition2
             int[] dp = new int[n];
             bool[,] p = new bool[n, n];
             for (int i = 0; i < n; ++i) {
+                // single letter is panlindrome
+                // max cuts: i cuts i
                 dp[i] = i;
                 for (int j = 0; j <= i; ++j) {
                     if (s[i] == s[j] && (i - j < 2 || p[j + 1,i - 1])) {
