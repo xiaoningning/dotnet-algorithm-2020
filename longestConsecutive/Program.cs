@@ -26,12 +26,14 @@ namespace longestConsecutive
                     res = Math.Max(res, next - pre - 1);
                 }
             }
+            // O(n*n)
             return res;    
         }
         public int LongestConsecutive(int[] nums) {
             int res = 0;
             var m = new Dictionary<int, int>();
             foreach (int num in nums) {
+                // skip duplicate
                 if (m.ContainsKey(num)) continue;
                 int pre = m.ContainsKey(num - 1) ? m[num - 1] : 0;
                 int next = m.ContainsKey(num + 1) ? m[num + 1] : 0;
@@ -41,6 +43,7 @@ namespace longestConsecutive
                 m[num - pre] = sum;
                 m[num + next] = sum;
             }
+            // O(n)
             return res; 
         }
     }
