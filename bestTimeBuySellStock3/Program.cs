@@ -13,6 +13,20 @@ namespace bestTimeBuySellStock3
     }
     public class Solution {
         public int MaxProfit(int[] prices) {
+            if (prices.Length == 0) return 0;
+            // at most 2 transactions
+            var dp = new int[3, prices.Length];
+            for (int k = 1; k <= 2; k++) {
+                int min = prices[0];
+                for (int i = 1; i < prices.Length; i++) {
+                    min = Math.Min(min, prices[i] - dp[k-1, i-1]);
+                    dp[k, i] = Math.Max(dp[k, i-1], prices[i] - min);
+                }
+            }
+            return dp[2, prices.Length - 1];
+        }
+        
+        public int MaxProfit1(int[] prices) {
             return MaxProfitWithK(prices, 2);
         }
         
