@@ -76,4 +76,67 @@ namespace bestTimeBuySellStockIV
             }
         }
     }
+    
+    public class Solution {
+    
+    /**
+     * dp[i, j] represents the max profit up until prices[j] using at most i transactions. 
+     * dp[i, j] = max(dp[i, j-1], prices[j] - prices[jj] + dp[i-1, jj]) { jj in range of [0, j-1] }
+     *          = max(dp[i, j-1], prices[j] + max(dp[i-1, jj] - prices[jj]))
+     * dp[0, j] = 0; 0 transactions makes 0 profit
+     * dp[i, 0] = 0; if there is only one price data point you can't make any transaction.
+     */
+    public int MaxProfit1(int k, int[] prices) {
+        if(prices == null || prices.Length <= 1) return 0;
+
+        if ( k >= prices.Length / 2) {
+            int sell = 0, buy = -prices[0];
+            for (int i = 1; i < prices.Length; i++) {
+                int prev_sell = sell;
+                sell = Math.Max(sell, buy + prices[i]);
+                buy = Math.Max(buy, prev_sell - prices[i]);
+            }
+            return sell;
+        }
+        else {
+            // local[i][j] = max(global[i - 1][j - 1] + max(diff, 0), local[i - 1][j] + diff)
+            // global[i][j] = max(local[i][j], global[i - 1][j])
+            int[] gobal = new int[k+1];
+            int[] local = new int[k+1];
+            for (int i = 0; i < prices.Length - 1; ++i) {
+                int diff = prices[i + 1] - prices[i];
+                for (int j = k; j >= 1; --j) {
+                    local[j] = Math.Max(gobal[j - 1] + Math.Max(diff, 0), local[j] + diff);
+                    gobal[j] = Math.Max(gobal[j], local[j]);
+                }
+            }
+            return gobal[k];
+        }
+    }
+    
+    public int MaxProfit(int k, int[] prices) {
+        if(prices == null || prices.Length <= 1) return 0;
+
+        if ( k >= prices.Length / 2) {
+            int sell = 0, buy = -prices[0];
+            for (int i = 1; i < prices.Length; i++) {
+                int prev_sell = sell;
+                sell = Math.Max(sell, buy + prices[i]);
+                buy = Math.Max(buy, prev_sell - prices[i]);
+            }
+            return sell;
+        }
+        // dp[k, i] = max(dp[k, i-1], prices[i] - prices[j] + dp[k-1, j-1]), j=[0..i-1]
+        int[,] dp = new int[k+1, prices.Length];
+        for (int i = 1; i <= k; i++) {
+            int tmpMax = dp[i-1,0]-prices[0];
+            for (int j = 1; j < prices.Length; j++) {
+                tmpMax =  Math.Max(tmpMax, dp[i - 1,j - 1] - prices[j]);
+                dp[i,j] = Math.Max(dp[i,j - 1], prices[j] + tmpMax);
+                
+            }
+        }
+        return dp[k,prices.Length-1];
+    }
+}
 }
