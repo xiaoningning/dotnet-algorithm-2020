@@ -16,6 +16,7 @@ namespace bestTimeBuySellStock3
             if (prices.Length == 0) return 0;
             // at most 2 transactions
             var dp = new int[3, prices.Length];
+            // dp[k, i] = max(dp[k, i-1], prices[i] - prices[j] + dp[k-1, j-1]), j=[0..i-1]
             for (int k = 1; k <= 2; k++) {
                 int min = prices[0];
                 for (int i = 1; i < prices.Length; i++) {
