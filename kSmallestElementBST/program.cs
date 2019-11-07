@@ -9,6 +9,7 @@
  */
 public class Solution {
     public int KthSmallest(TreeNode root, int k) {
+        // binary search tree
         int cnt = countNodes(root.left);
         if (k <= cnt) return KthSmallest(root.left, k);
          // 1 is counted as current node
