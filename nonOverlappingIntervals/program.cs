@@ -1,5 +1,6 @@
 public class Solution {
     public int EraseOverlapIntervals(int[][] intervals) {
+        if (!intervals.Any()) return 0;
         Array.Sort(intervals, (a,b) => (a[0] - b[0]));
         int res = 0, last = 0; 
         for (int i = 1; i < intervals.Length; i++) {
