@@ -6,7 +6,7 @@ public class Solution {
         for (int i = 1; i < intervals.Length; i++) {
             if (intervals[i][0] < intervals[last][1]) {
                 res++;
-                // remove last
+                // remove the larger end => remove less overall
                 if (intervals[i][1] < intervals[last][1]) last = i;
             }
             else last = i;
