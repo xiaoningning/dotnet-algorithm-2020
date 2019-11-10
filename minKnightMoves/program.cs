@@ -32,6 +32,7 @@ public class Solution {
     
     public int MinKnightMoves(int x, int y) {
         var cache = new Dictionary<string, int>();
+        // init the special case
         cache.Add(0+"-"+0,0);
         cache.Add(1+"-"+0,3);
         cache.Add(0+"-"+1,3);
