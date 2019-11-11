@@ -13,6 +13,6 @@ public class Solution {
                 third = num;
             }
         }
-        return (third == Int64.MinValue || third == Int64.MinValue) ? (int)first : (int)third;
+        return (third == Int64.MinValue || second == Int64.MinValue) ? (int)first : (int)third;
     }
 } 
