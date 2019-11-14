@@ -16,6 +16,7 @@ public class Solution {
             even.next = odd.next;
             even = even.next;
         }
+        // last even, b/c even.next == null
         odd.next = even_head;
         return head;
     }
