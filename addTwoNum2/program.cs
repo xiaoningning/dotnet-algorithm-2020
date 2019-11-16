@@ -70,6 +70,7 @@ public class Solution {
         }
         while (l1 != null) {
             int val = l1.val + l2.val;
+            // val is never 19 => only one carry
             if (val > 9) {
                 val %= 10;
                 right.val++;
