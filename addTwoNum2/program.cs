@@ -31,8 +31,29 @@ public class Solution {
         }
         return res.val == 0 ? res.next : res;
     }
-    
     public ListNode AddTwoNumbers(ListNode l1, ListNode l2) {
+        int n1 = GetLength(l1), n2 = GetLength(l2);
+        // plus 1 in case head.next is 9
+        ListNode head = new ListNode(1);
+        head.next = (n1 > n2) ? helper(l1, l2, n1 - n2) : helper(l2, l1, n2 - n1);
+        if (head.next.val > 9) {
+            head.next.val %= 10;
+            return head;
+        }
+        return head.next;
+    }
+    ListNode helper(ListNode l1, ListNode l2, int diff) {
+        if (l1 == null) return null;
+        var cur = diff == 0 ? new ListNode(l1.val + l2.val) : new ListNode(l1.val);
+        var post = diff == 0 ? helper(l1.next, l2.next, 0) : helper(l1.next, l2, diff - 1);
+        if (post != null && post.val > 9) {
+            post.val %= 10;
+            ++cur.val;
+        }
+        cur.next = post;
+        return cur;
+    }
+    public ListNode AddTwoNumbers2(ListNode l1, ListNode l2) {
         int n1 = GetLength(l1), n2 = GetLength(l2), diff = Math.Abs(n1 - n2);
         if (n1 < n2) {
             var t = l1;
@@ -64,6 +85,7 @@ public class Solution {
             l1 = l1.next;
             l2 = l2.next;
         }
+        // dummy 0 -> 1 b/c dummy is 9
         return (dummy.val == 1) ? dummy : dummy.next;
     }
     int GetLength(ListNode head) {
