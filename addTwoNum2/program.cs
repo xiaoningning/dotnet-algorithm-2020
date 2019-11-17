@@ -31,7 +31,7 @@ public class Solution {
         }
         return res.val == 0 ? res.next : res;
     }
-    public ListNode AddTwoNumbers(ListNode l1, ListNode l2) {
+    public ListNode AddTwoNumbers2(ListNode l1, ListNode l2) {
         int n1 = GetLength(l1), n2 = GetLength(l2);
         // plus 1 in case head.next is 9
         ListNode head = new ListNode(1);
@@ -53,7 +53,7 @@ public class Solution {
         cur.next = post;
         return cur;
     }
-    public ListNode AddTwoNumbers2(ListNode l1, ListNode l2) {
+    public ListNode AddTwoNumbers3(ListNode l1, ListNode l2) {
         int n1 = GetLength(l1), n2 = GetLength(l2), diff = Math.Abs(n1 - n2);
         if (n1 < n2) {
             var t = l1;
@@ -96,5 +96,29 @@ public class Solution {
             head = head.next;
         }
         return cnt;
+    }
+    public ListNode AddTwoNumbers(ListNode l1, ListNode l2){
+        int n1 = GetLength(l1), n2 = GetLength(l2),  carry = 0;
+        ListNode res = null;
+        while( n1 > 0 && n2 > 0){
+            int sum = 0;
+            if( n1 >= n2 ) { sum += l1.val; l1=l1.next; n1--;}
+            if( n2 > n1 ) { sum += l2.val; l2=l2.next; n2--;}
+            res = AddToFront( sum, res );
+        }
+        ListNode cur = res; res = null;
+        while(cur != null) {
+            cur.val += carry; 
+            carry = cur.val/10;
+            res = AddToFront( cur.val%10, res );
+            cur = cur.next;
+        }
+        if (carry == 1) res = AddToFront(1, res);
+        return res;
+    }
+    ListNode AddToFront(int v, ListNode res) {
+        var t = new ListNode(v);
+        t.next = res;
+        return t;
     }
 }
