@@ -5,7 +5,7 @@ public class Solution {
             // ignored current negative
             // or add previous negative, ignore the current one
             ignored = Math.Max(ignored + a, notignored);
-            notignored =+ Math.Max(notignored + a, a);
+            notignored = Math.Max(notignored + a, a);
             res = Math.Max(res, Math.Max(ignored, notignored));
         }
         // all negative cases
