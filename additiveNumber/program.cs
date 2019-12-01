@@ -17,7 +17,6 @@ public class Solution {
             if ((str.Length > 1 && str[0] == '0') || str.Length > 19) break;
             long curNum = Int64.Parse(str);
             int size = o.Count;
-            if (size >= 2 && curNum > o[size-1] + o[size-2]) break;
             if (size >= 2 && curNum != o[size - 1] + o[size - 2]) continue;
             o.Add(curNum);
             helper(num, i + 1, o, ref res);
