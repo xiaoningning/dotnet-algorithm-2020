@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace wordBreak
@@ -14,37 +14,37 @@ namespace wordBreak
     }
     public class Solution {
         public bool WordBreak(string s, IList<string> wordDict) {
+            // breakable of length i
             var visited = new int[s.Length];
-            Array.Fill(visited, -1);
             return helper(s, 0, wordDict, visited);
         }
         bool helper(string s, int start, IList<string> dict, int[] visited) {
             if (start >= s.Length) return true;
-            if (visited[start] != -1) return visited[start] == 1;
+            if (visited[start] != 0) return visited[start] == 1;
             for (int i = start + 1; i <= s.Length; i++) {
                 if (dict.Contains(s.Substring(start, i - start) )
                     && helper(s, i, dict, visited)) {
-                        visited[start] = 1;
+                        visited[start] = 1; // breakable
                         return true;
                     }
             }
-            visited[start] = 0;
+            visited[start] = -1; // not breakable
             return false;
         }
         public bool WordBreak1(string s, IList<string> wordDict) {
             int n = s.Length;
-            // res[i] is breakable of length i
-            bool[] res = new bool[n+1];
-            res[0] = true;
+            // dp[i] is breakable of length i
+            bool[] dp = new bool[n+1];
+            dp[0] = true;
             for(int i = 1; i <=n; i++){
                 for(int j = 0; j < i; j++){
-                    if (res[j] && wordDict.Contains(s.Substring(j, i-j))) {
-                        res[i] = true;
+                    if (dp[j] && wordDict.Contains(s.Substring(j, i-j))) {
+                        dp[i] = true;
                         break;
                     }
                 }            
             }
-            return res[n];
+            return dp[n];
         }
     }
 }
