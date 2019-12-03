@@ -37,7 +37,7 @@ public class Solution {
             int j = 1, cnt1 = 1;
             // before i, acclerate
             for (; j < i; j = (1 << ++cnt1) - 1) {
-                // revers 1
+                // reverse back and then reverse forward again 
                 for (int k = 0, cnt2 = 0; k < j; k = (1 << ++cnt2) - 1) {
                     dp[i] = Math.Min(dp[i], cnt1 + 1 + cnt2 + 1 + dp[i - (j - k)]);
                 }
