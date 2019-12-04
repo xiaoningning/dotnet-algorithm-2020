@@ -16,6 +16,7 @@ public class Solution {
                 pos = pos2;
                 neg = neg2;
             } else {
+                // +/- x/x => +/- plus / = 2 operators
                 pos = cur * 2; // x/x => *2
                 neg = (x - cur) * 2;
             }
