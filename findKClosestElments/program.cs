@@ -13,6 +13,7 @@ public class Solution {
         }
         var res = new int[k];
         Array.Copy(A, left, res, 0, k);
+        // O(log(N-K) + K)
         return res;
     }
 }
