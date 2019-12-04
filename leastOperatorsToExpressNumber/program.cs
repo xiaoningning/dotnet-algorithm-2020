@@ -8,6 +8,7 @@ public class Solution {
         int pos = 0, neg = 0, k = 0, pos2, neg2, cur;
         while (target > 0) {
             cur = target % x;
+            // div => fastest way to reach target
             target /= x;
             if (k > 0) {
                 pos2 = Math.Min(cur * k + pos, (cur + 1) * k + neg);
