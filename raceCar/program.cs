@@ -1,50 +1,49 @@
 public class Solution {
-    // BFS + memo
-    public int Racecar(int target) {
-        int res = 0;
-        var q = new Queue<int[]>(); q.Enqueue(new int[]{0, 1});
-        var visited = new HashSet<string>(){"0,1"};
-        while (q.Any()) {
-            for (int i = q.Count; i > 0; --i) {
-                int[] t = q.Dequeue();
-                int pos = t[0], speed = t[1];
-                if (pos == target) return res;
-                int newPos = pos + speed, newSpeed = speed * 2;
-                string key = newPos + "," + newSpeed;
-                if (!visited.Contains(key) && newPos > 0 && newPos < (target * 2)) {
-                    visited.Add(key);
-                    q.Enqueue(new int[]{newPos, newSpeed});
-                }
-                newPos = pos; 
-                newSpeed = (speed > 0) ? -1 : 1;
-                key = newPos + "," + newSpeed;
-                if (!visited.Contains(key) && newPos > 0 && newPos < (target * 2)) {
-                    visited.Add(key);
-                    q.Enqueue(new int[]{newPos, newSpeed});
-                }
-            }
-            ++res;
-        }
-        return -1;
+    public int LeastOpsExpressTarget(int x, int target) {
+        // x = 3, target = 2. 
+        // 2 = 3/3 + 3/3 (two +3/3) or 2 = 3 - 3/3 (one -3/3)
+        if (x > target) return Math.Min(target * 2 - 1, (x - target) * 2);
+        else if (x == target) return 0;
+        int k = 0; long sum = x;
+        while (target - sum > 0) {sum *= x; k++;}
+        if (target == sum) return k;
+        // x*x*..x + (rest)
+        int pos = Int32.MaxValue;
+        // x*x*..x*x - (rest)
+        int neg = Int32.MaxValue;
+        if (sum - target < target) neg = LeastOpsExpressTarget(x, (int)(sum - target)) + k; 
+        //  remove extra k++
+        pos = LeastOpsExpressTarget(x, (int)(target - sum/x)) + k - 1;
+        // extra + or -
+        return Math.Min(pos, neg) + 1;
     }
-    // DP
-    // 0 -> 1 -> 3 -> 7 -> 15 -> 31
-    // target = 2^cnt - 1
-    public int Racecar1(int target) {
-        int[] dp = new int[target + 1];
-        for (int i = 1; i <= target; i++) {
-            dp[i] = Int32.MaxValue;
-            int j = 1, cnt1 = 1;
-            // before i, acclerate
-            for (; j < i; j = (1 << ++cnt1) - 1) {
-                // reverse back and then reverse forward again 
-                for (int k = 0, cnt2 = 0; k < j; k = (1 << ++cnt2) - 1) {
-                    dp[i] = Math.Min(dp[i], cnt1 + 1 + cnt2 + 1 + dp[i - (j - k)]);
-                }
+    
+    public int LeastOpsExpressTarget1(int x, int target) {
+        // x > 0, 1 = x/x
+        // positive the number of operations needed to get y % (x ^ (k+1))
+        // negative the number of operations needed to get x ^ (k + 1) - y % (x ^ (k + 1))
+        // x = 3, target = 2. 
+        // 2 = 3/3 + 3/3 or 2 = 3 - 3/3
+        // k is # of times
+        int pos = 0, neg = 0, k = 0, pos2, neg2, cur;
+        while (target > 0) {
+            cur = target % x;
+            // times => fastest way to reach target
+            target /= x;
+            if (k > 0) {
+                pos2 = Math.Min(cur * k + pos, (cur + 1) * k + neg);
+                neg2 = Math.Min((x - cur) * k + pos, (x - cur - 1) * k + neg);
+                pos = pos2;
+                neg = neg2;
+            } else {
+                // +x/x or -x/x => +/- and / => 2 operators
+                pos = cur * 2; 
+                neg = (x - cur) * 2;
             }
-            // if  pass i, reverse, otherwise cnt1
-            dp[i] = Math.Min(dp[i], cnt1 + (i == j ? 0 : 1 + dp[j - i]));
+            k++;
         }
-        return dp[target];
+        // each pos/neg is 2 operators
+        // at the end, remove 1 extra +/1
+        return Math.Min(pos, k + neg) - 1;
     }
 }
