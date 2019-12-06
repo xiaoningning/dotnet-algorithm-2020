@@ -21,7 +21,7 @@ public class Solution {
     public int LeastOpsExpressTarget1(int x, int target) {
         // x > 0, 1 = x/x
         // positive the number of operations needed to get y % (x ^ (k+1))
-        // negative the number of operations needed to get x ^ (k + 1) - y % (x ^ (k + 1))
+        // negative the number of operations needed to get x ^ (k + 1) - y % (x ^ (k))
         // x = 3, target = 2. 
         // 2 = 3/3 + 3/3 or 2 = 3 - 3/3
         // k is # of times
