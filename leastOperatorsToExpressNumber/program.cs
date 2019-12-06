@@ -1,6 +1,5 @@
 public class Solution {
-    // incorrect one
-    public int LeastOpsExpressTarget1(int x, int target) {
+    public int LeastOpsExpressTarget(int x, int target) {
         // x = 3, target = 2. 
         // 2 = 3/3 + 3/3 (two +3/3) or 2 = 3 - 3/3 (one -3/3)
         if (x > target) return Math.Min(target * 2 - 1, (x - target) * 2);
@@ -10,16 +9,16 @@ public class Solution {
         if (target == sum) return k;
         // x*x*..x + (rest)
         int pos = Int32.MaxValue;
-        // x*x*..x - (rest)
+        // x*x*..x*x - (rest)
         int neg = Int32.MaxValue;
         if (sum - target < target) neg = LeastOpsExpressTarget(x, (int)(sum - target)) + k; 
         //  remove extra k++
-        else pos = LeastOpsExpressTarget(x, (int)(target - sum/x)) + k - 1;
+        pos = LeastOpsExpressTarget(x, (int)(target - sum/x)) + k - 1;
         // extra + or -
         return Math.Min(pos, neg) + 1;
     }
     
-    public int LeastOpsExpressTarget(int x, int target) {
+    public int LeastOpsExpressTarget1(int x, int target) {
         // x > 0, 1 = x/x
         // positive the number of operations needed to get y % (x ^ (k+1))
         // negative the number of operations needed to get x ^ (k + 1) - y % (x ^ (k + 1))
