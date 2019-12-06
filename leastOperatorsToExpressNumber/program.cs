@@ -31,6 +31,7 @@ public class Solution {
             // times => fastest way to reach target
             target /= x;
             if (k > 0) {
+                // x*x..*x +/- x/x*x + x/x*x => (x*x +/- x/x +/- x/x)*x 
                 pos2 = Math.Min(cur * k + pos, (cur + 1) * k + neg);
                 neg2 = Math.Min((x - cur) * k + pos, (x - cur - 1) * k + neg);
                 pos = pos2;
