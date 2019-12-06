@@ -13,6 +13,8 @@ public class Solution {
                 dp[cnt,j] = dp[cnt - 1,j - 1] + dp[cnt - 1,j] + 1;
             }
         }
+        // O(KlgN)
+        // cnt -> N is lgN
         return cnt;
     }
 }
