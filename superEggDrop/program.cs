@@ -14,7 +14,7 @@ public class Solution {
             }
         }
         // O(KlgN)
-        // cnt -> N is lgN
+        // cnt -> N is cnt-1,j-1 plus cnt-1,j => lgN
         return cnt;
     }
 }
