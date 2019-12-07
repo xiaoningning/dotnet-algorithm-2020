@@ -12,7 +12,7 @@ public class Solution {
                 int j = i + len - 1;
                 for (int k = i; k <= j; ++k) {
                     // i,j is len, if len > 1, k neighbors are bursted already
-                    // => nums[i - 1] * nums[k] * nums[j + 1]
+                    // => l[i - 1] * nums[k] * l[j + 1]
                     dp[i,j] = Math.Max(dp[i,j], l[i - 1] * l[k] * l[j + 1] + dp[i,k - 1] + dp[k + 1,j]);
                 }
             }
