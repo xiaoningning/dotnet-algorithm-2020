@@ -13,7 +13,7 @@ public class Solution {
             int i = 0;
             for (; i < 26; ++i) {
                 // if cnt[i] >= charCnt[i]
-                // c of a is in very b of B
+                // c of a is universal for every b of B is subset of a
                 if (cnt[i] < charCnt[i]) break;
             }
             if (i == 26) res.Add(a);
