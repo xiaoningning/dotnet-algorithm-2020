@@ -9,9 +9,11 @@ public class Solution {
         for (int k = 1; k < mx; ++k) {
             for (int i = n - 1; i >= 0; --i) {
                for (int p = n - 1; p >= 0; --p) {
-                    // i,p go forward
-                    // j,q come back
+                    // i,p right, down
+                    // j,q left, up
                     int j = k - i, q = k - p;
+                   // (i,j) and (p,q) is the meeting points of
+                   // two directions
                     if (j < 0 || j >= n || q < 0 || q >= n 
                         || grid[i][j] < 0 || grid[p][q] < 0) {
                         dp[i,p] = -1; continue;
