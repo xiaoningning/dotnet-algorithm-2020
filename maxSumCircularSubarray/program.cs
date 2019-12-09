@@ -9,7 +9,10 @@ public class Solution {
             sum += a;
         }
         // if all a < 0, maxSum = max(A) and minSum = sum(A)
-        // in this case, max(maxSum, total - minSum) = 0
+        // in this case, total - minSum == 0, 
+        // return non empty array, it should be maxSum
+        // return (sum - minSum == 0) ? maxSum : Math.Max(maxSum, sum - minSum);
+        
         // return must be non-empty array
         // normal case, maxSum is maxSum
         // if circular, maxSum is sum - minSum
