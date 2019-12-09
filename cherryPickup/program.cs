@@ -5,9 +5,10 @@ public class Solution {
         int[,] dp = new int[n,n];
         for (int i = 0; i < n*n; i++) dp[i % n, i / n] = -1; 
         dp[0, 0] = grid[0][0];
+        // k is step, i,p is the end point
         for (int k = 1; k < mx; ++k) {
             for (int i = n - 1; i >= 0; --i) {
-                for (int p = n - 1; p >= 0; --p) {
+               for (int p = n - 1; p >= 0; --p) {
                     // i,p go forward
                     // j,q come back
                     int j = k - i, q = k - p;
