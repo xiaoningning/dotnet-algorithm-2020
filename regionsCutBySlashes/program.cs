@@ -50,6 +50,8 @@ public class Solution {
         int res = 0;
         // >=3 to 1 represent /, \
         // every 1 seperates by 00
+        // b/s you want h/v 4 directions connected
+        // if sperates by 0, then h/v dirs has no connected.
         // => 0/1 island problem
         int[,] g = new int[n*3,m*3];
         for(int i = 0;i < n; i++){
