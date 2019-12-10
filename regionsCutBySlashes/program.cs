@@ -49,6 +49,7 @@ public class Solution {
         int n = grid.Length, m = grid[0].Length;
         int res = 0;
         // >=3 to 1 represent /, \
+        // every 1 seperates by 00
         // => 0/1 island problem
         int[,] g = new int[n*3,m*3];
         for(int i = 0;i < n; i++){
