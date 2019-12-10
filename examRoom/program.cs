@@ -4,7 +4,6 @@ public class ExamRoom {
     public ExamRoom(int N) {
         n = N; spots = new HashSet<int>();
     }
-    
     public int Seat() {
         // check 0 spot
         int idx = 0, pre = 0, mx = 0;
@@ -31,7 +30,6 @@ public class ExamRoom {
         spots.Add(idx);
         return idx;
     }
-    
     public void Leave(int p) {
         spots.Remove(p);
     }
