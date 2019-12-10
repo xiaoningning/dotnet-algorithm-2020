@@ -63,13 +63,14 @@ public class Solution {
                     g[i * 3 + 1, j * 3 + 1] = 1;
                     g[i * 3 + 2, j * 3 + 2] = 1;
                 }
-                // if empty, then no 1
+                // if empty, then it is 0 and no 1
             }
         }
         for(int i = 0; i < g.GetLength(0); i++){
             for(int j = 0; j < g.GetLength(1); j++){
                 if(g[i, j]==0){
-                    // connect all islands
+                    // connect all islands by 0
+                    // count 0 as one region
                     dfs(g,i,j);
                     res++;
                 }
