@@ -16,6 +16,7 @@ public class Solution {
                || cnt[x] > cnt[t]) return false;
             cnt[t] -= cnt[x];
         }
+        // O(NlogK)
         return true;
     }
 }
