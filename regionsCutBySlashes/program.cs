@@ -1,7 +1,7 @@
 public class Solution {
     int[] root; // root
     int n, cnt;
-    public int RegionsBySlashes(string[] grid) {
+    public int RegionsBySlashes1(string[] grid) {
         n = grid.Length;
         // split grid as 4 regions,
         // as 0,1,2,3 <= (top, left, buttom, right)
@@ -42,5 +42,48 @@ public class Solution {
     int find(int x) {
         if (x != root[x]) root[x] = find(root[x]);
         return root[x];
+    }
+    
+    //DFS
+    public int RegionsBySlashes(string[] grid) {
+        int n = grid.Length, m = grid[0].Length;
+        int res = 0;
+        // >=3 to 1 represent /, \
+        // => 0/1 island problem
+        int[,] g = new int[n*3,m*3];
+        for(int i = 0;i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(grid[i][j] == '/'){
+                    g[i * 3,j * 3 + 2] = 1;
+                    g[i * 3 + 1, j * 3 + 1] = 1;
+                    g[i * 3 + 2, j * 3] = 1;
+                }
+                else if(grid[i][j]=='\\'){
+                    g[i * 3, j * 3] = 1;
+                    g[i * 3 + 1, j * 3 + 1] = 1;
+                    g[i * 3 + 2, j * 3 + 2] = 1;
+                }
+                // if empty, then no 1
+            }
+        }
+        for(int i = 0; i < g.GetLength(0); i++){
+            for(int j = 0; j < g.GetLength(1); j++){
+                if(g[i, j]==0){
+                    // connect all islands
+                    dfs(g,i,j);
+                    res++;
+                }
+            }
+        }
+        return res;
+    }
+    void dfs(int[,] g, int i, int j) {
+        int n = g.GetLength(0), m = g.GetLength(1);
+        if (i < 0 || i >= n || j < 0 || j >= m || g[i, j]==1) return;
+        g[i, j] = 1;
+        int[] d = new int[]{0,-1,0,1,0};
+        for(int k = 0; k < 4; k++){
+            dfs(g, i + d[k], j + d[k+1]);
+        }
     }
 }
