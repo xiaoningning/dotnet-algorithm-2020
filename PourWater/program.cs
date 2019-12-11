@@ -1,0 +1,14 @@
+public class Solution {
+    public int[] PourWater(int[] heights, int V, int K) {
+        for (int i = 0; i < V; ++i) {
+            int l = K, r = K, n = heights.Length;
+            while (l > 0 && heights[l] >= heights[l - 1]) --l;
+            while (l < K && heights[l] == heights[l + 1]) ++l;
+            while (r < n - 1 && heights[r] >= heights[r + 1]) ++r;
+            while (r > K && heights[r] == heights[r - 1]) --r;
+            if (heights[l] < heights[K]) ++heights[l];
+            else ++heights[r];
+        }
+        return heights;
+    }
+}
