@@ -1,5 +1,7 @@
 public class Solution {
     // similar to partition Disjoint
+    // not necessarily distinct in arr
+    // MaxChunksToSorted 1 is distinct element.
     public int MaxChunksToSorted(int[] arr) {
         int res = 1, n = arr.Length;
         int[] f = new int[n], b = new int[n];
