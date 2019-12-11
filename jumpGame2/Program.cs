@@ -1,11 +1,11 @@
 public class Solution {
     public int Jump(int[] nums) { 
-        int n = nums.Length, res = 0, cur = 0, last = 0;
+        int n = nums.Length, res = 0, cur = 0, pre = 0;
         // only check till n - 2 if it can reach n - 1
         for (int i = 0; i < n - 1; i++) {
             cur = Math.Max(cur, i + nums[i]);
-            if (i == last) {
-                last = cur;
+            if (i == pre) {
+                pre = cur;
                 res++;
                 // reach n-1 for min steps
                 if (cur >= n - 1) break;
