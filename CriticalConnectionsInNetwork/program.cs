@@ -25,8 +25,13 @@ public class Solution {
         foreach (int i in g[u]) {
             if (i == parent) continue;
             // not visited
-            if (times[i] == -1) dfs(i, u, t + 1);
-            low[u] = Math.Min(low[u], low[i]); 
+            if (times[i] == -1) {
+                dfs(i, u, t + 1);
+                low[u] = Math.Min(low[u], low[i]);
+            }
+            // i is visited => i is previous cycle
+            else low[u] = Math.Min(low[u], times[i]);
+            
         }
     }
 }
