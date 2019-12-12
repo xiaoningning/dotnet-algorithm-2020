@@ -1,7 +1,7 @@
 public class Solution {
     public IList<int> MajorityElement(int[] nums) {
         var res = new List<int>();
-        // cnt > n/2 => at most 2 numbers
+        // cnt > n/3 => at most 2 numbers
         int a = 0, b = 0, cnt1 = 0, cnt2 = 0, n = nums.Length;
         foreach (int num in nums) {
             if (num == a) ++cnt1;
