@@ -12,6 +12,7 @@ class Solution {
         var hostname = startUrl.Split("/")[2];
         st.Add(startUrl);
         q.Enqueue(startUrl);
+        //BFS
         while (q.Any()) {
             var n = q.Dequeue();
             foreach (string url in htmlParser.GetUrls(n)) {
