@@ -7,6 +7,8 @@ public class Solution {
             res = gcd(res, a);
         }
         // O(n) since gcd is O(logmin(a,b)) and res == 1 then O(1)
+        // there is an upper limit of nums[i]
+        // 1 <= nums[i] <= 10^9 O(log(10^9)) => O(30) => O(1)
         return res == 1;
     }
     int gcd(int a, int b) {
