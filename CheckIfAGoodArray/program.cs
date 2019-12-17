@@ -6,7 +6,7 @@ public class Solution {
         foreach (int a in nums) {
             res = gcd(res, a);
         }
-        // O(n) since gcd is O(1)
+        // O(n) since gcd is O(logmin(a,b)) and res == 1 then O(1)
         return res == 1;
     }
     int gcd(int a, int b) {
