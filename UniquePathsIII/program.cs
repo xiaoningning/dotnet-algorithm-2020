@@ -22,6 +22,7 @@ public class Solution {
             || y < 0 || y >= grid[0].Length 
             || grid[x][y] < 0) return;
         if (x == ex && y == ey) {
+            // walk all emtpy but exactly once
             if (empty == 0) res++;
             return;
         }
