@@ -57,6 +57,7 @@ public class Solution {
             sb.Append(A[j].Substring(A[j].Length - graph[x,j]));
             x = j;
         }
+	// O(n^2 * 2^n)
         return sb.ToString();
     }
     private int calc(string a, string b) {
