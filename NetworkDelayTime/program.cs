@@ -22,6 +22,7 @@ public class Solution {
                     dist[v] = dist[u] + w;
                     if (visited.Contains(v)) continue;
                     visited.Add(v);
+                    // only calculate v if dist v is update
                     q.Enqueue(v);
                 }
             }
