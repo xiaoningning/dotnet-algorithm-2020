@@ -60,6 +60,8 @@ public class Solution {
 	// O(n^2 * 2^n)
         return sb.ToString();
     }
+    // the length of string to append when A[i] followed by A[j]. 
+    // A[i] = abcd, A[j] = bcde, then graph[i][j] = 1
     private int calc(string a, string b) {
         for (int i = 1; i < a.Length; i++) {
             if (b.StartsWith(a.Substring(i))) {
