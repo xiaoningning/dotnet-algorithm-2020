@@ -19,6 +19,7 @@ public class Solution {
         }
         // left == right eventually
         // and == kth smallest
+        // O(nlogn*log(max – min))
         return left;
     }
 }
