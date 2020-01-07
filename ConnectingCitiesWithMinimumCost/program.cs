@@ -6,7 +6,8 @@ public class Solution {
         foreach(var c in connections)
             if(uf.Union(c[0]-1, c[1]-1)) res += c[2];
         // O(NlogN)
-        // Union Find takes logN 
+        // Union Find takes O(1)
+        // Note that Union operation takes constant time 
         // when UnionFind is implemented with 
         // both path compression and union by rank.
         return uf.GetSize() == 1 ? res : -1;
@@ -27,9 +28,12 @@ public class UnionFind {
         int ri = FindRoot(i), rj = FindRoot(j);
         if (ri != rj) {
             size--;
-            roots[ri] = rj;
-            if (ranks[ri] > ranks[rj]) ranks[rj] += ranks[ri];
-            else ranks[ri] += ranks[rj];
+            if (ranks[ri] > ranks[rj]) roots[rj] = ri;
+            else if (ranks[ri] < ranks[rj]) roots[ri] = rj;
+            else {
+                roots[ri] = rj;
+                ranks[rj] += 1;
+            }
             return true;
         }
         else return false;
