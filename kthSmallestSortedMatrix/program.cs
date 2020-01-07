@@ -1,7 +1,7 @@
 public class Solution {
     public int KthSmallest(int[][] matrix, int k) {
         int m = matrix.GetLength(0), n = matrix[0].GetLength(0);
-        int left = matrix[0][0], right = matrix[m-1][n-1];
+        int left = matrix[0][0], right = matrix[m-1][n-1] + 1;
         // matrix is NOT sorted in snake order.
         // but sorted in col and row
         while (left < right) {
