@@ -27,6 +27,7 @@ public class Solution {
                 maxLen = cur;
             }
         }
+        // O(n^2)
         return s.Substring(start, maxLen);
     }
     int getLen(string s, int left, int right){
@@ -34,6 +35,7 @@ public class Solution {
                && s[left] == s[right]) {
             left--; right++;
         }
+        // extra --/++ => -1
         return right - left - 1;
     }
 }
