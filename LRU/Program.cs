@@ -42,8 +42,8 @@ namespace LRU
             }
             else {
                 if (cache.Count == capacity){
-                    cache.Remove(orderKey[orderKey.Count-1]);
-                    orderKey.RemoveAt(orderKey.Count-1);
+                    cache.Remove(orderKey.Last());
+                    orderKey.Remove(orderKey.Last());
                 }
                 cache.Add(key, value);
                 orderKey.Insert(0,key);            
