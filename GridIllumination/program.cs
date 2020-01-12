@@ -15,6 +15,8 @@ public class Solution {
             st.Add(i * N + j); // normalize i, j to track lamp
             // if N is big, => trank long as i << 32 | j for normalization 
             // since i is int32
+            // var st = new HastSet<long>();
+            // st.Add(i << 32 | j);
         }
         foreach (var qu in queries) {
             int i = qu[0], j = qu[1];
