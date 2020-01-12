@@ -8,8 +8,8 @@ public class Solution {
                 int cnt = 0;
                 for (int k = 0; k < 8; ++k) {
                     int x = i + dx[k], y = j + dy[k];
-                    // 0 or 2 dead
-                    // 1 or 3 live
+                    // 0 dead,  2 live but overpopulation
+                    // 1 live,  3 dead but reproduction
                     if (x >= 0 && x < m && y >= 0 && y < n 
                         && (board[x][y] == 1 || board[x][y] == 2)) ++cnt;
                 }
@@ -19,7 +19,7 @@ public class Solution {
         }
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
-                board[i][j] %= 2;
+                board[i][j] %= 2; // 0/2 dead; 1/3 live
             }
         }
     }
