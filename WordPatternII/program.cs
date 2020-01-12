@@ -13,7 +13,7 @@ public class Solution {
         for (int i = r; i < str.Length; ++i) {
             string t = str.Substring(r, i - r + 1);
             if (m.ContainsKey(c) && m[c] == t) {
-                if (IsMatch(str, i + 1, pat, p + 1)) return true;
+                return IsMatch(str, i + 1, pat, p + 1);
             } 
             else if (!m.ContainsKey(c)) {
                 if (st.Contains(t)) continue;
