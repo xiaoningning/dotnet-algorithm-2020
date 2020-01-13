@@ -3,17 +3,14 @@
 namespace strStr
 {
     public class Solution {
-        public int StrStr(string haystack, string needle) {
-            if (string.IsNullOrEmpty(needle)) return 0;
-            int m = haystack.Length, n = needle.Length;
-            if (m < n) return -1;
-            for (int i = 0; i <= m - n; ++i) {
+        public int StrStr(string s, string t) {
+            if ( s == null || t == null || s.Length < t.Length) return -1;
+            for (int i = 0; i <= s.Length - t.Length; i++) {
                 int j = 0;
-                for (j = 0; j < n; ++j) {
-                    if (haystack[i + j] != needle[j]) break;
-                }
-                if (j == n) return i;
+                while (j < t.Length && s[i + j] == t[j]) j++;
+                if (j == t.Length) return i;
             }
+            // O(mn)
             return -1;
         }
     }
