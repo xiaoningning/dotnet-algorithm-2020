@@ -20,6 +20,7 @@ public class Solution {
             c[t % 60] += 1;
         }
         // count %60 = 0 or 30 case
+        // sum of combimation: n * (n-1) / 2
         res += c[0] * (c[0] - 1)/2;
         res += c[30] * (c[30] - 1)/2;
         for(int i = 1; i < 30; i++){
