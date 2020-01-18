@@ -1,7 +1,7 @@
 public class Solution {
     public int LongestPalindromeSubseq(string s) {
         int n = s.Length;
-        // # of palindrome str of i~j
+        // # of palindrome str of i, i + len
         int[,] dp = new int[n+1,n+1];
         for (int len = 1; len <= n; ++len)
             for (int i = 0; i + len <= n; ++i) 
