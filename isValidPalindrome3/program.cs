@@ -2,6 +2,8 @@ public class Solution {
     public bool IsValidPalindrome(string s, int k) {
         int n = s.Length;
         int[,] dp = new int[n,n];
+        // i start n-1 && j start i +1 b/s dp[i,j] = dp[i+1,j-1];
+        // need to calculate i+1 first
         for (int i = n-1; i >= 0; i--) {
             for (int j = i+1; j < n; j++) {
                 if (s[j] == s[i]) dp[i,j] = dp[i+1,j-1];
