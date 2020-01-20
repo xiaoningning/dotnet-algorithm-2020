@@ -12,13 +12,31 @@ public class MajorityChecker {
     public int Query(int left, int right, int threshold) {
         foreach (var kv in m) {
             if (kv.Value.Count < threshold) continue;
-            int cnt = 0;
-            foreach (int i in kv.Value)  {
-                if (i >= left && i <= right) cnt++;
-            }
-            if (cnt >= threshold) return kv.Key;
+            int l = BinarySearchLowerBound(kv.Value.ToArray(), left);
+            int r = BinarySearchUpperBound(kv.Value.ToArray(), right);
+            if (r - l >= threshold) return kv.Key;
         }
         return -1;
+    }
+    // binary serach lower bound
+    int BinarySearchLowerBound(int[] a, int t) {
+        int  l = 0, r = a.Length;
+        while (l < r) {
+            int m = l + (r - l) / 2;
+            if (a[m] < t) l = m + 1;
+            else r = m;
+        }
+        return l;
+    }
+    // binary search upper bound
+    int BinarySearchUpperBound(int[] a, int t) {
+        int  l = 0, r = a.Length;
+        while (l < r) {
+            int m = l + (r - l) / 2;
+            if (a[m] <= t) l = m + 1;
+            else r = m;
+        }
+        return l;
     }
 }
 
