@@ -1,8 +1,6 @@
 public class MajorityChecker {
     Dictionary<int, List<int>> m = new Dictionary<int, List<int>>();
-    int[] a;
     public MajorityChecker(int[] arr) {
-        a = arr;
         for (int i = 0; i < arr.Length; i++) {
             if (!m.ContainsKey(arr[i])) m.Add(arr[i], new List<int>());
             m[arr[i]].Add(i);
