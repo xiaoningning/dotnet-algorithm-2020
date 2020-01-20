@@ -7,7 +7,7 @@ public class Solution {
 		int left = 0, right = t.Count;
 		while(left < right){
 			int mid = left + (right - left) / 2;
-			// find smaller than nums[i]
+			// find first target >= nums[i]
 			if (t[mid] < nums[i]) left = mid + 1;
 			else right = mid;
 		}
