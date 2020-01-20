@@ -12,11 +12,11 @@ public class MajorityChecker {
             if (kv.Value.Count < threshold) continue;
             int l = BinarySearchLowerBound(kv.Value.ToArray(), left);
             int r = BinarySearchUpperBound(kv.Value.ToArray(), right);
-            if (r - l >= threshold) return kv.Key;
+            if (r - l + 1 >= threshold) return kv.Key;
         }
         return -1;
     }
-    // binary serach lower bound
+    
     int BinarySearchLowerBound(int[] a, int t) {
         int  l = 0, r = a.Length;
         while (l < r) {
@@ -26,7 +26,7 @@ public class MajorityChecker {
         }
         return l;
     }
-    // binary search upper bound
+    
     int BinarySearchUpperBound(int[] a, int t) {
         int  l = 0, r = a.Length;
         while (l < r) {
@@ -34,7 +34,7 @@ public class MajorityChecker {
             if (a[m] <= t) l = m + 1;
             else r = m;
         }
-        return l;
+        return l - 1;
     }
 }
 
