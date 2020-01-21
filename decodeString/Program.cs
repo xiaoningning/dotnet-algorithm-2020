@@ -1,5 +1,5 @@
 public class Solution {
-    public string DecodeString(string s) {
+    public string DecodeString1(string s) {
         int i = 0;
         return Helper(s, ref i);                
     }
@@ -22,28 +22,28 @@ public class Solution {
         return res;
     }
     
-    public string DecodeString1(string s) {
-        string t = string.Empty;
-        var s_num = new Stack<int>();
-        var s_str = new Stack<string>();
+    public string DecodeString(string s) {
+        var t = string.Empty;
+        var stNum = new Stack<int>();
+        var stStr = new Stack<string>();
         int cnt = 0;
         for (int i = 0; i < s.Length; ++i) {
             if (s[i] >= '0' && s[i] <= '9') {
                 cnt = 10 * cnt + s[i] - '0';
             } else if (s[i] == '[') {
-                s_num.Push(cnt);
-                s_str.Push(t);
+                stNum.Push(cnt);
+                stStr.Push(t);
                 cnt = 0;
                 t = string.Empty;
             } else if (s[i] == ']') {
-                int k = s_num.Pop();
-                string tmp = s_str.Pop();
-                while (k-- > 0) tmp += t;
-                t = tmp;
+                int k = stNum.Pop();
+                string preStr = stStr.Pop();
+                while (k-- > 0) preStr += t;
+                t = preStr;
             } else { // a-Z
                 t += s[i];
             }
         }
-        return s_str.Count == 0 ? t : s_str.Pop();                
+        return stStr.Count == 0 ? t : stStr.Pop();                
     }
 }
