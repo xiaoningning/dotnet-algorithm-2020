@@ -7,10 +7,8 @@ public class Solution {
                 st.Push(cur); 
                 cur = 0;
             }
-            else {
-                // S is a balanced parentheses
-                cur = st.Pop() + Math.Max(1, cur * 2);
-            }
+            // S is a balanced parentheses
+            else cur = st.Pop() + Math.Max(1, cur * 2);
         }
         return cur;
     }
@@ -20,7 +18,7 @@ public class Solution {
     }
     int Eval(string expression)
     {
-        System.Data.DataTable table = new System.Data.DataTable();
-        return Convert.ToInt32(table.Compute(expression, String.Empty));
+        System.Data.DataTable t = new System.Data.DataTable();
+        return Convert.ToInt32(t.Compute(expression, string.Empty));
     }
 }
