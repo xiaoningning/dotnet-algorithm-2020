@@ -1,7 +1,6 @@
 public class Solution {
     public int CalculateMinimumHP(int[][] dungeon) {
         int m = dungeon.GetLength(0), n = dungeon[0].GetLength(0);
-        Console.WriteLine($"{m}, {n}");
         // dp[y][x]: min health point required to reach bottom right (P).
         int[] dp = new int[n+1];
         Array.Fill(dp, Int32.MaxValue);
