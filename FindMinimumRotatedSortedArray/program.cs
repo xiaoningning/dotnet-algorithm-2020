@@ -6,6 +6,7 @@ public class Solution {
             int m = l + (r - l) / 2;
             // rotated
             if (nums[m] > nums[r]) l = m + 1;
+            // no duplicates
             else r = m;
         }
         return nums[l];
