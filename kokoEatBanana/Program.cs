@@ -2,7 +2,7 @@ public class Solution {
     public int MinEatingSpeed(int[] piles, int H) {
         // eat speed: [1, max(piles)]
         // or [1, Int32.MaxValue]
-        int left = 1, right = piles.Max();
+        int left = 1, right = piles.Max() + 1;
         // binary search
         while (left < right) {
             int mid = left + (right - left) / 2, cnt = 0;
