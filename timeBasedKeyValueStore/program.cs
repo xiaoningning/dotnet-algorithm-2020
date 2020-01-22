@@ -14,7 +14,12 @@ public class TimeMap {
         if (!map.ContainsKey(key)) return "";
         return BinarySearch(map[key], timestamp);
     }
-    
+    // linq upper bound TLE
+    string BinarySearch1(List<Data> list, int timestamp) {
+        var res = list.Where(d => d.time <= timestamp).OrderBy(d => d.time);
+        if (res.Any()) return res.Last().val;
+        else return "";
+    }
     string BinarySearch(List<Data> list, int timestamp) {
         int low = 0, high = list.Count - 1;
         while (low < high) {
@@ -24,7 +29,7 @@ public class TimeMap {
                 if (list[mid+1].time > timestamp) return list[mid].val;
                 low = mid + 1;
             }
-            else high = mid -1;
+            else high = mid - 1;
         }
         return list[low].time <= timestamp ? list[low].val : "";
     }
