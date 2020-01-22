@@ -13,7 +13,7 @@ public class Solution {
         int n = grid.GetLength(0);
         var visited = new HashSet<int>();
         var q = new Queue<int>();
-        q.Enqueue(0); visited.Add(0);
+        q.Enqueue(0); visited.Add(0); // 0 * n + 0
         while (q.Any()) {
             int tmp = q.Dequeue(), i = tmp / n, j = tmp % n;
             if (i == n - 1 && j == n - 1) return true;
