@@ -9,6 +9,8 @@ public class Solution {
             for (int i = 0 , j = 1; i < n -1; i++) {
                 while (j < n && A[i] > m * A[j]) j++;
                 if (j == n) break;
+                // smaller fraction => larger A[j]
+                // => cnt is the backward of j
                 cnt += n - j;
                 double f = (double) A[i] / A[j];
                 if ( f > mx) {
