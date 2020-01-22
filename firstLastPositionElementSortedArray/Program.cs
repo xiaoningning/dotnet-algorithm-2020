@@ -2,7 +2,7 @@ public class Solution {
     public int[] SearchRange(int[] nums, int target) {
         var res = new int[2]{-1,-1};
         if (nums.Length == 0)  return res;
-        int left = 0, right = nums.Length -1;
+        int left = 0, right = nums.Length;
         while (left < right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] < target) left = mid + 1;
