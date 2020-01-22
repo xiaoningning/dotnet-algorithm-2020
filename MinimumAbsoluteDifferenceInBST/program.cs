@@ -12,6 +12,7 @@ public class Solution {
     int preVal = -1;
     public int GetMinimumDifference(TreeNode root) {
         if (root == null) return res;
+        // BST do left first since left < root < right
         GetMinimumDifference(root.left);
         if (preVal >= 0) res = Math.Min(res, root.val - preVal);
         preVal = root.val;
