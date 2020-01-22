@@ -22,6 +22,7 @@ public class Solution {
         Visit(root);
         InOrder(root.right);
     }
+    // since bst, the same val is next to each other
     void Visit(TreeNode root) {
         if (cnt > 0 && val == root.val) cnt++;
         else {
