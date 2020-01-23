@@ -20,6 +20,8 @@ public class Solution {
             res++;
             return 1;
         }
+        // leaf is 0 or 2 => root : 0
+        // leaf is 1 => root: 2
         return l == 1 || r == 1 ? 2 : 0;
     }
 }
