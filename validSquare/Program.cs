@@ -10,9 +10,15 @@ public class Solution {
         };
         // edge value and diag value;
         // no 0 edge
-        return !s.Contains(0) && s.Count() == 2;
+        //   a
+        //   d 
+        // c   d
+        // the above is invalid, but s.Count == 2
+        // diag^2 = edge^2 + edge^2 (for a squre)
+        return !s.Contains(0) && s.Count() == 2 && 2 * s.Min() == s.Max();
     }
     int d (int[] a, int[] b) {
+        // if Int32.MaxValue, it will overflow here.
         return (a[0] - b[0]) * (a[0] - b[0]) + (a[1] - b[1]) * (a[1] - b[1]);
     }
 }
