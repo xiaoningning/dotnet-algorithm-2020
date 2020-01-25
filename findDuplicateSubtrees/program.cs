@@ -19,8 +19,7 @@ public class Solution {
         string str = node.val + "," + Helper(node.left, res, m) + "," + Helper(node.right, res, m);
         if (!m.ContainsKey(str)) m.Add(str,0);
         // check == 1 here, so only add once
-        if (m[str] == 1) res.Add(node);
-        m[str]++;
+        if (m[str]++ == 1) res.Add(node);
         return str;
     }
 }
