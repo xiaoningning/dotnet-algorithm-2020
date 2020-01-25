@@ -1,5 +1,5 @@
 public class Solution {
-    int[] res; // # of distance of subtree of i
+    int[] res; // sum of distance of subtree of i
     int[] cnt; // cnt of nodes of subtree of i
     List<HashSet<int>> tree;
     public int[] SumOfDistancesInTree(int N, int[][] edges) {
@@ -33,7 +33,11 @@ public class Solution {
             // subtree of i closer to i => res[root] - cnt[i]
             // other than i nodes further away root, 
             // all other + 1 => cnt.Length - cnt[i]
+            // res[i] = res[root] - cnt[i] + cnt[others that i side]
+            // total N node => cnt[others that i side] = N - cnt[i]
+            // => res[i] = res[root] - cnt[i] + N - cnt[i];
             res[i] = res[root] - cnt[i] + cnt.Length - cnt[i];
+            // update child i, then root
             otherSumsBasedOnRoot(i, root);
         }
     }
