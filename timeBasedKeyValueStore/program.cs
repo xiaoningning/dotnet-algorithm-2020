@@ -14,7 +14,7 @@ public class TimeMap {
         if (!map.ContainsKey(key)) return "";
         return BinarySearch(map[key], timestamp);
     }
-    // linq upper bound TLE is not binary search
+    // linq upper bound is not binary search => TLE 
     string BinarySearch1(List<Data> list, int timestamp) {
         var res = list.Where(d => d.time <= timestamp).OrderBy(d => d.time);
         if (res.Any()) return res.Last().val;
