@@ -65,7 +65,7 @@ public class Solution {
     private int calc(string a, string b) {
         for (int i = 1; i < a.Length; i++) {
             if (b.StartsWith(a.Substring(i))) {
-                return b.Length - a.Length + i;
+                return b.Length - (a.Length - i);
             }
         }
         return b.Length;
