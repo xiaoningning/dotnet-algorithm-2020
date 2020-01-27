@@ -13,7 +13,8 @@ public class Solution {
         int[,] path = new int[1 << n,n];
         int last = -1, min = Int32.MaxValue;
 		
-        // Travelling salesmane problem DP
+        // Similar to Travelling salesmane problem DP
+        // visit all nodes with smallest weight
         for (int i = 1; i < (1 << n); i++) {
             for (int t = 0; t < n; t++) dp[i,t] = Int32.MaxValue;
             for (int j = 0; j < n; j++) {
