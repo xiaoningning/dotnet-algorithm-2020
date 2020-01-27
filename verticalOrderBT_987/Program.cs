@@ -14,7 +14,7 @@ public class Solution {
         var res = new List<IList<int>>();
         foreach (var kv in m) {
             var tl = new List<int>();
-            foreach (var tkv in kv.Value.Reverse()) {
+            foreach (var tkv in kv.Value) {
                 tkv.Value.Sort();
                 tl.AddRange(tkv.Value);
             }
@@ -32,8 +32,8 @@ public class Solution {
             if (!m[y].ContainsKey(level))
                 m[y].Add(level, new List<int>());
             m[y][level].Add(r.val);
-            dfs(r.left, y - 1, level - 1, m);
-            dfs(r.right, y + 1, level - 1, m);
+            dfs(r.left, y - 1, level + 1, m);
+            dfs(r.right, y + 1, level + 1, m);
         }
     }
     
@@ -62,17 +62,17 @@ public class Solution {
             if(n.left != null) {
                 q.Enqueue(n.left);
                 l.Enqueue(i-1);
-                h.Enqueue(j-1);
+                h.Enqueue(j+1);
             }
             if(n.right != null) {
                 q.Enqueue(n.right);
                 l.Enqueue(i+1);
-                h.Enqueue(j-1);
+                h.Enqueue(j+1);
             }
         }
         foreach (var kv in m) {
             var tl = new List<int>();
-            foreach (var tkv in kv.Value.Reverse()) {
+            foreach (var tkv in kv.Value) {
                 tkv.Value.Sort();
                 tl.AddRange(tkv.Value);
             }
