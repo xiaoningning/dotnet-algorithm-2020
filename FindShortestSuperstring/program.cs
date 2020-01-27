@@ -15,6 +15,7 @@ public class Solution {
 		
         // Similar to Travelling salesmane problem DP
         // visit all nodes with smallest weight
+        // Shortest Hamiltonian Path in weighted directed graph
         for (int i = 1; i < (1 << n); i++) {
             for (int t = 0; t < n; t++) dp[i,t] = Int32.MaxValue;
             for (int j = 0; j < n; j++) {
