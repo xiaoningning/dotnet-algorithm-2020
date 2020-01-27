@@ -14,6 +14,7 @@ public class Solution {
         GetLeaf(root1, leaf1);
         GetLeaf(root2, leaf2);
         // c# equal is object level, not element value level
+        // SequenceEqual in Linq, element order & value equal
         return leaf1.SequenceEqual(leaf2);
     }
     void GetLeaf(TreeNode root, List<int> leaf) {
