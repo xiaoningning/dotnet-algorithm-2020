@@ -1,6 +1,57 @@
 public class Solution {
     public string ShortestSuperstring(string[] A) {
         int n = A.Length;
+        if (n == 1) return A[0];
+        int[,] g = new int[n,n];
+        // build the graph
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                g[i,j] = A[j].Length;
+                for (int k = 1; k <= Math.Min(A[i].Length, A[j].Length); ++k)
+                    if (A[i].Substring(A[i].Length - k) == A[j].Substring(0, k)) 
+                        g[i,j] = A[j].Length - k;
+            }
+        }
+        // dp[s, i] s: state mask, i: ith node of graph
+        string[,] dp = new string[1 << n,n];
+        string mnStr = "";
+        int mn = Int32.MaxValue;
+        for (int s = 1; s < (1 << n); ++s) {
+            for (int j = 0; j < n; ++j) {
+                // state mask does not contains j
+                if ((s & (1 << j)) == 0) continue;
+                // return A[j] if the mask only contains 1 word
+                if (s == (1 << j)) { 
+                    dp[s,j] = A[j];
+                    continue;
+                }
+                // prev state mask does not contain j
+                int prevs = s & ~(1 << j);
+                int curLength = Int32.MaxValue;
+                string curStr = "";
+                for (int i = 0; i < n; ++i) {
+                    if (i != j && (s & (1 << i)) > 0 && 
+                        dp[prevs,i].Length + g[i,j] < curLength) {
+                        curLength = dp[prevs,i].Length + g[i,j];
+                        curStr = dp[prevs,i] + A[j].Substring(A[j].Length - g[i,j]);
+                    }
+                }
+                dp[s,j] = curStr;
+                // get the minimum among all results dp[(1<<n)-1, j]
+                if (s == ((1<<n) - 1)) {
+                    if (mn > dp[s,j].Length) {
+                        mn = dp[s,j].Length;
+                        mnStr = dp[s,j];
+                    }
+                }
+            } 
+        }
+        
+        return mnStr;
+    }
+    
+    public string ShortestSuperstring1(string[] A) {
+        int n = A.Length;
         int[,] graph = new int[n,n];
         // build the graph
         for (int i = 0; i < n; i++) {
@@ -59,9 +110,10 @@ public class Solution {
             sb.Append(A[j].Substring(A[j].Length - graph[x,j]));
             x = j;
         }
-	// O(n^2 * 2^n)
+	    // O(n^2 * 2^n)
         return sb.ToString();
     }
+    
     // the length of string to append when A[i] followed by A[j]. 
     // A[i] = abcd, A[j] = bcde, then graph[i][j] = 1
     private int calc(string a, string b) {
