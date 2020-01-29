@@ -46,7 +46,9 @@ public class Solution {
                 }
             } 
         }
-        
+        // O(n^2 * 2^n)
+        // 1<<n => 2^n
+        // i,j combination n^2
         return mnStr;
     }
     
