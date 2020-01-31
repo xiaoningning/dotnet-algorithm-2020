@@ -13,6 +13,7 @@ public class Solution {
             g[c[0]].Add(c[1]);
             g[c[1]].Add(c[0]);
         }
+        // Tarjan bridges algorithm
         dfs(0, -1, 0);
         foreach (var c in connections) {
             if (low[c[0]] > times[c[1]] || low[c[1]] > times[c[0]])
