@@ -7,6 +7,7 @@ public class Solution {
         visited[1] = true;
         while (q.Count != 0) {
             int size = q.Count;
+            // BFS for the minimal
             for (int k = size; k > 0; --k) {
                 int num = q.Dequeue();
                 if (num == n * n) return res;
