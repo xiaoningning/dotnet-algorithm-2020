@@ -16,7 +16,7 @@ public class Solution {
             }
             q.Add(i);
         }
-        // no sort of sum
+        // no sort of sum => O(n)
         return res == Int32.MaxValue ? -1 : res;
     }
 }
