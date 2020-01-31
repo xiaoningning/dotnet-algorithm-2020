@@ -18,6 +18,7 @@ public class Solution {
             if (low[c[0]] > times[c[1]] || low[c[1]] > times[c[0]])
                 res.Add(c);
         }
+        // O(E+V)
         return res;
     }
     void dfs(int u, int parent, int t) {
