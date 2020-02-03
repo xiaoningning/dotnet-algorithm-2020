@@ -12,18 +12,19 @@ public class Solution {
         while (q.Any()) {
             int b = q.Dequeue();
             res += candies[b];
+            foreach (var k in keys[b]) {
+                // only add previous found but no key box
+                if (status[k] == 0 && found[k] == 1) q.Enqueue(k);
+                status[k] = 1;
+            }
+            // contained boxes has no duplicated in box[b]
             foreach (var t in containedBoxes[b]) {
                 found[t] = 1;
                 if (status[t] == 1) {
                     q.Enqueue(t);
                 }
             }
-            // check key after containedbox
-            // in case, box is added duplicated.
-            foreach (var k in keys[b]) {
-                if (status[k] == 0 && found[k] == 1) q.Enqueue(k);
-                status[k] = 1;
-            }
+            
         }
         return res;
     }
