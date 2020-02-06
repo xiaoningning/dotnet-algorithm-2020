@@ -10,6 +10,42 @@
 public class Solution {
     public IList<int> DistanceK(TreeNode root, TreeNode target, int K) {
         var res = new List<int>();
+        // build a graph
+        var g = new Dictionary<TreeNode, List<TreeNode>>();
+        BuildG(null, root, g);
+        var visited = new HashSet<int>();
+        visited.Add(target.val);
+        var q = new Queue<TreeNode>();
+        q.Enqueue(target);
+        int k = 0;
+        while (q.Any() && k <= K){
+            int cnt = q.Count;
+            while (cnt-- > 0) {
+                var cur = q.Dequeue();
+                if (k == K) res.Add(cur.val);
+                if (!g.ContainsKey(cur)) continue;
+                foreach (var n in g[cur]) {
+                    if (visited.Contains(n.val)) continue;
+                    visited.Add(n.val);
+                    q.Enqueue(n);
+                }
+            } 
+            k++;
+        }
+        return res;
+    }
+    void BuildG(TreeNode p, TreeNode n, Dictionary<TreeNode, List<TreeNode>> g) {
+        if (p != null){
+            if (!g.ContainsKey(p)) g.Add(p, new List<TreeNode>());
+            if (!g.ContainsKey(n)) g.Add(n, new List<TreeNode>());
+            g[p].Add(n); g[n].Add(p);
+        }
+        if (n.left != null) BuildG(n, n.left, g);
+        if (n.right != null) BuildG(n, n.right, g);
+    }
+    
+    public IList<int> DistanceK1(TreeNode root, TreeNode target, int K) {
+        var res = new List<int>();
         // reverse link of node to find parent side node
         var parentMap = new Dictionary<TreeNode, TreeNode>();
         var visited = new List<TreeNode>();
