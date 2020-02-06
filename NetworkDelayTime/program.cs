@@ -8,11 +8,11 @@ public class Solution {
         } 
         int[] dist = new int[N+1];
         Array.Fill(dist, Int32.MaxValue);
-        var q = new Queue<int>(); q.Enqueue(K);
+        var q = new Queue<int>(); 
+        q.Enqueue(K);
         dist[K] = 0;
         while(q.Any()) {
             var u = q.Dequeue();
-            var visited = new HashSet<int>();
             // BFS
             foreach (var e in g[u]) {
                 int v = e[0], w = e[1];
@@ -20,8 +20,6 @@ public class Solution {
                 // only update dist[v] if minize dist of v
                 if (dist[u] != Int32.MaxValue && dist[u] + w < dist[v]) {
                     dist[v] = dist[u] + w;
-                    if (visited.Contains(v)) continue;
-                    visited.Add(v);
                     // only calculate v if dist v is update
                     q.Enqueue(v);
                 }
