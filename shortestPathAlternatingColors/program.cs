@@ -23,6 +23,7 @@ public class Solution {
         while (q.Any()) {
             var t = q.Dequeue();
             if (!g.ContainsKey(t)) continue;
+	    // BFS => shortest path
             foreach (var r in g[t]) {
                 int color = Int32.Parse(t.Split("-")[0]);
                 int node  = Int32.Parse(t.Split("-")[1]);
