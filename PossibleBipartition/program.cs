@@ -19,6 +19,7 @@ public class Solution {
                 roots[color3] = color2;
             }
         }
+        // O(VlogE) => O(V)
         return true;
     }
     int FindRoots(int[] roots, int x){
@@ -51,6 +52,7 @@ public class Solution {
                 }    
             }
         }
+        // O(E+V)
         return true;
     }
 }
