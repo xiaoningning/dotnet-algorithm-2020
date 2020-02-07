@@ -23,8 +23,7 @@ public class Solution {
     bool ValidMutation(string x, string y) {
         int cnt = 0;
         for (int i = 0; i < x.Length; i++) {
-            if (x[i] != y[i]) cnt++;
-            if (cnt > 1) return false;
+            if (x[i] != y[i] && ++cnt > 1) return false;
         }
         return true;
     }
