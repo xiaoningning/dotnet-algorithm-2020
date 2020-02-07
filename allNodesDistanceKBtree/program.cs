@@ -32,6 +32,7 @@ public class Solution {
             } 
             k++;
         }
+        // O(n)
         return res;
     }
     void BuildG(TreeNode p, TreeNode n, Dictionary<TreeNode, List<TreeNode>> g) {
@@ -51,6 +52,7 @@ public class Solution {
         var visited = new List<TreeNode>();
         FindParent(root, parentMap);
         Helper(target, K, parentMap, res, visited);
+        // O(n)
         return res;
     }
     void FindParent(TreeNode n, Dictionary<TreeNode, TreeNode> map) {
