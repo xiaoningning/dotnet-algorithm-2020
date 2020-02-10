@@ -19,10 +19,12 @@ public class Solution {
         // -1 conflict, 1 visited, 0 not visited
         if (visited[i] == -1) return false;
         if (visited[i] == 1) return true;
-        if (!g.ContainsKey(i)) return true;
+        
         visited[i] = -1;
-        foreach(int j in g[i]) {
-            if (!canFinishDFS(g, visited, j)) return false;
+        if (g.ContainsKey(i)) {
+            foreach(int j in g[i]) {
+                if (!canFinishDFS(g, visited, j)) return false;
+            }    
         }
         visited[i] = 1;
         return true;
