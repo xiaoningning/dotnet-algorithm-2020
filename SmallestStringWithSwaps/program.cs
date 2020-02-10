@@ -4,7 +4,9 @@ public class Solution {
         int[] roots = new int[n];
         for (int i = 0; i < n; i++) roots[i] = i;
         foreach(var p in pairs) {
-            roots[FindRoot(roots, p[0])] = FindRoot(roots, p[1]);
+            int p0 = FindRoot(roots, p[0]);
+            int p1 = FindRoot(roots, p[1]);
+            if (p0 != p1) roots[p0] = p1;
         }
         var idx = new Dictionary<int,List<int>>();
         for (int i = 0; i < n; i++) {
@@ -16,7 +18,7 @@ public class Solution {
         foreach (var ids in idx) {
             string ss = "";
             foreach (var id in ids.Value) ss += sArr[id];
-            ss = new string(ss.OrderBy(c => c).ToArray());            
+            ss = new string(ss.OrderBy(c => c).ToArray());              
             for (int j = 0; j < ids.Value.Count; j++) 
                 sArr[ids.Value[j]] = ss[j];
         }      
