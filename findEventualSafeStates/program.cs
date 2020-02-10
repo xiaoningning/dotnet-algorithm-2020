@@ -9,6 +9,7 @@ public class Solution {
         for(int i = 0;i < nodeCount;i++){
             if(dfs(graph, i, color)) res.Add(i);
         }
+        // O(V+E)
         return res;
     }
     bool dfs(int[][] graph, int start, int[] color) {
