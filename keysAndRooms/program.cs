@@ -11,6 +11,7 @@ public class Solution {
                     if (rooms.Count == seen.Count) return true;
                 }
         }
+        // O(V + E)
         return rooms.Count == seen.Count;
     }
 }
