@@ -12,6 +12,7 @@ public class Solution {
         for (int i = 0; i < numCourses; i++) {
              if (!canFinishDFS(prereq, visited, i)) return false;
         }
+        // O(n) Topological sort
         return true;
     }
     bool canFinishDFS(Dictionary<int, List<int>> g, int[] visited, int i){
@@ -52,6 +53,7 @@ public class Solution {
         for (int i = 0; i < numCourses; i ++) {
             if (inDegrees[i] != 0) return false;;
         }
+        // O(n) Topological sort
         return true;        
     }
     
@@ -69,6 +71,7 @@ public class Solution {
             // DFS check
             if(!CheckPreReq(prereq, visited, i)) return false;    
         }
+        // O(n^2) DFS
         return true;        
     }
     
