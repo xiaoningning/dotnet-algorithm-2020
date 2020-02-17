@@ -3,6 +3,7 @@ public class Solution {
         int sum = nums.Sum();
         if (sum % k != 0) return false;
         var visited = new bool[nums.Length];
+        // O(n!)
         return Helper(nums, k, sum / k, 0, 0, visited);
     }
     bool Helper(int[] nums, int k, int target, int start, int curSum, bool[] visited) {
