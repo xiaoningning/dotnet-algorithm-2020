@@ -20,16 +20,18 @@ namespace letterPhoneCombinations
         public IList<string> LetterCombinations(string digits) {
             List<string> res = new List<string>();
             if (digits.Length == 0) return res;
-            LetterCombinationsDFS(digits, 0, new List<char>(), res);
+            DFS(digits, 0, new List<char>(), res);
             return res;
         }
-        void LetterCombinationsDFS(string digits, int level, List<char> tmp, List<string> res){
+        void DFS(string digits, int level, List<char> tmp, List<string> res){
             if (level == digits.Length) res.Add(new string(tmp.ToArray()));
             else {
                 string str = dict[digits[level] - '2'];
                 for (int i = 0; i < str.Length; ++i) {
                     tmp.Add(str[i]);
-                    LetterCombinationsDFS(digits, level + 1, tmp, res);
+                    // combination, level + 1
+                    // if permutation, then no level change
+                    DFS(digits, level + 1, tmp, res);
                     tmp.RemoveAt(tmp.Count - 1);
                 }
             }
