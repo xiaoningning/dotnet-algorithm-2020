@@ -18,16 +18,17 @@ namespace permutation
     public class Solution {
         public IList<IList<int>> Permute(int[] nums) {
             List<IList<int>> res = new List<IList<int>>();
-            Backtracking(nums, new List<int>(), res);
+            dfs(nums, new List<int>(), res);
             return res;
         }
-        void Backtracking(int[] nums, List<int> tmp, List<IList<int>> res){
+        void dfs(int[] nums, List<int> tmp, List<IList<int>> res){
             if (tmp.Count == nums.Length) res.Add(new List<int>(tmp));
             else {
                 for (int i = 0; i < nums.Length; ++i) {
+                    // check if it is used
                     if (tmp.Contains(nums[i])) continue;
                     tmp.Add(nums[i]);
-                    Backtracking(nums, tmp, res);
+                    dfs(nums, tmp, res);
                     tmp.RemoveAt(tmp.Count - 1);
                 }
             }
