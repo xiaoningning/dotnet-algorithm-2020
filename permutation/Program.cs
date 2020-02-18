@@ -28,6 +28,7 @@ namespace permutation
                     // check if it is used
                     if (tmp.Contains(nums[i])) continue;
                     tmp.Add(nums[i]);
+                    // permutation, no i change
                     dfs(nums, tmp, res);
                     tmp.RemoveAt(tmp.Count - 1);
                 }
