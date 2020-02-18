@@ -51,8 +51,9 @@ public class Solution {
             return;
         }
         for (int i = 0; i < A.Length; i ++) {
-            // like permutation II
+            // like permutation II. avoid duplications
             if (used[i] || (i > 0 && A[i] == A[i - 1] && !used[i - 1])) continue;
+            // prune invalid solutions.
             if (tmp.Count == 0 || IsSquareful(A[i], tmp.Last())) {
                 used[i] = true;
                 tmp.Add(A[i]);
@@ -86,12 +87,12 @@ public class Solution {
         // O(n!)
         return res;
     }
-    // back track
-    void dfs(int x, int left) {
+    // back track: permutation dfs
+    void dfs(int x, int cnt) {
         count[x]--;
-        if (left == 0) res++;
+        if (cnt == 0) res++;
         foreach (int y in cand[x])
-            if (count[y] > 0) dfs(y, left - 1);
+            if (count[y] > 0) dfs(y, cnt - 1);
         count[x]++;
     }
 }
