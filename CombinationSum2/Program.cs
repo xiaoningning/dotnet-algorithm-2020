@@ -25,6 +25,7 @@ namespace CombinationSum2
             else if (remain == 0) res.Add(new List<int>(temp));
             else {
                 for(int i = start; i < candidates.Length; i++){
+                    // avoid duplications
                     if (i > start && candidates[i] == candidates[i-1]) continue;
                     temp.Add(candidates[i]);
                     // i is no resue.
