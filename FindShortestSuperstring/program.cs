@@ -1,5 +1,51 @@
 public class Solution {
+    private int bestLen;
+    private int[] path;
+    private int[] best_path;
     public string ShortestSuperstring(string[] A) {
+        int n = A.Length;
+        if (n == 1) return A[0];
+        int[,] g = new int[n,n];
+        // build the graph
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                g[i,j] = A[j].Length;
+                for (int k = 1; k <= Math.Min(A[i].Length, A[j].Length); ++k)
+                    if (A[i].Substring(A[i].Length - k) == A[j].Substring(0, k)) 
+                        g[i,j] = A[j].Length - k;
+            }
+        }
+        path = new int[n];
+        best_path = new int[n];
+        bestLen = Int32.MaxValue;
+        dfs(g, A, 0, 0, 0);
+        string res = A[best_path[0]];
+        for (int k = 1; k < n; k++) {
+            int i = best_path[k - 1];
+            int j = best_path[k];
+            res += A[j].Substring(A[j].Length - g[i,j]);
+        }
+        return res;
+    }
+    void dfs(int[,] g, string[] A, int s, int used, int curLen) {
+        if (curLen >= bestLen) return;
+        if (s == A.Length) {
+            bestLen = curLen;
+            Array.Copy(path, best_path, A.Length);
+            return;
+        }
+        // permutation
+        for (int i = 0; i < A.Length; i++) {
+            if ((used & (1 << i)) != 0) continue;   
+            path[s] = i;
+            dfs(g, A, 
+                s + 1, 
+                used | 1 << i, 
+                s == 0 ? A[i].Length : curLen + g[path[s-1],i]);
+        }
+    }
+    
+    public string ShortestSuperstring2(string[] A) {
         int n = A.Length;
         if (n == 1) return A[0];
         int[,] g = new int[n,n];
