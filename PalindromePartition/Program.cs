@@ -22,7 +22,7 @@ public class Solution {
             if(s[low++] != s[high--]) return false;
         return true;
     } 
-    // output is not right
+ 
     public IList<IList<string>> Partition(string s){
         int n = s.Length;
         var dp = new List<IList<string>>[n+1]; // res of str[0:i]
