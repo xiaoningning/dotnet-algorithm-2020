@@ -16,7 +16,7 @@ public class Solution {
         string[,] dp = new string[1 << n,n];
         string mnStr = "";
         int mn = Int32.MaxValue;
-        for (int s = 1; s < (1 << n); ++s) {
+        for (int s = 0; s < (1 << n); ++s) {
             for (int j = 0; j < n; ++j) {
                 // state mask does not contains j
                 if ((s & (1 << j)) == 0) continue;
@@ -30,7 +30,7 @@ public class Solution {
                 int curLength = Int32.MaxValue;
                 string curStr = "";
                 for (int i = 0; i < n; ++i) {
-                    if (i != j && (s & (1 << i)) > 0 && 
+                    if (i != j && (prevs & (1 << i)) > 0 && 
                         dp[prevs,i].Length + g[i,j] < curLength) {
                         curLength = dp[prevs,i].Length + g[i,j];
                         curStr = dp[prevs,i] + A[j].Substring(A[j].Length - g[i,j]);
