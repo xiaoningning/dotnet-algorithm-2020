@@ -13,6 +13,7 @@ public class Solution {
                 }
             }
         }
+        // O(2^mn * mn)
         return dfs(grid, sx, sy, state);
     }
     int dfs(int[][] grid, int x, int y, int state) {
@@ -50,6 +51,7 @@ public class Solution {
             }
         }
         dfs(grid, sx, sy);
+        // O(4^mn)
         return res;
     }
     void dfs(int[][] grid, int x, int y) {
