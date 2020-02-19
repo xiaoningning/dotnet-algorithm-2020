@@ -26,7 +26,7 @@ public class Solution {
             int ty = y + dirs[i, 1];
             if (tx < 0 || tx >= m || ty < 0 || ty >= n || grid[tx][ty] == -1) continue;
             if ((state & (1 << (tx *n + ty))) == 0) continue;
-            cnt += dfs(grid, tx, ty, state ^ (1 << (tx * n + ty)));            
+            cnt += dfs(grid, tx, ty, state & ~(1 << (tx * n + ty)));            
         }
         if (!cache.ContainsKey(x * n + y)) cache.Add(x * n + y, new Dictionary<int,int>());
         if (!cache[x * n + y].ContainsKey(state)) cache[x * n + y].Add(state, 0);
