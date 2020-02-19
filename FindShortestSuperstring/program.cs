@@ -25,6 +25,8 @@ public class Solution {
             int j = best_path[k];
             res += A[j].Substring(A[j].Length - g[i,j]);
         }
+        // Time complexity: O(n!)
+        // Space complexity: O(n)
         return res;
     }
     void dfs(int[,] g, string[] A, int s, int used, int curLen) {
@@ -95,6 +97,8 @@ public class Solution {
         // O(n^2 * 2^n)
         // 1<<n => 2^n
         // i,j combination n^2
+        // Time complexity: O(n^2 * 2^n)
+        // Space complexity: O(n * 2^n)
         return mnStr;
     }
     
