@@ -21,6 +21,7 @@ public class Solution {
         for (int k = 0; k < 9; ++k) {
             if (board[k][j] != '.' && board[k][j] == val) return false;
             if (board[i][k] != '.' && board[i][k] == val) return false;
+            // i / 3 * 3 reset i to the 3 x 3 grid
             int row = i / 3 * 3 + k / 3, col = j / 3 * 3 + k % 3;
             if (board[row][col] != '.' && board[row][col] == val) return false;
         }
