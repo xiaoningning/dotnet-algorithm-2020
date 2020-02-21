@@ -10,12 +10,12 @@ public class Solution {
     public int MaxSubArray(int[] nums) {
         int n = nums.Length;
         //dp[i] means the maximum subarray ending with nums[i];
-        int[] dp = new int[n]; 
+        int[] dp = new int[n];
         dp[0] = nums[0];
         int max = dp[0];
         
         for(int i = 1; i < n; i++){
-            dp[i] = nums[i] + (dp[i - 1] > 0 ? dp[i - 1] : 0);
+            dp[i] = Math.Max(dp[i - 1] + nums[i], nums[i]);
             max = Math.Max(max, dp[i]);
         }
         return max;
