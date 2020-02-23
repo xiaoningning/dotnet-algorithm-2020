@@ -8,6 +8,7 @@ public class Solution {
                 dp[i + j * j] = Math.Min(dp[i + j * j], dp[i] + 1);
             }
         }
+        // O(sqrt(n)*n)
         return dp[n];
     }
     // 1, 4, 9, 16 ...
