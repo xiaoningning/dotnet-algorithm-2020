@@ -12,4 +12,10 @@ public class Solution {
         }
         return res.ToArray();
     }
+    /**
+    A = [2, 1, 4, 5, 3] // beautiful
+    A1 = [3, 1, 7, 9, 5]
+    A2 = [4, 2, 8, 10, 6]
+    B = A1 + A2 = [3, 1, 7, 9, 5, 4, 2, 8, 10, 6]
+    */
 }
