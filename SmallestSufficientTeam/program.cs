@@ -19,6 +19,7 @@ public class Solution {
                 }
             }
         }
+        // O(people * 2^skill)
         return dp[target].ToArray();
     }
 }
