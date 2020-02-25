@@ -1,6 +1,12 @@
 public class Solution {
     public int MctFromLeafValues(int[] arr) {
         // 503. Next Greater Element II
+        /*
+        Given an array A, choose two neighbors in the array a and b,
+        we can remove the smaller one min(a,b) and the cost is a * b.
+        What is the minimum cost to remove the whole array until only one left?
+        The cost to remove a is a * min(left, right).
+        */
         int res = 0;
         var st = new Stack<int>();
         st.Push(Int32.MaxValue); // border
