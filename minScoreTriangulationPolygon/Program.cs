@@ -10,9 +10,7 @@ public class Solution {
         if (cache.ContainsKey(key)) return cache[key];
         int res = Int32.MaxValue;
         for (int m = s+1; m < e; m++) {
-            int sum = Helper(A, s, m, cache);
-            sum += A[s]*A[m]*A[e];
-            sum += Helper(A, m, e, cache);
+            int sum = Helper(A, s, m, cache) + A[s]*A[m]*A[e] + Helper(A, m, e, cache);            
             res = Math.Min(res, sum);
         }
         cache.Add(key, res);
