@@ -4,12 +4,13 @@ public class Solution {
         int res = 0;
         var st = new Stack<int>();
         st.Push(Int32.MaxValue); // border
-        foreach (var a in arr) {
-            while (st.Peek() <= a) {
+        foreach (var right in arr) {
+            while (st.Peek() <= right) {
                 int mid = st.Pop();
-                res += mid * Math.Min(st.Peek(), a);
+                // st.Peek() is left
+                res += mid * Math.Min(st.Peek(), right);
             }
-            st.Push(a);
+            st.Push(right);
         }
         // for the last pair
         while (st.Count > 2) {
