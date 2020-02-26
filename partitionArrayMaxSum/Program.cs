@@ -1,6 +1,22 @@
 public class Solution {
     public int MaxSumAfterPartitioning(int[] A, int K) {
         int N = A.Length;
+        // dp[i] = max{dp[i – k] + max(A[i-k:i]) * k}, 1 <= k <= min(i, K)
+        int[] dp = new int[N+1];
+        for (int i = 1; i <= N; ++i) {
+            int mx = Int32.MinValue;
+            // at most K
+            for (int k = 1; k <= K && i - k >= 0; ++k) {
+                mx = Math.Max(mx, A[i - k]);
+                // sum of all array after being updated value of each element
+                // plus the prev subarray sum
+                dp[i] = Math.Max(dp[i], dp[i - k] + mx * k);
+            }
+        }
+        return dp[N];
+    }
+    public int MaxSumAfterPartitioning1(int[] A, int K) {
+        int N = A.Length;
         int[] dp = new int[N];
         for (int i = 0; i < N; ++i) {
             int curMax = 0;
