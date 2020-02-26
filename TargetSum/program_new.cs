@@ -37,4 +37,19 @@ public class Solution {
         return dp[n].ContainsKey(S) ? dp[n][S] : 0; 
     }
     
+    public int FindTargetSumWays2(int[] nums, int S) {
+        int res = 0;
+        Helper(nums, S, 0, ref res);
+        return res;
+    }
+
+    void Helper(int[] nums, int S, int start, ref int res) {
+        if (start == nums.Length) {
+            if (S == 0) res++;
+            return;
+        }
+        Helper(nums, S + nums[start], start+1, ref res);
+        Helper(nums, S - nums[start], start+1, ref res);
+    }
+    
 }
