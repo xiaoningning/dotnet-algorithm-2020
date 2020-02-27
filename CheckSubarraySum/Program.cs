@@ -16,16 +16,16 @@ namespace CheckSubarraySum
 
         static bool CheckSubarraySum(int[] nums, int k) {
             // put the modulus of k into set
-            HashSet<int> set = new HashSet<int>();
+            HashSet<int> st = new HashSet<int>();
             int sum = 0;
             int pre = 0; // at least two nums
             foreach (var n in nums)
             {   
                 sum += n;
                 int res = (k==0) ? sum : (sum % k);
-                if(set.Contains(res)) return true;
+                if(st.Contains(res)) return true;
                 // at least two nums => add after if
-                set.Add(pre);
+                st.Add(pre);
                 pre = res;
             }
             return false;
