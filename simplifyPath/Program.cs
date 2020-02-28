@@ -14,18 +14,15 @@ namespace simplifyPath
     }
     public class Solution {
         public string SimplifyPath(string path) {
-            Stack<string> s = new Stack<string>();
+            var s = new Stack<string>();
             string[] p = path.Split('/');
             foreach(string c in p){
-                if (c == ".." && s.Count !=0) {
-                    s.Pop();
-                } 
-                else if (!string.IsNullOrEmpty(c) && c != "." && c != "..") {
-                    s.Push(c);
-                }
+                if (c == ".." && s.Count !=0) s.Pop();
+                else if (!string.IsNullOrEmpty(c) 
+                         && c != "." && c != "..") s.Push(c);
             }
-            List<string> res = new List<string>();
-            while(s.Count != 0){
+            var res = new List<string>();
+            while(s.Any()){
                 res.Insert(0, s.Pop());
             }
             return "/" + string.Join("/", res);
