@@ -15,20 +15,18 @@ namespace minWindowSubstring
     public class Solution {
         public string MinWindow(string s, string t) {
             string res = "";
-            int min = Int32.MaxValue;
-            int begin = 0, cnt = 0;
-            int[] map = new int[128];
-            foreach(char c in t) map[c]++;
-            for(int i = 0; i < s.Length; i++){
+            int mn = Int32.MaxValue, left = 0, cnt = 0;
+            var m = new int[128];
+            foreach (char c in t) m[c]++;
+            for (int i = 0; i < s.Length; i++){
                 // do -- first, then compare
-                if(--map[s[i]] >= 0) cnt++;
-                while(cnt == t.Length){
-                    if(i - begin + 1 < min){
-                        min = i - begin + 1;
-                        res = s.Substring(begin, min);
+                if (--m[s[i]] >= 0) cnt++;
+                while (cnt == t.Length){
+                    if(i - left + 1 < mn){
+                        mn = i - left + 1;
+                        res = s.Substring(left, mn);
                     }
-                    if (++map[s[begin]] > 0) cnt--; 
-                    begin++;
+                    if (++m[s[left++]] > 0) cnt--; 
                 }
             }
             return res;
