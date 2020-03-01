@@ -7,6 +7,7 @@
  * }
  */
 public class Solution {
+    // wrong ans somehow
     public ListNode RemoveZeroSumSublists1(ListNode head) {
         var dummy = new ListNode(0);
         dummy.next = head;
@@ -24,6 +25,7 @@ public class Solution {
         }
         return dummy.next;
     }
+    // better solution
     public ListNode RemoveZeroSumSublists(ListNode head) {
         int prefix = 0;
         ListNode dummy = new ListNode(0);
