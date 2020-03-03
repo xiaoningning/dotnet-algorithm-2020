@@ -52,7 +52,6 @@ public class Codec {
             size = Int32.Parse(nodes[0]);
             nodes.RemoveAt(0);
         }
-        if (node == "#") return null;
         var val = Int32.Parse(node);
         Node tn = new Node(val, new List<Node>());
         for (int i = 0; i < size; ++i) {
