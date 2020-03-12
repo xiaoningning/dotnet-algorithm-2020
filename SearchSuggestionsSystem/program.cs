@@ -8,6 +8,29 @@ public class Solution {
         // Query: O(len(searchWord))
         return root.GetWords(root, searchWord);
     }
+        // c# does not have lower / upper bound
+    public IList<IList<string>> SuggestedProducts1(string[] products, string searchWord) {
+        Array.Sort(products);
+        var res = new List<IList<string>>();
+        string cur = "";
+        int lower = 0, upper = 0, n = searchWord.Length;
+        foreach (var c in searchWord) {
+            cur += c;
+            var t = new List<string>();
+            res.Add(t);
+            int idx = Array.BinarySearch(products, cur);
+            if (idx >= 0) lower = idx;
+            else {
+                Console.WriteLine(~idx);
+                //if (~idx == 0 || ~idx == n) break;
+                lower = ~idx == 0 ? 0 : ~idx - 1;
+                upper = ~idx == n ? n - 1: ~idx;
+            }
+            for (int i = lower; i <= Math.Min(lower + 2, n - 1); i++) res.Last().Add(products[i]);
+        }
+        while (res.Count < searchWord.Length) res.Add(new List<string>());
+        return res;
+    }
 }
 public class Trie {
     public HashSet<string> words = new HashSet<string>();
