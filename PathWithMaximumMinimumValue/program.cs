@@ -6,6 +6,7 @@ public class Solution {
         q.Add(new int[]{A[0][0], 0, 0});
         A[0][0] = -1; // visited
         while (q.Any()) {
+            q.Sort((a,b) => b[0] - a[0]);
             var t = q.First();
             q.RemoveAt(0);
             int sc = t[0], i = t[1], j = t[2];
@@ -15,7 +16,6 @@ public class Solution {
                 int ni = i + dirs[d,0], nj = j + dirs[d,1];
                 if (ni < 0 || ni >= r || nj < 0 || nj >= c || A[ni][nj] < 0) continue;
                 q.Add(new int[]{A[ni][nj], ni, nj});
-                q.Sort((a,b) => b[0] - a[0]);
                 A[ni][nj] = -1;
             }
         }
