@@ -24,8 +24,8 @@ public class Solution {
             return;
         }
         if (leftb) res.Add(node.val);
-        Helper(node.left, leftb && (node.left != null), rightb && (node.right == null), res);
-        Helper(node.right, leftb && (node.left == null), rightb && (node.right != null), res);
+        Helper(node.left, leftb, rightb && (node.right == null), res);
+        Helper(node.right, leftb && (node.left == null), rightb, res);
         if (rightb) res.Add(node.val);
     }
 }
