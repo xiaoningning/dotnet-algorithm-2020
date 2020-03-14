@@ -30,6 +30,7 @@ public class Solution {
             }
             dp = t;
         }
+        // O(n*n)
         return dp.ContainsKey(S) ? dp[S] : 0;
     }
     
