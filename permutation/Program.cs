@@ -1,37 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace permutation
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var obj = new Solution();
-            var res = obj.Permute(new int[]{1,2,3});
-            Console.WriteLine("permutation");
-            foreach(var r in res) {
-                Console.WriteLine(string.Join(",", r));
+public class Solution {
+    public IList<IList<int>> Permute(int[] nums) {
+        List<IList<int>> res = new List<IList<int>>();
+        dfs(nums, 0, res);
+        return res;
+    }
+    void dfs(int[] nums, int start, List<IList<int>> res) {
+        if (start == nums.Length) res.Add(new List<int>(nums));
+        else {
+            for (int i = start; i < nums.Length; i++){
+                swap(nums, start, i);
+                dfs(nums, start + 1, res);
+                swap(nums, start, i);
             }
         }
     }
-    public class Solution {
-        public IList<IList<int>> Permute(int[] nums) {
-            List<IList<int>> res = new List<IList<int>>();
-            dfs(nums, new List<int>(), res);
-            return res;
-        }
-        void dfs(int[] nums, List<int> tmp, List<IList<int>> res){
-            if (tmp.Count == nums.Length) res.Add(new List<int>(tmp));
-            else {
-                for (int i = 0; i < nums.Length; ++i) {
-                    // check if it is used
-                    if (tmp.Contains(nums[i])) continue;
-                    tmp.Add(nums[i]);
-                    // permutation, no i change
-                    dfs(nums, tmp, res);
-                    tmp.RemoveAt(tmp.Count - 1);
-                }
+    void swap(int[] nums, int x, int y) {
+        var t = nums[x]; nums[x] = nums[y]; nums[y] = t;
+    }
+    public IList<IList<int>> Permute1(int[] nums) {
+        List<IList<int>> res = new List<IList<int>>();
+        dfs(nums, new List<int>(), res);
+        return res;
+    }
+    void dfs(int[] nums, List<int> tmp, List<IList<int>> res){
+        if (tmp.Count == nums.Length) res.Add(new List<int>(tmp));
+        else {
+            for (int i = 0; i < nums.Length; ++i) {
+                // check if it is used
+                if (tmp.Contains(nums[i])) continue;
+                tmp.Add(nums[i]);
+                // permutation, no i change
+                dfs(nums, tmp, res);
+                tmp.RemoveAt(tmp.Count - 1);
             }
         }
     }
