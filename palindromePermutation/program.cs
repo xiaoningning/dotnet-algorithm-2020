@@ -5,6 +5,6 @@ public class Solution {
             if (!st.Contains(c)) st.Add(c);
             else st.Remove(c);
         }
-        return st.Count == 0 || st.Count == 1;
+        return st.Count == 0 || (s.Length % 2 == 1 && st.Count == 1);
     }
 }
