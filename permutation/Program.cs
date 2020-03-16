@@ -1,5 +1,21 @@
 public class Solution {
     public IList<IList<int>> Permute(int[] nums) {
+        if (!nums.Any()) return new List<IList<int>>(){new List<int>()};
+        List<IList<int>> res = new List<IList<int>>();
+        var arr = new List<int>(nums);
+        int first = arr.First();
+        arr.RemoveAt(0);
+        var nres = Permute(arr.ToArray());
+        foreach (var l in nres) {
+            for (int i = 0; i <= l.Count; i++) {
+                l.Insert(i, first);
+                res.Add(new List<int>(l));
+                l.RemoveAt(i);
+            }
+        }
+        return res;
+    }
+    public IList<IList<int>> Permute2(int[] nums) {
         List<IList<int>> res = new List<IList<int>>();
         dfs(nums, 0, res);
         return res;
