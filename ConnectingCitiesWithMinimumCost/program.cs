@@ -21,14 +21,13 @@ public class UnionFind {
         roots = new int[n];
         for (int i = 0; i < n; i++) roots[i] = i;
         ranks = new int[n];
-        Array.Fill(ranks, 1);
         size = n;
     }
     public bool Union(int i, int j) {
         int ri = FindRoot(i), rj = FindRoot(j);
         if (ri != rj) {
             size--;
-            if (ranks[ri] > ranks[rj]) roots[rj] = ri;
+            if (ranks[rj] < ranks[rj]) roots[rj] = ri;
             else if (ranks[ri] < ranks[rj]) roots[ri] = rj;
             else {
                 roots[ri] = rj;
@@ -39,11 +38,8 @@ public class UnionFind {
         else return false;
     }
     int FindRoot(int x) {
-        while(roots[x] != x) {
-            // path compression
-            roots[x] = roots[roots[x]];
-            x = roots[x];
-        }
+        // path compression
+        while(roots[x] != x) x = roots[x] = roots[roots[x]];
         return x;
     }
     /*
