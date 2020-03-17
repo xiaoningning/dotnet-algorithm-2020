@@ -15,7 +15,7 @@ public class Solution {
         // A[i] is a permutation of [1, 2, ..., A.length]
         for (int k = n; k >= 1; k--) {
             for (i = 0; A[i] != k; i++); // find index of k
-            Array.Reverse(A, 0, i + 1);
+            Array.Reverse(A, 0, i + 1); // Reverse => O(n)
             // Console.WriteLine(string.Join(",",A));
             res.Add(i + 1);
             Array.Reverse(A, 0, k); // move the largest to the end
