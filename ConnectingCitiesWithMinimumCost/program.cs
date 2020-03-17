@@ -10,11 +10,11 @@ public class Solution {
         // Note that Union operation takes constant time 
         // when UnionFind is implemented with 
         // both path compression and union by rank.
-        return uf.GetSize() == 1 ? res : -1;
+        return uf.size == 1 ? res : -1;
     }
 }
 public class UnionFind {
-    int size;
+    public int size;
     int[] roots;
     int[] ranks;
     public UnionFind(int n) {
@@ -48,5 +48,4 @@ public class UnionFind {
         return x == FindRoot(x) ? x : FindRoot(roots[x]);
     }
     */
-    public int GetSize() { return size; }
 }
