@@ -9,6 +9,7 @@ public class Solution {
         for (int i = 0; i < n; ++i) {
             if (nums[i] != i + 1) return i + 1;
         }
+        // time: O(n) space: O(1)
         // the last positive is missing
         return n + 1;
     }
