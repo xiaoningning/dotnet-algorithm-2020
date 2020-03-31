@@ -1,6 +1,7 @@
 public class Solution {
     public bool PredictTheWinner(int[] nums) {
         int n = nums.Length;
+        // dp: score of first player
         var dp = new int[n,n];
         for (int i = 0; i < n; i++) dp[i,i] = nums[i];
         for (int len = 1; len < n; len++) {
@@ -13,6 +14,7 @@ public class Solution {
     }
     public bool PredictTheWinner1(int[] nums) {
         int n = nums.Length;
+        // dp: score of first player
         var dp = new int[n][];
         for (int i = 0; i < n; i++) {
             dp[i] = new int[n];
