@@ -1,10 +1,13 @@
 public class Solution {
     public int GetMoneyAmount(int n) {
+        // min cost to guess 1,n
         var dp = new int[n+1,n+1];
         for (int i = 2; i <= n; i++) {
             for (int j = i - 1; j > 0; j--) {
                 int global_min = Int32.MaxValue;
                 for (int k = j + 1; k < i; k++) {
+                    // take worse case of two sides
+                    // b/s it needs to cover all cases
                     int local_max = k + Math.Max(dp[j,k-1], dp[k+1,i]);
                     global_min = Math.Min(global_min, local_max);
                 }
@@ -15,6 +18,7 @@ public class Solution {
         return dp[1, n];
     }
     public int GetMoneyAmount1(int n) {
+        // min cost to guess 1,n
         int[,] memo = new int[n+1,n+1];
         return helper(1, n, memo);
     }
