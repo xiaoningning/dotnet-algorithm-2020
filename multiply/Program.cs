@@ -27,12 +27,12 @@ namespace multiply
                 }
             }
 
-            StringBuilder sb = new StringBuilder();  
+            var res = "";  
             foreach(int p in pos){
                 // ignore the first 0
-                if (!(p == 0 && sb.Length == 0)) sb.Append(p.ToString());
+                if (!(p == 0 && res.Length == 0)) res += p.ToString();
             }
-            return sb.Length == 0 ? "0" : sb.ToString();
+            return res.Length == 0 ? "0" : res;
         }
     }
 }
