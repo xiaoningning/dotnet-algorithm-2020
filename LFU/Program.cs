@@ -24,7 +24,6 @@ public class LFUCache {
             cnt++;
             freq[key] = cnt;
             if (!freqMap.ContainsKey(cnt)) freqMap.Add(cnt, new List<int>());
-            if (freqMap[cnt].Contains(key)) freqMap[cnt].Remove(key);
             freqMap[cnt].Insert(0, key);
             return cache[key];        
         }     
