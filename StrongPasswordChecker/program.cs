@@ -18,6 +18,7 @@ public class Solution {
         else { 
             int left = 0, over = Math.Max(0, n - 20);
             res += over;
+            // if cnt[i] = 3m + 2, replace m => min change
             for (int k = 1; k < 3; ++k) {
                 for (int i = 0; i < n && over > 0; ++i) {
                     if (cnt[i] < 3 || cnt[i] % 3 != (k - 1)) continue;
