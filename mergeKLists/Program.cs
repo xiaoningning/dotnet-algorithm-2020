@@ -38,6 +38,7 @@ namespace mergeKLists
                 }
                 n = k;
             }
+            // O(nklogk)
             return lists[0];            
         }
 
