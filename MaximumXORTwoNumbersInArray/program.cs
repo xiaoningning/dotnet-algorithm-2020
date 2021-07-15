@@ -9,6 +9,7 @@ public class Solution {
             foreach (var prefix in s) {
                 if (s.Contains(tmp ^ prefix)) {
                     maxXor = tmp;
+                    Console.WriteLine(Convert.ToString(maxXor, 2));
                     break;
                 }
             }
