@@ -10,7 +10,7 @@ public class Solution {
                 // x ^ y = tmp => x ^ tmp = y
                 if (s.Contains(tmp ^ prefix)) {
                     maxXor = tmp;
-                    Console.WriteLine(Convert.ToString(maxXor, 2));
+                    // Console.WriteLine(Convert.ToString(maxXor, 2));
                     break;
                 }
             }
