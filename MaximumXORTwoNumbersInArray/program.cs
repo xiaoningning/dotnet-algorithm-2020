@@ -7,6 +7,7 @@ public class Solution {
             foreach (int n in nums) s.Add(n & mask);
             int tmp = maxXor | (1 << i);
             foreach (var prefix in s) {
+                // x ^ y = tmp => x ^ tmp = y
                 if (s.Contains(tmp ^ prefix)) {
                     maxXor = tmp;
                     Console.WriteLine(Convert.ToString(maxXor, 2));
