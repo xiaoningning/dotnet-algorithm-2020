@@ -9,19 +9,21 @@ public class Solution {
         return l;
     }
     bool HasPath(int[][] grid, int t) {
-        var dirs = new int[,] {{0, -1}, {-1, 0}, {0, 1}, {1, 0}};
+        var dirs = new int[,] {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
         int n = grid.GetLength(0);
         var visited = new HashSet<int>();
-        var q = new Queue<int>();
-        q.Enqueue(0); visited.Add(0); // 0 * n + 0
-        while (q.Any()) {
-            int tmp = q.Dequeue(), i = tmp / n, j = tmp % n;
+        var s = new Stack<int>();
+        s.Push(0); 
+        visited.Add(0); // x * n + y
+        Console.WriteLine(t);
+        while (s.Any()) {
+            int tmp = s.Pop(), i = tmp / n, j = tmp % n;
             if (i == n - 1 && j == n - 1) return true;
-            for (int d = 0; d < 4; i++) {
+            for (int d = 0; d < 4; d++) {
                 int x = i + dirs[d,0], y = j + dirs[d,1];
                 if (x < 0 || x >= n || y < 0 || y >= n 
                     || visited.Contains(x * n + y) || grid[x][y] > t) continue;
-                q.Enqueue(x * n + y);
+                s.Push(x * n + y);
                 visited.Add(x * n + y);
             }
         }
