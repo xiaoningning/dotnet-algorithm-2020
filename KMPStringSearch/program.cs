@@ -15,10 +15,9 @@ public class Program
 		for (int i = 0; i < n; i++) next[i] = -1;
 		int k = -1, j = 0;
 		while (j < n - 1) {
-			Console.WriteLine(p[j] + ":" + j + ":" + k);
+			Console.WriteLine("next: " + string.Join(',', next));
 			if (k == -1 || p[k] == p[j]) {
 				k++;j++;
-				Console.WriteLine(p[j] + ":" + j + ":" +p[k]+":"+ k + "#");
 				next[j] = (p[k] != p[j]) ? k : next[k];
 			}
 			else k = next[k];
@@ -29,6 +28,7 @@ public class Program
 		int m = s.Length, n = p.Length, i = 0, j = 0;
 		var next = GetNext(p);
 		while(i < m && j < n) {
+			Console.WriteLine("i:" + i +", j:" + j);
 			if (j == -1 || s[i] == p[j]) {
 				i++;j++;
 			}
