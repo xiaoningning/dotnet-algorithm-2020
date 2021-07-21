@@ -38,6 +38,7 @@ public class Program
 			}
 			else j = next[j];
 		}
+		// O(n + m)
 		return j == n ? i - j : -1;
 	}
 }
