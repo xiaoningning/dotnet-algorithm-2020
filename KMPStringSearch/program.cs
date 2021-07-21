@@ -29,6 +29,8 @@ public class Program
 		var next = GetNext(p);
 		while(i < m && j < n) {
 			Console.WriteLine(s[i] + " i:" + i + ", " + p[j] + " j:" + j);
+			Console.WriteLine(s);
+			Console.WriteLine(new String('-',i-j) + p);
 			if (j == -1 || s[i] == p[j]) {
 				i++;j++;
 			}
