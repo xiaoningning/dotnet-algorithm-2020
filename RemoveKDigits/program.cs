@@ -3,7 +3,8 @@ public class Solution {
         var res = "";
         foreach (var c in num) {
             while (k > 0 && res.Length > 0 && res.Last() > c) {
-                res = res.Remove(res.Length - 1, 1); k--;
+                res = res.Remove(res.Length - 1, 1); 
+                k--;
             }
             if (res.Any() || c != '0') res += c;
         }
