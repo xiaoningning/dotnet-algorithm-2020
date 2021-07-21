@@ -7,6 +7,7 @@ public class Program
 	public static void Main()
 	{
 		Console.WriteLine(KMP("BBC_ABCDAB_ABCDABCDABDE", "ABCDABD"));
+		Console.WriteLine(KMP("ABCABCABED", "ABCABCE"));
 	}
 	
 	static int[] GetNext(string p) {
