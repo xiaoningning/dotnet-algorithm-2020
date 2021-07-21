@@ -6,10 +6,14 @@ public class Solution {
         long M = (long)1e9 + 7;
         while (left < right) {
             var mid = left + (right - left) / 2;
+            // without LCM
+            // var cnt = new HashSet<long>();
+            // cnt.Add(mid / a); cnt.Add(mid / b);
+            // if (cnt.Count() < n) left = mid + 1;
             if (mid / a + mid / b - mid / lcm < n) left = mid + 1;
             else right = mid;
         }
-        Console.WriteLine(right);
+        //Console.WriteLine(right);
         return (int) (right % M);
     }
     // greatest common divisor
