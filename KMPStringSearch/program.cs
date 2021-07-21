@@ -14,7 +14,9 @@ public class Program
 		int[] next = new int[n];
 		for (int i = 0; i < n; i++) next[i] = -1;
 		int k = -1, j = 0;
+		Console.WriteLine(p);
 		while (j < n - 1) {
+			Console.WriteLine(p[j]+" j:" + j +", " + (k != -1 ? p[k] : "-") +" k:" + k);
 			if (k == -1 || p[k] == p[j]) {
 				k++;j++;
 				next[j] = (p[k] != p[j]) ? k : next[k];
