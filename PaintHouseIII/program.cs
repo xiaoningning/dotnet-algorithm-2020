@@ -1,5 +1,30 @@
 public class Solution {
+    // DFS
+    int MAX = (int)1e8; // avoid overflow
     public int MinCost(int[] houses, int[][] cost, int m, int n, int target) {
+        // 0 color as unknown prevClr, => n+1
+        var memo = new int[m,target+1,n+1];
+        var res = DFS(houses, cost, memo, 0, 0, target);
+        return res >= MAX ? -1 : res;
+    }
+    int DFS(int[] houses, int[][] cost, int[,,] memo, int houseIdx, int preClr, int target) {
+        if (houseIdx == houses.Length || target < 0) return target == 0 ? 0 : MAX;
+        // memo is calculated, just return
+        if (memo[houseIdx,target,preClr] != 0) return memo[houseIdx,target,preClr];
+        if (houses[houseIdx] != 0) {
+            return memo[houseIdx,target,preClr] = DFS(houses,cost,memo, houseIdx+1, houses[houseIdx], target - ((houses[houseIdx] != preClr) ? 1 : 0));
+        }
+        
+        var res = MAX;
+        for (int c = 1; c <= cost[houseIdx].Length; c++) {
+            var val = DFS(houses, cost, memo, houseIdx + 1, c, target - ((c != preClr) ? 1 : 0));
+            res = Math.Min(res, val + cost[houseIdx][c-1]);
+        }
+        return memo[houseIdx,target,preClr] = res;
+    }
+    
+    // buttom up
+    public int MinCost2(int[] houses, int[][] cost, int m, int n, int target) {
         // i: house, k: neighbor, c: color,
         var dp = new int[m,target+1,n];
         for (int i = 0; i < m; i++) 
