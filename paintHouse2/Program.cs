@@ -1,54 +1,43 @@
 public class Solution {
     public int MinCostII(int[][] costs) {
-        if (!costs.Any() || !costs[0].Any()) return 0;
-        int min1 = 0, min2 = 0, idx = -1;
+        if (costs.Length == 0 || costs[0].Length == 0) return 0;
+        int m1 = 0, m2 = 0, k = -1;
         for (int i = 0; i < costs.Length; i++) {
-            int m1 = Int32.MaxValue, m2 = m1, id = -1;
-            for (int k = 0; k < costs[i].Length; k++) {
-                int cost = costs[i][k] + (k == idx ? min2 : min1);
-                if (cost < m1) {
-                    m2 = m1; m1 = cost; id = k;
+            int lastm1 = Int32.MaxValue, lastm2 = lastm1, lastk = -1;
+            for (int j = 0; j < costs[i].Length; j++) {
+                var cost = costs[i][j] + ((j != k) ? m1 : m2);
+                if (cost < lastm1) {
+                    lastm2 = lastm1; lastm1 = cost; lastk = j;
                 }
-                else if (cost < m2) m2 = cost;
+                else if (cost < lastm2) lastm2 = cost;
             }
-            min1 = m1; min2 = m2; idx = id;
+            m1 = lastm1; m2 = lastm2; k = lastk;
         }
-        return min1;
+        return m1;
     }
-    
-    public int MinCostII1(int[,] costs) {
-        // length is total # of elements
-        // GetLength is dimisional size
-        if(costs.Length == 0) return 0;
-        
-        int n = costs.GetLength(0);
-        int k = costs.GetLength(1);
-        int[,] dp = costs;
-        // min1 is the index of the 1st-smallest cost till previous house
-        // min2 is the index of the 2nd-smallest cost till previous house
-        int min1 = -1, min2 = min1;
-        for(int i = 0; i < n; i++){
-            int tmpMin1 = min1, tmpMin2 = min2;
-            min1 = -1;
-            min2 = -1;
-            for(int j = 0; j < k; j++){
-                // only check the house with previous min cost and 2nd min cost colors 
-                if(j != tmpMin1){
-                    dp[i,j] += tmpMin1 < 0 ? 0 : dp[i - 1,tmpMin1];
+    public int MinCostII2(int[][] costs) {
+        if (costs.Length == 0 || costs[0].Length == 0) return 0;
+        int n = costs.Length, k = costs[0].Length;
+        // j1 is the index of the 1st-smallest cost till previous house
+        // j2 is the index of the 2nd-smallest cost till previous house
+        int j1 = -1, j2 = j1;
+        var dp = costs;
+        for (int i = 0; i < n; i++) {
+            int tj1 = j1, tj2 = j2; 
+            j1 = -1; j2 = j1;
+            for (int j = 0; j < k; j++) {
+                // only check the house with previous min cost and 2nd min cost colors
+                dp[i][j] +=  (j != tj1) ? 
+                    ((tj1 < 0) ? 0 : dp[i-1][tj1])
+                    : ((tj2 < 0) ? 0 : dp[i-1][tj2]);
+                // update the two min costs of index in this row of house
+                if (j1 < 0 || dp[i][j] < dp[i][j1]) {
+                    // assign 1st min to 2nd min index since there is a new min
+                    j2 = j1; j1 = j;
                 }
-                else {
-                    dp[i,j] += tmpMin2 < 0 ? 0 : dp[i - 1,tmpMin2];
-                }
-                // update the last two min costs of index
-                if (min1 < 0 || dp[i,j] < dp[i,min1]) {
-                    // assign min to 2nd min index since there is a new min
-                    min2 = min1;
-                    min1 = j;                     
-                } else if (min2 < 0 || dp[i,j] < dp[i,min2]) {
-                    min2 = j;
-                }
+                else if (j2 < 0 || dp[i][j] < dp[i][j2]) j2 = j;
             }
         }
-        return dp[n-1,min1];
+        return dp[n-1][j1];
     }
 }
