@@ -1,11 +1,14 @@
 public class Solution {
     public int MinCostII(int[][] costs) {
         if (costs.Length == 0 || costs[0].Length == 0) return 0;
+        // 1st and 2nd min cost of previous row of house
+        // 1st min cost color of k
         int m1 = 0, m2 = 0, k = -1;
         for (int i = 0; i < costs.Length; i++) {
             int lastm1 = Int32.MaxValue, lastm2 = lastm1, lastk = -1;
             for (int j = 0; j < costs[i].Length; j++) {
                 var cost = costs[i][j] + ((j != k) ? m1 : m2);
+                // update the two min costs in the current row of house
                 if (cost < lastm1) {
                     lastm2 = lastm1; lastm1 = cost; lastk = j;
                 }
@@ -30,7 +33,7 @@ public class Solution {
                 dp[i][j] +=  (j != tj1) ? 
                     ((tj1 < 0) ? 0 : dp[i-1][tj1])
                     : ((tj2 < 0) ? 0 : dp[i-1][tj2]);
-                // update the two min costs of index in this row of house
+                // update the two min cost index in the current row of house
                 if (j1 < 0 || dp[i][j] < dp[i][j1]) {
                     // assign 1st min to 2nd min index since there is a new min
                     j2 = j1; j1 = j;
