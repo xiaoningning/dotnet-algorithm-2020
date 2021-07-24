@@ -46,6 +46,8 @@ public class Solution {
                         if (_c != c) new_neighbor = Math.Min(new_neighbor, dp[i-1,k-1,_c-1]);
                     }
                     var prevCost = Math.Min(same_neighbor, new_neighbor);
+                    // avoid overflow since default is Int32.MaxValue already
+                    // if set MAX as some 1e8, then no need to do this without overflow issue
                     var paintCost = (prevCost == Int32.MaxValue) ? 0 : cost[i][c-1] * (houses[i] == 0 ? 1 : 0);
                     dp[i,k,c-1] = prevCost + paintCost;
                     // Console.WriteLine("i:"+i+"k:"+k+"c:"+(c-1)+"=>"+dp[i,k,c-1]);
