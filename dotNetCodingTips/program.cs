@@ -82,6 +82,9 @@ public class Program
 		
 		double[] values = {7.03, 7.64, 0.12, -0.12, -7.1, -7.6};
 		foreach (double v in values) Console.WriteLine($"{v}, {Math.Ceiling(v)}, {Math.Floor(v)}");
+		
+		// Func vs Action
+		// Func return value, where Action does not
 	}
 	
 	static (int ln, string vs) GetIt(string s) {
