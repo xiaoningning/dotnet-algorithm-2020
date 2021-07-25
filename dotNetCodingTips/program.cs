@@ -74,7 +74,7 @@ public class Program
 		Console.WriteLine("array upper bound => idx: " + lst[lst.ToArray().GetUpperBound(0)]);
 		Console.WriteLine("array lower bound => idx: " + lst[lst.ToArray().GetLowerBound(0)]);
 		lst = lst.Prepend("0").ToList();
-		Console.WriteLine("linq prepend: " + string.Join(',', lst));
+		Console.WriteLine("IEnumerable prepend: " + string.Join(',', lst));
 		var lSet = lst.Prepend("0").ToHashSet();
 		Console.WriteLine("linq ToHashSet: " + string.Join(',', lSet));
 		
