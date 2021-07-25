@@ -69,7 +69,7 @@ public class Program
 		
 		var lst = new List<string>(){"a","b","v"};
 		// Get index of list
-		foreach (var (idx, v) in lst.Select((v, i) => (i, v + "@idx:" + i))) {
+		foreach (var (idx, v) in lst.Select((item, index) => (index, item + "@idx:" + index))) {
 			Console.WriteLine("linq select idx: " + idx + ": " + v);
 		}
 		var lstSelect = lst.Select(x => x + "->select");
