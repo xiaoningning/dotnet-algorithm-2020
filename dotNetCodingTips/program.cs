@@ -10,6 +10,10 @@ public class Program
 		Console.WriteLine("enumerable range:"+string.Join(',', intarray));
 		var sarray = Enumerable.Repeat("a", 5);
 		Console.WriteLine("enumerable repeat:"+string.Join(',', sarray));
+		var a1 = new int[1,2,3];
+		Console.WriteLine("array rank: " + a1.Rank);
+		var a2 = new int[2][][];
+		Console.WriteLine("array rank: " + a2.Rank);
 		
 		var (l, s) = GetIt("aefbgc");
 		Console.WriteLine("string length:"+l);
