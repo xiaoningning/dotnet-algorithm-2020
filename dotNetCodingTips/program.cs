@@ -44,6 +44,10 @@ public class Program
 			Console.WriteLine($"Found limits: min is {limits.Min}, max is {limits.Max}");
 		}
 		
+		var q = new Queue<(int, string)>();
+		q.Enqueue((1,"11"));
+		Console.WriteLine("tuple queue: " + q.Dequeue().Item2);
+		
 		var lst = new List<string>(){"a","b","v"};
 		// Get index of list
 		foreach (var (idx, v) in lst.Select((v, i) => (i, v))) {
