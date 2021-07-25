@@ -35,7 +35,8 @@ public class Program
 		s = new string(s.OrderByDescending(a => a).ToArray());
 		Console.WriteLine("OrderByDescending:" + s);
 		
-		// array as key of dictionary
+		// array (tuple) as key of dictionary
+		Console.WriteLine("tuple as Dictionary key and value");
 		var d = new Dictionary<(int,string), string>(){{(1,"11"), "abcd"}, {(2,"22"),"xyz"}};
 		Console.WriteLine(d[(1,"11")]);
 		Console.WriteLine(d.ContainsKey((2,"3")));
@@ -43,6 +44,15 @@ public class Program
 		foreach (var kv in d){
 			Console.WriteLine("tuple as key of dict: "+ kv.Key.Item2);
 		}
+		
+		var d2 = new Dictionary<(int, string), (string, int)>()
+		{
+			[(1,"11")] = ("11", 1),
+			[(2, "22")] = ("22", 2)
+		};
+		Console.WriteLine(d2.ContainsValue(("22", 2)));
+		foreach(var kv in d2) Console.WriteLine("tuple as dictionary key/value: " + kv.Key.Item1 + ":-" + kv.Value.Item1);
+		
 		var limitsLookup = new Dictionary<int, (int Min, int Max)>()
 		{
 			[2] = (4, 10),
@@ -51,9 +61,7 @@ public class Program
 		};
 
 		if (limitsLookup.TryGetValue(4, out (int Min, int Max) limits))
-		{
 			Console.WriteLine($"Found limits: min is {limits.Min}, max is {limits.Max}");
-		}
 		
 		var q = new Queue<(int, string)>();
 		q.Enqueue((1,"11"));
