@@ -32,15 +32,13 @@ public class Program
 		foreach (var kv in d){
 			Console.WriteLine("tuple as key of dict: "+ kv.Key.Item2);
 		}
-		var limitsLookup = new Dictionary<int, (int Min, int Max)>()
-		{
+		var limitsLookup = new Dictionary<int, (int Min, int Max)>() {
 			[2] = (4, 10),
 			[4] = (10, 20),
 			[6] = (0, 23)
 		};
 
-		if (limitsLookup.TryGetValue(4, out (int Min, int Max) limits))
-		{
+		if (limitsLookup.TryGetValue(4, out (int Min, int Max) limits)) {
 			Console.WriteLine($"Found limits: min is {limits.Min}, max is {limits.Max}");
 		}
 		
@@ -53,6 +51,8 @@ public class Program
 		foreach (var (idx, v) in lst.Select((v, i) => (i, v))) {
 			Console.WriteLine(idx + ": " + v);
 		}
+		
+		Console.WriteLine("is type check: " + ("abc" is not null));
 	}
 	
 	static (int ln, string vs) GetIt(string s) {
