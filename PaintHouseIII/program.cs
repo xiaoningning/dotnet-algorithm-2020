@@ -1,7 +1,7 @@
 public class Solution {
     // DFS
     int MAX = (int)1e8; // avoid overflow
-    public int MinCost(int[] houses, int[][] cost, int m, int n, int target) {
+    public int MinCost3(int[] houses, int[][] cost, int m, int n, int target) {
         // 0 color as unknown prevClr, => n+1
         var memo = new int[m,target+1,n+1];
         var res = DFS(houses, cost, memo, 0, 0, target);
@@ -46,8 +46,6 @@ public class Solution {
                         if (_c != c) new_neighbor = Math.Min(new_neighbor, dp[i-1,k-1,_c-1]);
                     }
                     var prevCost = Math.Min(same_neighbor, new_neighbor);
-                    // avoid overflow since default is Int32.MaxValue already
-                    // if set MAX as some 1e8, then no need to do this without overflow issue
                     var paintCost = (prevCost == Int32.MaxValue) ? 0 : cost[i][c-1] * (houses[i] == 0 ? 1 : 0);
                     dp[i,k,c-1] = prevCost + paintCost;
                     // Console.WriteLine("i:"+i+"k:"+k+"c:"+(c-1)+"=>"+dp[i,k,c-1]);
@@ -59,32 +57,32 @@ public class Solution {
         return res < Int32.MaxValue ? res : -1;
     }
     
-    // TLE
-    public int MinCost1(int[] houses, int[][] cost, int m, int n, int target) {
-        var memo1 = new Dictionary<string, int>(){{"0-0", 0}};
-        var memo2 = new Dictionary<string, int>();
+    // buttom-up 
+    public int MinCost(int[] houses, int[][] cost, int m, int n, int target) {
+        // key: (color, neighbor)
+        var memo1 = new Dictionary<(int, int), int>(){{(0,0), 0}};
+        var memo2 = new Dictionary<(int, int), int>();
         foreach (var (clr, idx) in houses.Select((color, index) => (color, index))) {
             var ncArray = clr == 0 ? Enumerable.Range(1, n) : new int[]{clr};
             foreach (int nc in ncArray) {
                 foreach (var kv in memo1) {
-                    int pc = Int32.Parse(kv.Key.Split('-')[0]);
-                    int pn = Int32.Parse(kv.Key.Split('-')[1]);
+                    int pc = kv.Key.Item1;
+                    int pn = kv.Key.Item2;
                     int nn = pn + ((pc != nc) ? 1 : 0);
                     if (nn > target) continue;
-                    int pcost = memo1[string.Format($"{pc}-{pn}")] + ((nc != clr) ? cost[idx][nc-1] : 0);
-                    int ncost = memo2.ContainsKey(string.Format($"{nc}-{nn}")) ? memo2[string.Format($"{nc}-{nn}")] : Int32.MaxValue;
-                    memo2[string.Format($"{nc}-{nn}")] = Math.Min(pcost, ncost);
-                    Console.WriteLine("c: " + nc + " n: "+ nn + "=>" + memo2[string.Format($"{nc}-{nn}")]);
+                    int pcost = memo1[(pc, pn)] + ((nc != clr) ? cost[idx][nc-1] : 0);
+                    int ncost = memo2.ContainsKey((nc, nn)) ? memo2[(nc, nn)] : Int32.MaxValue;
+                    memo2[(nc,nn)] = Math.Min(pcost, ncost);
+                    // Console.WriteLine("c: " + nc + " n: "+ nn + "=>" + memo2[(nc,nn)]);
                 }
             }
             memo1 = memo2;
-            memo2 = new Dictionary<string, int>();
+            memo2 = new Dictionary<(int,int), int>();
         }
         var res = Int32.MaxValue;
         foreach (var kv in memo1) {
-            int nb = Int32.Parse(kv.Key.Split('-')[1]);
-            if (nb == target) res = Math.Min(res, kv.Value);
+            if (kv.Key.Item2 == target) res = Math.Min(res, kv.Value);
         }
-        return res != Int32.MaxValue ? res : -1;
+        return res < Int32.MaxValue ? res : -1;
     }
 }
