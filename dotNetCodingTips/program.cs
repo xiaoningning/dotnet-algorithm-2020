@@ -28,12 +28,16 @@ public class Program
 		Console.WriteLine("string length:"+l);
 		var res = GetIt("aefbgc");
 		Console.WriteLine(res.vs);
-		s = new string(s.OrderBy(a => a).ToArray());
-		Console.WriteLine("orderby:" + s);
-		s = s.Remove(1,1);
-		Console.WriteLine("remove string at 1:"+s);
-		s = new string(s.OrderByDescending(a => a).ToArray());
-		Console.WriteLine("OrderByDescending:" + s);
+		var s1 = new string(s.OrderBy(a => a).ToArray());
+		Console.WriteLine("orderby:" + s1);
+		s1 = s1.Remove(1,1);
+		Console.WriteLine("remove string at 1:"+s1);
+		var s2 = new string(s.OrderByDescending(a => a).ToArray());
+		Console.WriteLine("OrderByDescending:" + s2);
+		var s3 = s.ToList();
+		// list sort is in place vs linq orderby is new ienumerable
+		s3.Sort((x, y) => x - y);
+		Console.WriteLine("sort:" + new string(s3.ToArray()));
 		
 		// array (tuple) as key of dictionary
 		Console.WriteLine("tuple as Dictionary key and value");
